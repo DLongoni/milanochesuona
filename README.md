@@ -41,7 +41,7 @@ Linne generali
 	Database eventi - back e front
 	L'elenco "calendario" nella pagina principale è generato dinamicamente, così come le pagine dei singoli eventi filtrando dal database
 	
-***** Use Cases
+***** Casi d'uso
 	1. Visualizzazione 
 		1.a - voglio semplicemente visualizzare la lista di cosa succede oggi o nei giorni successivi 
 	
