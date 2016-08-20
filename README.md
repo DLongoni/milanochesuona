@@ -1,7 +1,7 @@
 # milanochesuona
 Aggregatore di concerti a Milano
 
-Outline
+Linne generali
 
 ***** Database
 	- Evento
