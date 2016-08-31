@@ -32,51 +32,39 @@
         <div class="col-md-4"></div>
       </div>
     </div>
-    <br />
-    <div class="container" >
-      <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-          <div class="media">
-            <a class="media-left" href="#">
-              <img class="media-object" src="..." alt="Generic placeholder image">
-            </a>
-            <div class="media-body">
-              <h4 class="media-heading">Media heading</h4>
-              Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-            </div>
-          </div>
-        </div>
-        <div class="col-md-2"></div>
-      </div>
-    </div>
+    <div id="divConcerts" class="container m-t-2"></div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js" integrity="sha384-ux8v3A6CPtOTqOzMKiuo3d/DomGaaClxFYdCu2HPMBEkf6x2xiDyJ7gkXU0MWwaD" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-    <script>$( function() {
-      $( "#txtDatePicker" ).datepicker(
-          {minDate: 0,
-            dateFormat: "dd/mm/yy",
-            showOtherMonths: true,
-            selectOtherMonths: true,
-            showAnim: 'slideDown',
-            defaultDate: '0'
-          }
-          ).datepicker('setDate', new Date()); // to select today as default
+    <script src="https://kswedberg.github.io/jquery-expander/jquery.expander.js"></script>
+    <script>
+      $( function() {
+        $( "#txtDatePicker" ).datepicker(
+            {minDate: 0,
+              dateFormat: "dd/mm/yy",
+              showOtherMonths: true,
+              selectOtherMonths: true,
+              showAnim: 'slideDown',
+              defaultDate: '0'
+            }
+            ).datepicker('setDate', new Date()); // to select today as default
 
-      $("#btnNext").click(function () {
-        var selDt = $('#txtDatePicker').datepicker("getDate");
-        selDt.setDate(selDt.getDate()+1);
-        $('#txtDatePicker').datepicker("setDate", selDt);
-      });
+        $("#btnNext").click(function () {
+          var selDt = $('#txtDatePicker').datepicker("getDate");
+          selDt.setDate(selDt.getDate()+1);
+          $('#txtDatePicker').datepicker("setDate", selDt);
+        });
 
-      $("#btnPrev").click(function () {
-        var selDt = $('#txtDatePicker').datepicker("getDate");
-        selDt.setDate(selDt.getDate()-1);
-        $('#txtDatePicker').datepicker("setDate", selDt);
-      });
-    } );
+        $("#btnPrev").click(function () {
+          var selDt = $('#txtDatePicker').datepicker("getDate");
+          selDt.setDate(selDt.getDate()-1);
+          $('#txtDatePicker').datepicker("setDate", selDt);
+        });
+
+        // $("#divConcerts").load("concertsColumns.html");
+        $("#divConcerts").load("concertsCardColumns.html");
+      } );
     </script>
   </body>
 </html>
