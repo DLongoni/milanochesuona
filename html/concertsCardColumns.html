@@ -20,10 +20,14 @@
     </div>
     <img class="img-fluid" src="http://oceanleadership.org/wp-content/uploads/vamp-squid.jpg" alt="Card image cap">
     <div class="card-block">
-      <h6 class="card-text"><strong>21:00 - <a href="#" class="card-link">Carroponte</a> </strong></h6>
+      <div class="card-text">
+        <p class="card-text"><strong>29/09 - 21:00</strong>
+          <span class="card-text" style="float:right"><strong><a href="#" class="card-link">Carroponte</a> </strong></span>
+        </p>
+      </div>
       <p class="card-text"><small class="text-muted">Via Granelli, 21 - Sesto San Giovanni</small></p>
       <div class="toolong">
-        <p class="card-text small text-justify">Dopo aver registrato il soldout al Forum di Assago con la prima data del “Piccoli energumeni tour” lo scorso 29 aprile (tour che li vede tutto’ora impegnati nei palasport da dove mancavano da vent’anni), annunciato un nuovo appuntamento dal vivo degli ELIO E LE STORIE TESE che li vedrà sul palco del Carroponte di Sesto San Giovanni (MI) sabato 3 Settembre.  Un 2016 davvero coi fiocchi quello del gruppo che dopo aver partecipato a Sanremo con la pirotecnica “Vincere l'odio”, supercanzone con ben sette ritornelli, ha pubblicato “Figgatta de blanc”, titolo estroso per un album eclettico e geniale, dove i nostri eroi raccontano a più voci il mondo contemporaneo fra umorismo e lucida follia.  Biglietti disponibili dal 19 maggio nei circuiti Ticketone al costo di €25 + diritti di prevendita</p>
+        <p class="card-text small text-justify">Dopo aver registrato il soldout al Forum di Assago con la prima data del &ldquo;Piccoli energumeni tour&rdquo; lo scorso 29 aprile (tour che li vede tutto&rsquo;ora impegnati nei palasport da dove mancavano da vent&rsquo;anni), annunciato un nuovo appuntamento dal vivo degli ELIO E LE STORIE TESE che li vedr&#224; sul palco del Carroponte di Sesto San Giovanni (MI) sabato 3 Settembre. Un 2016 davvero coi fiocchi quello del gruppo che dopo aver partecipato a Sanremo con la pirotecnica &ldquo;Vincere l&#39;odio&rdquo;, supercanzone con ben sette ritornelli, ha pubblicato &ldquo;Figgatta de blanc&rdquo;, titolo estroso per un album eclettico e geniale, dove i nostri eroi raccontano a pi&#249; voci il mondo contemporaneo fra umorismo e lucida follia. Biglietti disponibili dal 19 maggio nei circuiti Ticketone al costo di &euro;25 + diritti di prevendita</p>
       </div>
       <hr>
       <p class="card-text">25 Euro</p>
@@ -65,6 +69,14 @@
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
   </div>
+  <div class="card">
+    <img class="card-img-top img-fluid" src="http://oceanleadership.org/wp-content/uploads/vamp-squid.jpg" alt="Card image cap">
+    <div class="card-block">
+      <h4 class="card-title">Card title</h4>
+      <p class="card-text">This card has even longer content than the first to show that equal height action.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
 </div>
 <script>
   $('.toolong').expander({
@@ -72,11 +84,12 @@
     preserveWords: true,
     widow: 10,
     expandEffect: 'fadeIn',
-    userCollapseEffect: 'fadeOut',
+    collapseEffect: 'fadeOut',
     expandText: 'leggi tutto',
     expandPrefix: '',
     userCollapsePrefix: ' ',
     userCollapseText: 'chiudi',
     lessClass: 'small'
   });
+$('.toolong').expander().removeClass('js-toolong-hidden');
 </script>
