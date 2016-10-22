@@ -75,3 +75,5 @@ L'elenco "calendario" nella pagina principale e' generato dinamicamente, cosi' c
 ### Note
 	- Un evento deve essere identificato da un luogo ed un giorno. Se una tal rassgna in un tal giorno avviene in piu' luoghi bisognera'  creare piu' eventi.
 	- Per venue si intende sia un locale. Se un evento non e' in un locale metto l'indirizzo e lascio vuoto il campo venue
+### TODO
+  * voglio veramente lasciare venue e location separati?

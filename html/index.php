@@ -61,8 +61,8 @@
           selDt.setDate(selDt.getDate()-1);
           $('#txtDatePicker').datepicker("setDate", selDt);
         });
-        // $("#divConcerts").load("concertsColumns.html");
-        $("#divConcerts").load("concertsCardColumns.html");
+        $("#divConcerts").load("concertsColumns.html");
+        // $("#divConcerts").load("concertsCardColumns.html");
       } );
     </script>
   </body>
