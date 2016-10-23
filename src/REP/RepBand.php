@@ -1,20 +1,19 @@
 <?php
 require_once __DIR__ . '/../DbConn.php';
-require_once __DIR__ . '/../OM/Venue.php';
-require_once __DIR__ . '/RepLocation.php';
+require_once __DIR__ . '/../OM/Band.php';
 
-Class RepVenue{
+Class RepBand{
   // Public Methods {{{
   public static function GetList()
   {
     $conn=getConn();      
-    if (!($res = $conn->query("CALL VenueGetList()"))) {
+    if (!($res = $conn->query("CALL BandGetList()"))) {
       throw new Exception("CALL failed: (" . $conn->errno . ") " . $conn->error);
     }
     $ret=array();
-    while($venueRow = $res->fetch_assoc())
+    while($bandRow = $res->fetch_assoc())
     {
-      $ret[]=self::venueFromRow($venueRow);
+      $ret[]=self::bandFromRow($bandRow);
     }
     return $ret;
   }
@@ -22,14 +21,14 @@ Class RepVenue{
   public static function getById($id)
   {
     $conn=getConn();
-    $sel=$conn->prepare("CALL VenueGetById(?)");
+    $sel=$conn->prepare("CALL BandGetById(?)");
     $sel->bind_param('i',$id);
     $sel->execute();
     $res=$sel->get_result();
     if ($res->num_rows>0)
     {
       $loc=$res->fetch_assoc();
-      return self::venueFromRow($loc); 
+      return self::bandFromRow($loc); 
     }
     return NULL;
   }
@@ -37,14 +36,14 @@ Class RepVenue{
   public static function getByFbId($fbId)
   {
     $conn=getConn();
-    $sel=$conn->prepare("CALL VenueGetByFbId(?)");
+    $sel=$conn->prepare("CALL BandGetByFbId(?)");
     $sel->bind_param('i',$fbId);
     $sel->execute();
     $res=$sel->get_result();
     if ($res->num_rows>0)
     {
       $loc=$res->fetch_assoc();
-      return self::venueFromRow($loc); 
+      return self::bandFromRow($loc); 
     }
     return NULL;
   }
@@ -52,33 +51,31 @@ Class RepVenue{
   public static function getByName($name)
   {
     $conn=getConn();
-    $sel=$conn->prepare("CALL VenueGetByName(?)");
+    $sel=$conn->prepare("CALL BandGetByName(?)");
     $sel->bind_param('s',$name);
     $sel->execute();
     $res=$sel->get_result();
     if ($res->num_rows>0)
     {
       $loc=$res->fetch_assoc();
-      return self::venueFromRow($loc); 
+      return self::bandFromRow($loc); 
     }
     return NULL;
   }
 
-  public static function add($venue)
+  public static function add($band)
   {
     $conn=getConn();      
-    $ins=$conn->prepare("CALL VenueAdd(?,?,?,?,?,?,?,?,?,?,@newId)");
+    $ins=$conn->prepare("CALL BandAdd(?,?,?,?,?,?,?,?,@newId)");
     $ins->bind_param('dsisssssss', 
-      $venue->fbId,
-      $venue->name,
-      $venue->location,
-      $venue->website,
-      $venue->fbPage,
-      $venue->logo,
-      $venue->picture,
-      $venue->description,
-      $venue->phone,
-      $venue->email
+      $band->fbId,
+      $band->name,
+      $band->fbPage,
+      $band->website,
+      $band->logo,
+      $band->picture,
+      $band->description,
+      $band->email
     );
     $ins->execute();
 
@@ -94,20 +91,18 @@ Class RepVenue{
   // }}}
 
   // Private Methods {{{
-  private static function venueFromRow($row)
+  private static function bandFromRow($row)
   {
-    $ret = new Venue();
+    $ret = new Band();
     $ret->id=$row["id"];
     $ret->fbId=$row["fb_id"];
     $ret->name=$row["name"];
-    $ret->website=$row["website"];
     $ret->fbPage=$row["fb_page"];
+    $ret->website=$row["website"];
     $ret->logo=$row["logo"];
     $ret->picture=$row["picture"];
     $ret->description=$row["description"];
-    $ret->phone=$row["phone"];
     $ret->email=$row["email"];
-    $ret->location=RepLocation::getById($row["location_id"]);
     return $ret;
   }
   // }}}

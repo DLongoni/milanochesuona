@@ -1,16 +1,14 @@
 <?php
-class Venue
+class Band
 {
 	public $id;
 	public $fbId;
 	public $name;
-	public $location; // type: Location
-	public $website;
 	public $fbPage;
+	public $website;
 	public $logo;
 	public $picture;
 	public $description;
-	public $phone;
 	public $email;
 }
 ?>
