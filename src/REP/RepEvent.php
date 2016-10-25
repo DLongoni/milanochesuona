@@ -3,6 +3,7 @@ require_once __DIR__ . '/../DbConn.php';
 require_once __DIR__ . '/../OM/Event.php';
 require_once __DIR__ . '/RepVenue.php';
 require_once __DIR__ . '/RepBand.php';
+require_once __DIR__ . '/RepEventBand.php';
 
 Class RepEvent{
   // Public Methods {{{
@@ -90,14 +91,45 @@ Class RepEvent{
     {
       $vId=$v->id;
     }
-
+    // Check if I already have each band. If not, insert. Save band ids in array;
+    $band_ids_arr=array();
+    if ($event->bands != NULL && count($event->bands)>0)
+    {
+      foreach($event->bands as $iBand)
+      {
+        $band_id=-1;
+        if($iBand->fbId != NULL)
+        {
+          $tB = RepBand::getByFbId($iBand->fbId);
+          if ($tB!=NULL)
+          {
+            $band_id=$tB->id;
+          }
+        }
+        if($band_id == -1 && $iBand->name != NULL)
+        {
+          $tB=RepBand::getByName($iBand->name);
+          if ($tB!=NULL)
+          {
+            $band_id=$tB->id;
+          }
+        }
+        if($band_id==-1)
+        {
+          $band_id=RepBand::add($iBand);  
+        }
+        $band_ids_arr[]=$band_id;
+      }
+    }
     $conn=getConn();      
     $ins=$conn->prepare("CALL EventAdd(?,?,?,?,?,?,?,?,?,?,?,@newId)");
-    $ins->bind_param('dsssissssid',
+    $dateStartString=date_format($event->startTime,"Y-m-d H:i:s");
+    $dateEndString= date_format($event->endTime,"Y-m-d H:i:s");
+    $ins->bind_param('isssissssid',
       $event->fbId,
       $event->title,
-      date_format($event->startTime,"Y-m-d H:i:s"),
-      date_format($event->endTime,"Y-m-d H:i:s"),
+      $dateStartString,
+      $dateEndString,
       $vId,
       $event->link,
       $event->picture,
@@ -110,7 +142,17 @@ Class RepEvent{
 
     $sel=$conn->query('SELECT @newId');
     $newId=$sel->fetch_assoc();
-    return $newId["@newId"];
+    $newId=(int)$newId["@newId"];
+    // Insert EventBand now that I know the Event Id
+    var_dump($newId);
+    foreach($band_ids_arr as $band_id)
+    {
+      $iEb = new EventBand();
+      $iEb->eventId=$newId; 
+      $iEb->bandId=$band_id; 
+      RepEventBand::add($iEb);
+    }
+    return $newId;
   }
 
   public static function mod()
@@ -132,10 +174,17 @@ Class RepEvent{
     $ret->picture=$row["picture"];
     $ret->description=$row["description"];
     $ret->htmlDescription=$row["html_description"];
-    $ret->statusId=$row["statusId"];
+    $ret->statusId=$row["status_id"];
     $ret->cost=$row["cost"];
     $ret->venue=RepVenue::getById($row["venue_id"]);
-    // add bands
+    // Add bands
+    $band_arr=array();
+    $eventBands = RepEventBand::getByEventId($ret->id);
+    foreach($eventBands as $iEb)
+    {
+      $band_arr[]=RepBand::getById($iEb->bandId);
+    }
+    $ret->bands=$band_arr;
     return $ret;
   }
   // }}}

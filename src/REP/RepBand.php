@@ -40,7 +40,7 @@ Class RepBand{
     $sel->bind_param('i',$fbId);
     $sel->execute();
     $res=$sel->get_result();
-    if ($res->num_rows>0)
+    if ($res!=NULL && $res->num_rows>0)
     {
       $loc=$res->fetch_assoc();
       return self::bandFromRow($loc); 

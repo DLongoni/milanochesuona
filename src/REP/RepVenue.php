@@ -53,7 +53,8 @@ Class RepVenue{
   {
     $conn=getConn();
     $sel=$conn->prepare("CALL VenueGetByName(?)");
-    $sel->bind_param('s',$name);
+    $esc_name=mysqli_real_escape_string($conn,$name);
+    $sel->bind_param('s',$esc_name);
     $sel->execute();
     $res=$sel->get_result();
     if ($res->num_rows>0)
