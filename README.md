@@ -58,6 +58,40 @@
   * BandId
   * GenreId
 
+##### Stored
+* Event
+  * Add
+  * GetList
+  * GetByDate
+  * ApproveById
+  * GetByFbId - to check if exist
+  * Mod
+* EventBand
+  * Add
+  * GetList
+  * GetByEventId
+  * Del
+* Band
+  * Add
+  * GetList
+  * GetById
+  * GetByFbId - to check if exist
+  * GetByName
+  * Mod
+* Venue
+  * Add
+  * GetList
+  * GetById
+  * GetByFbId - to check if exist
+  * GetByName
+* Genre
+* EventStatus
+* Location
+  * Add
+  * GetList
+  * GetById
+* BandGenre
+
 #### Funzionalita  
 ##### motivare da use cases
 Ogni concerto deve avere un giorno (1)
