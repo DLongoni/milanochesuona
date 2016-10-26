@@ -30,6 +30,6 @@ $bArr[]=RepBand::getByName("Boz Trio");
 $eI->bands=$bArr;
 // RepEvent::add($eI);
 
-$eO=RepEvent::GetList();
-var_dump($eO);
+$eO=RepEvent::getByDate('13-sep-2016')[0];
+var_dump($eO->getHtml());
 ?>

@@ -7,7 +7,7 @@ require_once __DIR__ . '/RepEventBand.php';
 
 Class RepEvent{
   // Public Methods {{{
-  public static function GetList()
+  public static function getList()
   {
     $conn=getConn();      
     if (!($res = $conn->query("CALL EventGetList()"))) {
@@ -26,8 +26,8 @@ Class RepEvent{
     // Check if this works
     $conn=getConn();
     $sel=$conn->prepare("CALL EventGetByDate(?)");
-    $inDtDt = date_create($inDt);
-    $sel->bind_param('s',date_format($inDtDt,"Y-m-d H:i:s"));
+    $inDtDt = date_format(date_create($inDt),"Y-m-d");
+    $sel->bind_param('s',$inDtDt);
     $sel->execute();
     $res=$sel->get_result();
     if ($res->num_rows>0)

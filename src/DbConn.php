@@ -9,6 +9,8 @@ function GetConn()
   if ($conn->connect_errno) {
     throw new Exception("Failed to connect to MySQL: (" . $conn->connect_errno . ") " . $conn->connect_error);
   }
+  $conn->query("SET NAMES utf8");
+  $conn->query("SET CHARACTER SET utf8");
   return $conn;
 }
 ?>
