@@ -6,7 +6,7 @@ require_once __DIR__ . '/DbConn.php';
 
 $conn = GetConn();
 if (!($res = $conn->query("CALL VenueGetList()"))) {
-    echo "CALL failed: (" . $conn->errno . ") " . $conn->error;
+  echo "CALL failed: (" . $conn->errno . ") " . $conn->error;
 }
 $rep=new RepEvent();
 
@@ -15,9 +15,9 @@ $eI->description="A settembre si ricomincia, e anche noi possiamo dare una mano 
 
 Insieme agli amici del Boz Trio, che suoneranno dalle 19.30, un concerto per aiutare le vittime del terremoto in centro Italia.
 
-L'intero incasso della serata sarà devoluto alla campagna #unaiutosubito promossa da TIM, Il Corriere della Sera, TgLa7 e Starteed. 
+  L'intero incasso della serata sarà devoluto alla campagna #unaiutosubito promossa da TIM, Il Corriere della Sera, TgLa7 e Starteed. 
 
-www.unaiutosubito.org/it/terremotocentroitalia2016";
+  www.unaiutosubito.org/it/terremotocentroitalia2016";
 $eI->title="Colibrì Live per il Centro Italia";
 $eI->endTime=date_create("2016-09-13T23:59:00+0200");
 $eI->startTime=date_create("2016-09-13T18:30:00+0200");
