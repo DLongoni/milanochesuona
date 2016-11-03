@@ -34,10 +34,10 @@
     </div>
     <div id="divConcerts" class="container m-t-2">
 <?php
-require_once __DIR__ . '/../src/REP/RepEvent.php';
-$rep=new RepEvent();
-$eO=RepEvent::getByDate('13-sep-2016')[0];
-echo($eO->getHtml());
+// require_once __DIR__ . '/../src/REP/RepEvent.php';
+// $rep=new RepEvent();
+// $eO=RepEvent::getByDate('13-sep-2016')[0];
+// echo($eO->getHtml());
 ?>
 </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
@@ -45,32 +45,51 @@ echo($eO->getHtml());
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js" integrity="sha384-ux8v3A6CPtOTqOzMKiuo3d/DomGaaClxFYdCu2HPMBEkf6x2xiDyJ7gkXU0MWwaD" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
     <script src="https://kswedberg.github.io/jquery-expander/jquery.expander.js"></script>
-    <script>
-      $( function() {
-        $( "#txtDatePicker" ).datepicker(
-            {minDate: 0,
-              dateFormat: "dd/mm/yy",
-              showOtherMonths: true,
-              selectOtherMonths: true,
-              showAnim: 'slideDown',
-              defaultDate: '0'
-            }
-            ).datepicker('setDate', new Date()); // to select today as default
+<script>
+$(document).ready(
+  function() {
+    $( "#txtDatePicker" ).datepicker(
+  {minDate: 0,
+  dateFormat: "dd/mm/yy",
+  showOtherMonths: true,
+  selectOtherMonths: true,
+  showAnim: 'slideDown',
+defaultDate: '0',
+onSelect: function(dtTxt){
+  loadConcerts(dtTxt);
+}
+  }).datepicker('setDate', new Date()); // to select today as default
 
-        $("#btnNext").click(function () {
-          var selDt = $('#txtDatePicker').datepicker("getDate");
-          selDt.setDate(selDt.getDate()+1);
-          $('#txtDatePicker').datepicker("setDate", selDt);
-        });
+    $("#btnNext").click(function () {
+      var selDt = $('#txtDatePicker').datepicker("getDate");
+      selDt.setDate(selDt.getDate()+1);
+      $('#txtDatePicker').datepicker("setDate", selDt);
+      loadConcerts($('#txtDatePicker').datepicker().val());
+    });
 
-        $("#btnPrev").click(function () {
-          var selDt = $('#txtDatePicker').datepicker("getDate");
-          selDt.setDate(selDt.getDate()-1);
-          $('#txtDatePicker').datepicker("setDate", selDt);
-        });
-        // $("#divConcerts").load("concertsColumns.html");
-        // $("#divConcerts").load("concertsCardColumns.html");
-      } );
-    </script>
+    $("#btnPrev").click(function () {
+      var selDt = $('#txtDatePicker').datepicker("getDate");
+      selDt.setDate(selDt.getDate()-1);
+      $('#txtDatePicker').datepicker("setDate", selDt);
+      loadConcerts($('#txtDatePicker').datepicker().val());
+    });
+    // $("#divConcerts").load("concertsColumns.html");
+    // $("#divConcerts").load("concertsCardColumns.html");
+  } );
+
+function loadConcerts(dt) {
+  $.ajax({
+  url:"/get_concerts.php",
+    data:"date="+dt,
+    type:"POST",
+    success:function(data){
+      $("#divConcerts").html(data);},
+        error:function(xhr,ajaxOptions,thrownError){
+          alert(xhr.status);
+          alert(thrownError);
+        }
+});
+}
+</script>
   </body>
 </html>
