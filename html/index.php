@@ -32,14 +32,16 @@
         <div class="col-md-4"></div>
       </div>
     </div>
-    <div id="divConcerts" class="container m-t-2">
+    <div class="container mt-2">
+    <div id="divConcerts" class="card-columns">
 <?php
 // require_once __DIR__ . '/../src/REP/RepEvent.php';
 // $rep=new RepEvent();
 // $eO=RepEvent::getByDate('13-sep-2016')[0];
 // echo($eO->getHtml());
 ?>
-</div>
+  </div>
+  </div>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
@@ -74,7 +76,6 @@ onSelect: function(dtTxt){
       $('#txtDatePicker').datepicker("setDate", selDt);
       loadConcerts($('#txtDatePicker').datepicker().val());
     });
-    // $("#divConcerts").load("concertsColumns.html");
     // $("#divConcerts").load("concertsCardColumns.html");
   } );
 
