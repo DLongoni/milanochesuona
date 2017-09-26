@@ -85,7 +85,6 @@ onSelect: function(dtTxt){
       $('#txtDatePicker').datepicker("setDate", selDt);
       loadConcerts($('#txtDatePicker').datepicker().val());
     });
-    // $("#divConcerts").load("concertsColumns.html");
     // $("#divConcerts").load("concertsCardColumns.html");
   } );
 
