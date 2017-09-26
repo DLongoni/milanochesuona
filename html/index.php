@@ -85,7 +85,6 @@ onSelect: function(dtTxt){
       $('#txtDatePicker').datepicker("setDate", selDt);
       loadConcerts($('#txtDatePicker').datepicker().val());
     });
-    // $("#divConcerts").load("concertsCardColumns.html");
   } );
 
 function loadConcerts(dt) {
@@ -94,13 +93,37 @@ function loadConcerts(dt) {
     data:"date="+dt,
     type:"POST",
     success:function(data){
-      $("#divConcerts").html(data);},
-        error:function(xhr,ajaxOptions,thrownError){
-          alert(xhr.status);
-          alert(thrownError);
-        }
+      var cards = jQuery.parseJSON(data);
+      var grid = document.getElementById('grid');
+      grid.innerHTML='';
+      salvattore.registerGrid(grid);
+      salvattore.recreateColumns(grid);
+      jQuery.each(cards, function(index,value){
+        var item = document.createElement('div');
+        salvattore['append_elements'](grid, [item]);
+        item.outerHTML = value;
+      });
+
+      $('.toolong').expander({
+      slicePoint: 200,
+        preserveWords: true,
+        widow: 10,
+        expandEffect: 'fadeIn',
+        collapseEffect: 'fadeOut',
+        expandText: ' leggi tutto',
+        expandPrefix: '...',
+        userCollapsePrefix: ' ',
+        userCollapseText: ' leggi meno'
+      });
+      $('.toolong').expander().removeClass('js-toolong-hidden');
+    },
+    error:function(xhr,ajaxOptions,thrownError){
+      alert(xhr.status);
+      alert(thrownError);
+    }
 });
 }
+
 </script>
   </body>
 </html>

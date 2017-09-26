@@ -76,3 +76,18 @@
     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
   </div>
 </div>
+<script>
+  $('.toolong').expander({
+    slicePoint: 200,
+    preserveWords: true,
+    widow: 10,
+    expandEffect: 'fadeIn',
+    collapseEffect: 'fadeOut',
+    expandText: 'leggi tutto',
+    expandPrefix: '',
+    userCollapsePrefix: ' ',
+    userCollapseText: 'chiudi',
+    lessClass: 'small'
+  });
+$('.toolong').expander().removeClass('js-toolong-hidden');
+</script>
