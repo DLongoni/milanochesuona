@@ -15,15 +15,17 @@ class Event
   // band link
   // band name
   private static $htmlMask='
-    <div class="card">
-      <a href="%s" target="_blank">
-        <img class="card-img-top img-fluid" src="%s" alt="Event picture (supposedly)">
-      </a>
-      <div class="card-block">
+    <div class="card m-2">
+      <div style="max-height:300px;overflow:hidden">
+        <a href="%s" target="_blank">
+          <img class="card-img-top" src="%s" alt="Event picture (supposedly)">
+        </a>
+      </div>
+      <div class="card-block p-2">
         <h4 class="card-title">%s</h4>
         <p class="card-text"><strong>%s - <a href="%s" class="card-link">%s</a> </strong></p>
         <p class="card-text"><small class="text-muted">%s</small></p>
-        <p class="card-text">%s</p>
+        <div class="toolong"><p class="card-text">%s</p></div>
         <a href="%s" class="card-link">%s</a>
         <a href="%s" class="card-link">%s</a>
       </div>
