@@ -35,7 +35,9 @@ Class RepEvent{
       $ret=array();
       while($eventRow = $res->fetch_assoc())
       {
-        $ret[]=self::eventFromRow($eventRow);
+        $iEvent = self::eventFromRow($eventRow);
+        if($iEvent->statusId == 2)
+          $ret[]=$iEvent;
       }
       return $ret;
     }

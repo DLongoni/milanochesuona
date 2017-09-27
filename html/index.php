@@ -22,6 +22,7 @@
       <div class="header">
         <h1 class="text-md-center">MilanoCheSuona</h1> 
         <p class="text-md-center text-muted">solo musica dal vivo</p> 
+        <p class="text-md-center text-danger small">VERSIONE PROGETTO IN ALPHA TESTING</p> 
         <!-- <button type="button" class="btn btn btn&#45;primary pull&#45;md&#45;right">Segnala concerto</button>   -->
       </div>
       <hr>
