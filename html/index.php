@@ -41,8 +41,8 @@
         </div>
         <div class="col-md-4"></div>
       </div>
-    </div>
     <div id="grid" data-columns>
+    </div>
 <?php
 // require_once __DIR__ . '/../src/REP/RepEvent.php';
 // $rep=new RepEvent();
