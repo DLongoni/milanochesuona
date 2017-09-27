@@ -1,19 +1,6 @@
 <?php
 class Event
 {
-  // Parametri:
-  // link
-  // picture
-  // title
-  // hour 
-  // venue link
-  // venue name
-  // venue address
-  // description
-  // venue link
-  // venue name
-  // band link
-  // band name
   private static $htmlMask='
     <div class="card m-2">
       <div style="max-height:300px;overflow:hidden">
@@ -31,9 +18,10 @@ class Event
       </div>
   </div>
   ';
-  private static $linkCode = '<a href="%s" class="card-link">%s</a>';
-  private static $locationCode = '<p class="card-text"><small class="text-muted">%s</small></p>';
+  private static $linkCode = '<a href="%s" target="_blank" class="card-link">%s</a>';
+  private static $locationCode = '<a href="%s" target="_blank" class="card-text"><small class="text-muted">%s</small></a>';
   private static $fbMask='https://facebook.com/%s';
+  private static $gMapsMask='https://maps.google.com/?q=%s';
 
   public $id;
   public $fbId;
@@ -125,7 +113,8 @@ class Event
     }
     if(isset($loc_info))
     {
-      $loc_info=sprintf(self::$locationCode,$loc_info);
+      $gMap=sprintf(self::$gMapsMask,$this->venue->name . ' ' . $loc_info);
+      $loc_info=sprintf(self::$locationCode,$gMap,$loc_info);
     }
     return $loc_info;
   }
