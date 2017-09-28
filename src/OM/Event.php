@@ -18,10 +18,6 @@ class Event
       </div>
   </div>
   ';
-  private static $linkCode = '<a href="%s" target="_blank" class="card-link">%s</a>';
-  private static $locationCode = '<a href="%s" target="_blank" class="card-text"><small class="text-muted">%s</small></a>';
-  private static $fbMask='https://facebook.com/%s';
-  private static $gMapsMask='https://maps.google.com/?q=%s';
 
   public $id;
   public $fbId;
@@ -37,7 +33,7 @@ class Event
   public $cost;
   public $bands;
 
-  public function getHtml()
+  public function getHtml(): string
   {
     $ret=sprintf(self::$htmlMask,
       $this->link,
@@ -46,76 +42,38 @@ class Event
       date_format(date_create($this->startTime),"H:i"),
       $this->venue->website,
       $this->venue->name,
-      $this->getLocationInfo(),
+      $this->getLocationHtml(),
       $this->description,
-      $this->getVenueLink(),
-      $this->getBandLink()
+      $this->getVenueHtml(),
+      $this->getBandHtml()
     );
     return $ret;
   }
 
-  private function getBandLink()
+  private function getBandHtml(): string
   {
-    $bandLink = '';
-    if(isset($this->bands) and isset($this->bands[0]->website) and 
-      filter_var($this->bands[0]->website,FILTER_VALIDATE_URL)) 
-    {
-      $l = $this->bands[0]->website;
-    }
-    elseif(isset($this->bands) and isset($this->bands[0]->fbId) )
-    {
-      $l = sprintf(self::$fbMask,$this->bands[0]->fbId);
-    }
-    if(isset($l))
-    {
-      $bandLink=sprintf(self::$linkCode,$l,$this->bands[0]->name);
-    }
-    return $bandLink; 
+    $band_link = '';
+    if(isset($this->bands) and isset($this->bands[0])):
+      $band_link = $this->bands[0]->getLinkHtml();
+
+    return $band_link; 
   }
 
-  private function getVenueLink()
+  private function getVenueHtml(): string
   {
-    $venueLink = '';
-    if(isset($this->venue) and isset($this->venue->website) and 
-      filter_var($this->venue->website,FILTER_VALIDATE_URL)) 
-    {
-      $l = $this->venue->website;
-    }
-    elseif(isset($this->venue) and isset($this->venue->fbId) )
-    {
-      $l = sprintf(self::$fbMask,$this->venue->fbId);
-    }
-    if(isset($l))
-    {
-      $venueLink=sprintf(self::$linkCode,$l,$this->venue->name);
-    }
-    return $venueLink;
+    $venue_link = '';
+    if(isset($this->venue))
+      $venue_link = $this->venue->getLinkHtml();
+
+    return $venue_link;
   }
 
-  private function getLocationInfo()
+  private function getLocationHtml(): string
   {
-    $loc = $this->venue->location;
     $loc_info = '';
-    if(isset($loc))
-    {
-      if(isset($loc->street) and isset($loc->city))
-      {
-        $loc_info = sprintf('%s, %s',$loc->street,$loc->city);
-      }
-      elseif(isset($loc->street))
-      {
-        $loc_info = $loc->street;
-      }
-      elseif(isset($loc->city))
-      {
-        $loc_info = $loc->city;
-      }
-    }
-    if(isset($loc_info))
-    {
-      $gMap=sprintf(self::$gMapsMask,$this->venue->name . ' ' . $loc_info);
-      $loc_info=sprintf(self::$locationCode,$gMap,$loc_info);
-    }
+    if(isset($this->venue))
+      $loc_info = $this->venue->getLocationHtml();
+
     return $loc_info;
   }
 }
