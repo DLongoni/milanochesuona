@@ -35,16 +35,15 @@ function loadConcerts(dt) {
     data:"date="+dt,
     type:"POST",
     success:function(data){
-      // Setup the grid using salvattore
-      var cards = jQuery.parseJSON(data); // jquery array or strings representing cards
-      var grid = document.getElementById('grid');
-      grid.innerHTML='';
-      salvattore.registerGrid(grid);
-      salvattore.recreateColumns(grid);
-      jQuery.each(cards, function(index,value){
-        var item = document.createElement('div');
-        salvattore['append_elements'](grid, [item]);
-        item.outerHTML = value;
+      $('#grid').html(data);
+      $('#grid').isotope({
+        // options
+        itemSelector: '.grid-item',
+        layoutMode: 'masonry',
+        masonry:{
+          horizontalOrder:true,
+          gutter:0
+        }
       });
 
       // Expander for event descriptions should stay inside here
