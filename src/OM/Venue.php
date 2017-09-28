@@ -33,7 +33,7 @@ class Venue
     return $loc_html;
   }
 
-  private function getLinkHtml(): string
+  public function getLinkHtml(): string
   {
     $venue_link = '';
     if(isset($this->website) and filter_var($this->website,FILTER_VALIDATE_URL)): 

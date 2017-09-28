@@ -14,7 +14,7 @@ class Band
 	public $description;
 	public $email;
 
-  private function getLinkHtml(): string
+  public function getLinkHtml(): string
   {
     $band_link = '';
     if(isset($this->website) and filter_var($this->website,FILTER_VALIDATE_URL)): 

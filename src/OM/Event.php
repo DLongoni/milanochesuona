@@ -55,7 +55,7 @@ class Event
   private function getBandHtml(): string
   {
     $band_link = '';
-    if(isset($this->bands) and isset($this->bands[0])):
+    if(isset($this->bands) and isset($this->bands[0]))
       $band_link = $this->bands[0]->getLinkHtml();
 
     return $band_link; 
