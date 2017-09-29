@@ -9,12 +9,15 @@ class Event
             <img class="card-img-top" src="%s" alt="Event picture (supposedly)">
           </a>
         </div>
-        <div class="card-block p-2">
-          <h4 class="card-title">%s</h4>
-          <p class="card-text mb-0"><strong>%s - <a href="%s" class="card-link">%s</a> </strong></p>
+        <div class="card-header p-2 m-0">
+          <h5 class="card-title p-0 m-0 text-center">%s</h5>
+        </div>
+        <div class="card-block px-2 py-1 my-0">
+          <p class="card-text mb-0"><strong>%s - <a href="%s" class="card-link mb-0">%s</a> </strong></p>
           %s
-          <div class="toolong"><p class="card-text">%s</p></div>
-          %s
+        </div>
+        <div class="card-block px-2 pt-0 pb-2 my-0 border border-bottom-0 border-right-0 border-left-0">
+          <div class="toolong small text-justify mt-2">%s</div>
           %s
         </div>
       </div>
@@ -42,11 +45,10 @@ class Event
       $this->picture,
       $this->title,
       date_format(date_create($this->startTime),"H:i"),
-      $this->venue->website,
+      $this->venue->getLink(),
       $this->venue->name,
       $this->getLocationHtml(),
       $this->description,
-      $this->getVenueHtml(),
       $this->getBandHtml()
     );
     return $ret;
