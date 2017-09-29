@@ -33,7 +33,7 @@ class Venue
     return $loc_html;
   }
 
-  public function getLink(): string
+  public function getLinkHtml(): string
   {
     $venue_link = '';
     if(isset($this->website) and filter_var($this->website,FILTER_VALIDATE_URL)): 
@@ -42,7 +42,10 @@ class Venue
       $l = sprintf(self::$fbMask,$this->fbId);
     endif;
 
-    return $l;
+    if(isset($l))
+      $venue_link=sprintf(self::$linkCode,$l,$this->name);
+
+    return $venue_link;
   }
 }
 ?>

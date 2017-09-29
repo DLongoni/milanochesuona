@@ -13,11 +13,11 @@ class Event
           <h5 class="card-title p-0 m-0 text-center">%s</h5>
         </div>
         <div class="card-block px-2 py-1 my-0">
-          <p class="card-text mb-0"><strong>%s - <a href="%s" class="card-link mb-0">%s</a> </strong></p>
+          <p class="card-text mb-0">%s - %s</p>
           %s
         </div>
         <div class="card-block px-2 pt-0 pb-2 my-0 border border-bottom-0 border-right-0 border-left-0">
-          <div class="toolong small text-justify mt-2">%s</div>
+          <div class="toolong small text-justify my-2">%s</div>
           %s
         </div>
       </div>
@@ -45,8 +45,7 @@ class Event
       $this->picture,
       $this->title,
       date_format(date_create($this->startTime),"H:i"),
-      $this->venue->getLink(),
-      $this->venue->name,
+      $this->venue->getLinkHtml(),
       $this->getLocationHtml(),
       $this->description,
       $this->getBandHtml()

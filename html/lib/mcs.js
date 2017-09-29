@@ -40,43 +40,43 @@ $(document).ready(
           gutter:0
         }
       });
+
+      // Load Concerts - called on datepicker select or arrow click
+      function loadConcerts(dt) {
+        $.ajax({
+          url:"/../get_concerts.php",
+          data:"date="+dt,
+          type:"POST",
+          success:function(data){
+            $grid.isotope('remove',$grid.isotope('getItemElements'));
+            var $data_obj=$(data);
+            $grid.append($data_obj).isotope('appended',$data_obj);
+            $grid.isotope('layout');
+
+            // Expander for event descriptions should stay inside here
+            $('.toolong').expander({
+              slicePoint: 200,
+              preserveWords: true,
+              widow: 10,
+              expandEffect: 'fadeIn',
+              collapseEffect: 'fadeOut',
+              expandText: ' leggi tutto',
+              expandPrefix: '...',
+              userCollapsePrefix: ' ',
+              userCollapseText: ' leggi meno',
+              afterExpand: function(){$grid.isotope('layout');},
+              afterCollapse: function(){$grid.isotope('layout');},
+            });
+            $('.toolong').expander().removeClass('js-toolong-hidden');
+          },
+          error:function(xhr,ajaxOptions,thrownError){
+            // Uncomment only for debugging purposes
+            alert(xhr.status);
+            alert(thrownError);
+            alert('Errore imprevisto nel caricamento dati.');
+          }
+        });
+      }
+
+      loadConcerts($datePicker.datepicker().val());
     } );
-
-// Load Concerts - called on datepicker select or arrow click
-function loadConcerts(dt) {
-  $.ajax({
-    url:"/../get_concerts.php",
-    data:"date="+dt,
-    type:"POST",
-    success:function(data){
-      $grid.isotope('remove',$grid.isotope('getItemElements'));
-      var $data_obj=$(data);
-      $grid.append($data_obj).isotope('appended',$data_obj);
-      $grid.isotope('layout');
-
-      // Expander for event descriptions should stay inside here
-      $('.toolong').expander({
-        slicePoint: 200,
-        preserveWords: true,
-        widow: 10,
-        expandEffect: 'fadeIn',
-        collapseEffect: 'fadeOut',
-        expandText: ' leggi tutto',
-        expandPrefix: '...',
-        userCollapsePrefix: ' ',
-        userCollapseText: ' leggi meno',
-        afterExpand: function(){$grid.isotope('layout');},
-        afterCollapse: function(){$grid.isotope('layout');},
-      });
-      $('.toolong').expander().removeClass('js-toolong-hidden');
-    },
-    error:function(xhr,ajaxOptions,thrownError){
-      // Uncomment only for debugging purposes
-      alert(xhr.status);
-      alert(thrownError);
-      alert('Errore imprevisto nel caricamento dati.');
-    }
-  });
-}
-
-
