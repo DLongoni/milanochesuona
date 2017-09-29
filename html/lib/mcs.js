@@ -1,7 +1,10 @@
+$grid = $('#grid');
+$datePicker = $('#txtDatePicker');
+
 $(document).ready(
     function() {
       // Date Picker
-      $( "#txtDatePicker" ).datepicker(
+      $datePicker.datepicker(
           {minDate: 0,
             dateFormat: "dd/mm/yy",
             showOtherMonths: true,
@@ -14,20 +17,20 @@ $(document).ready(
           }).datepicker('setDate', new Date()); // to select today as default
 
       $("#btnNext").click(function () {
-        var selDt = $('#txtDatePicker').datepicker("getDate");
+        var selDt = $datePicker.datepicker("getDate");
         selDt.setDate(selDt.getDate()+1);
-        $('#txtDatePicker').datepicker("setDate", selDt);
-        loadConcerts($('#txtDatePicker').datepicker().val());
+        $datePicker.datepicker("setDate", selDt);
+        loadConcerts($datePicker.datepicker().val());
       });
 
       $("#btnPrev").click(function () {
-        var selDt = $('#txtDatePicker').datepicker("getDate");
+        var selDt = $datePicker.datepicker("getDate");
         selDt.setDate(selDt.getDate()-1);
-        $('#txtDatePicker').datepicker("setDate", selDt);
-        loadConcerts($('#txtDatePicker').datepicker().val());
+        $datePicker.datepicker("setDate", selDt);
+        loadConcerts($datePicker.datepicker().val());
       });
 
-      $('#grid').isotope({
+      $grid.isotope({
         // options
         itemSelector: '.grid-item',
         transitionDuration: '0.2s',
@@ -46,10 +49,10 @@ function loadConcerts(dt) {
     data:"date="+dt,
     type:"POST",
     success:function(data){
-      $('#grid').isotope('remove',$('#grid').isotope('getItemElements'));
+      $grid.isotope('remove',$grid.isotope('getItemElements'));
       var $data_obj=$(data);
-      $('#grid').append($data_obj).isotope('appended',$data_obj);
-      $('#grid').isotope('layout');
+      $grid.append($data_obj).isotope('appended',$data_obj);
+      $grid.isotope('layout');
 
       // Expander for event descriptions should stay inside here
       $('.toolong').expander({
@@ -61,7 +64,9 @@ function loadConcerts(dt) {
         expandText: ' leggi tutto',
         expandPrefix: '...',
         userCollapsePrefix: ' ',
-        userCollapseText: ' leggi meno'
+        userCollapseText: ' leggi meno',
+        afterExpand: function(){$grid.isotope('layout');},
+        afterCollapse: function(){$grid.isotope('layout');},
       });
       $('.toolong').expander().removeClass('js-toolong-hidden');
     },
