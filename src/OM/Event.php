@@ -57,7 +57,10 @@ class Event
   {
     $band_link = '';
     if(isset($this->bands) and isset($this->bands[0]))
-      $band_link = $this->bands[0]->getLinkHtml();
+      foreach($this->bands as $b)
+      {
+        $band_link = $band_link . $b->getLinkHtml();
+      }
 
     return $band_link; 
   }
