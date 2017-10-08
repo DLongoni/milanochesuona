@@ -108,7 +108,10 @@ Class RepVenue{
     $ret->description=$row["description"];
     $ret->phone=$row["phone"];
     $ret->email=$row["email"];
-    $ret->location=RepLocation::getById($row["location_id"]);
+    $ret->venue_type_id=$row["venue_type_id"];
+    if($ret->hasLocation()):
+      $ret->location=RepLocation::getById($row["location_id"]);
+    endif;
     return $ret;
   }
   // }}}

@@ -13,5 +13,11 @@ $eI->bands=$bArr;
 // RepEvent::add($eI);
 
 $eO=RepEvent::getList();
-var_dump($eO[1]->getHtml());
+
+foreach ($eO as $e)
+{
+  if ($e-> id == 177):
+    var_dump($e->getHtml());
+  endif;
+}
 ?>

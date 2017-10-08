@@ -18,6 +18,7 @@ class Venue
 	public $description;
 	public $phone;
 	public $email;
+	public $venue_type_id;
 
   public function getLocationHtml(): string
   {
@@ -46,6 +47,18 @@ class Venue
       $venue_link=sprintf(self::$linkCode,$l,$this->name);
 
     return $venue_link;
+  }
+
+  public function hasLocation()
+  {
+    if($this->venue_type_id==1)
+    {
+      return True;
+    }
+    else
+    {
+      return False;
+    }
   }
 }
 ?>
