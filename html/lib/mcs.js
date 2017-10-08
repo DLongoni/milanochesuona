@@ -51,7 +51,6 @@ $(document).ready(
             $grid.isotope('remove',$grid.isotope('getItemElements'));
             var $data_obj=$(data);
             $grid.append($data_obj).isotope('appended',$data_obj);
-            $grid.isotope('layout');
 
             // Expander for event descriptions should stay inside here
             $('.toolong').expander({
@@ -68,6 +67,8 @@ $(document).ready(
               afterCollapse: function(){$grid.isotope('layout');},
             });
             $('.toolong').expander().removeClass('js-toolong-hidden');
+
+            $grid.isotope('layout');
           },
           error:function(xhr,ajaxOptions,thrownError){
             // Uncomment only for debugging purposes
