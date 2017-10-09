@@ -68,7 +68,10 @@ $(document).ready(
             });
             $('.toolong').expander().removeClass('js-toolong-hidden');
 
-            $grid.isotope('layout');
+            $grid.imagesLoaded().progress( function() {
+              $grid.isotope('layout');
+            });
+            // $grid.isotope('layout');
           },
           error:function(xhr,ajaxOptions,thrownError){
             // Uncomment only for debugging purposes
