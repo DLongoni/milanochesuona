@@ -21,7 +21,6 @@
       <div class="header">
         <h1 class="text-md-center">MilanoCheSuona</h1> 
         <p class="text-md-center text-muted">solo musica dal vivo</p> 
-        <p class="text-md-center text-danger small">VERSIONE PROGETTO IN ALPHA TESTING</p> 
       </div>
       <hr>
       <div class="row">
