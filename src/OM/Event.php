@@ -2,7 +2,7 @@
 class Event
 {
   private static $htmlMask='
-    <div class="grid-item p-2">
+    <div class="grid-item p-2 %s %s">
       <div class="card">
         <div style="max-height:300px;overflow:hidden">
           <a href="%s" target="_blank">
@@ -40,7 +40,12 @@ class Event
 
   public function getHtml(): string
   {
+    if (!isset($this->venue) or !$this->venue->hasLocation()){
+      return "";
+    }
     $ret=sprintf(self::$htmlMask,
+      $this->GetMilanoClass(),
+      $this->GetNsweClass(),
       $this->link,
       $this->picture,
       $this->title,
@@ -53,8 +58,7 @@ class Event
     return $ret;
   }
 
-  private function getBandHtml(): string
-  {
+  private function getBandHtml(): string {
     $band_link = '';
     if(isset($this->bands) and isset($this->bands[0]))
       foreach($this->bands as $b)
@@ -65,8 +69,7 @@ class Event
     return $band_link; 
   }
 
-  private function getVenueHtml(): string
-  {
+  private function getVenueHtml(): string {
     $venue_link = '';
     if(isset($this->venue))
       $venue_link = $this->venue->getLinkHtml();
@@ -74,13 +77,20 @@ class Event
     return $venue_link;
   }
 
-  private function getLocationHtml(): string
-  {
+  private function getLocationHtml(): string {
     $loc_info = '';
     if(isset($this->venue))
       $loc_info = $this->venue->getLocationHtml();
 
     return $loc_info;
+  }
+
+  private function getMilanoClass(): string { 
+    return $this->venue->getMilanoClass(); 
+  }
+
+  private function getNsweClass(): string { 
+    return $this->venue->getNsweClass(); 
   }
 }
 ?>
