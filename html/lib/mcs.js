@@ -3,7 +3,7 @@ $datePicker = $('#txtDatePicker');
 
 $(document).ready(
     function() {
-      // Date Picker
+      // {{{ REGION: Date Picker
       $datePicker.datepicker(
           {minDate: 0,
             dateFormat: "dd/mm/yy",
@@ -29,19 +29,9 @@ $(document).ready(
         $datePicker.datepicker("setDate", selDt);
         loadConcerts($datePicker.datepicker().val());
       });
+      // }}}
 
-      $grid.isotope({
-        // options
-        itemSelector: '.grid-item',
-        transitionDuration: '0.2s',
-        layoutMode: 'masonry',
-        masonry:{
-          horizontalOrder:true,
-          gutter:0
-        }
-      });
-
-      // Load Concerts - called on datepicker select or arrow click
+      // {{{ REGION: Load Concerts
       function loadConcerts(dt) {
         $.ajax({
           url:"/../get_concerts.php",
@@ -81,6 +71,57 @@ $(document).ready(
           }
         });
       }
+      // }}}
+
+      // {{{ REGION: Initializations
+      $grid.isotope({
+        // options
+        itemSelector: '.grid-item',
+        transitionDuration: '0.2s',
+        layoutMode: 'masonry',
+        masonry:{
+          horizontalOrder:true,
+          gutter:0
+        }
+      });
 
       loadConcerts($datePicker.datepicker().val());
+      // }}}
     } );
+
+// {{{ REGION: Filters
+$('#divFilters div').on('click','button',function(event){
+  $target = $(event.currentTarget);
+  var isUnChecked = toggleClassAndIsUnChecked($target);
+  if ($(this).parent().attr('id')=="divNswe")
+  { var filter = ':not(.loc-'+$target.html().toLowerCase()+')'; }
+      else
+      { var filter = $target.attr('data-filter'); }
+      if (isUnChecked)
+      {addFilter(filter);}
+      else
+      {removeFilter(filter);}
+      $grid.isotope({filter:filters.join('')});
+      });
+  });
+
+function addFilter(filter) {
+  if (filters.indexOf(filter)==-1)
+  { filters.push(filter); }
+}
+
+function removeFilter(filter) {
+  var id = filters.indexOf(filter);
+  if (id !=-1)
+  { filters.splice(id,1); }
+}
+
+function toggleClassAndIsUnChecked($target){
+  if($target.hasClass('btn-dark'))
+  { $target.removeClass('btn-dark').addClass('btn-secondary'); }
+  else
+  { $target.removeClass('btn-secondary').addClass('btn-dark'); }
+  var isUnChecked = $target.hasClass('btn-secondary');
+  return isUnChecked;
+}
+// }}}

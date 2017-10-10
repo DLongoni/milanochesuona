@@ -36,6 +36,18 @@
               <button id="btnNext" type="button" class="btn btn-secondary"><strong>&gt;</strong></button>    
             </span>
           </div>
+          <div id="divFilters" class="text-md-center mt-1">
+            <div id="divMilanoHinterland" class="btn-group"> 
+              <button id="btnMilano" type="button" class="btn btn-sm btn-dark" data-filter=":not(.milano)">Milano</button>
+              <button id="btnHinterland" type="button" class="btn btn-sm btn-dark" data-filter=".milano">Hinterland</button>
+            </div>
+            <div id="divNswe" class="btn-group"> 
+              <button id="btnNord" type="button" class="btn btn-sm btn-dark">N</button>
+              <button id="btnSud" type="button" class="btn btn-sm btn-dark">S</button>
+              <button id="btnOvest" type="button" class="btn btn-sm btn-dark">W</button>
+              <button id="btnEst" type="button" class="btn btn-sm btn-dark">E</button>
+            </div>
+          </div>
         </div>
         <div class="col-md-4"></div>
       </div>
