@@ -62,11 +62,13 @@ return $venue_link;
     }
   }
 
-  private function getMilanoClass(): string {
+  public function getMilanoClass(): string {
     $ret = '';
     if ($this->hasLocation()){
-      if(isset($this->location->city){
-        if strtolower($this->location->city) == "milano"{
+      if(isset($this->location->city)){
+        if(strtolower($this->location->city) == "milano" or
+          strtolower($this->location->city) == "milan"){
+
           $ret='milano';
         }
       }
@@ -74,7 +76,7 @@ return $venue_link;
     return $ret;
   }
 
-  private function getNsweClass(): string {
+  public function getNsweClass(): string {
     $cLon=9.191383;
     $cLat=45.464211;
     if (!$this->hasLocation()){
@@ -92,7 +94,7 @@ return $venue_link;
       $classArr[] = "loc-w";
     }
     // Nord
-    if($y > 0 and $y < abs($x)/4){
+    if($y > 0 and $y > abs($x)/4){
       $classArr[] = "loc-n";
     }
     // Sud

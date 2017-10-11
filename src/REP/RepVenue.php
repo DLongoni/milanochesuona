@@ -109,7 +109,7 @@ Class RepVenue{
     $ret->phone=$row["phone"];
     $ret->email=$row["email"];
     $ret->venue_type_id=$row["venue_type_id"];
-    if($ret->hasLocation()):
+    if($ret->venue_type_id!=2):
       $ret->location=RepLocation::getById($row["location_id"]);
     endif;
     return $ret;
