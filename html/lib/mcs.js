@@ -1,5 +1,7 @@
 $grid = $('#grid');
 $datePicker = $('#txtDatePicker');
+locFilters = ['loc-n','loc-s','loc-e','loc-w'];
+milanoHinterland = [true,true];
 
 $(document).ready(
     function() {
@@ -82,6 +84,16 @@ $(document).ready(
         masonry:{
           horizontalOrder:true,
           gutter:0
+        },
+        filter: function(){
+          var isMatched = true;
+          var $this = $(this);
+          for(var i=0;i<filterFunctions.length;i++){
+            if (!filterFunctions[i]($this)){
+              return false;
+            }
+          }
+          return true;
         }
       });
 
@@ -90,30 +102,61 @@ $(document).ready(
     } );
 
 // {{{ REGION: Filters
-$('#divFilters div').on('click','button',function(event){
+
+var filterFunctions = [
+  function(elem) { // check milano
+    if((milanoHinterland[0] && elem.hasClass('milano')) ||
+        (milanoHinterland[1] && !elem.hasClass('milano'))) {
+      return true; }
+    else
+    { return false; }
+  },
+  function(elem) { //check loc
+    for(var i=0;i<locFilters.length;i++){
+      if( elem.hasClass(locFilters[i]) ){
+        return true;
+      }
+    }
+    return false;
+  }
+]
+
+$('#divNswe').on('click','button',function(event){
   $target = $(event.currentTarget);
   var isUnChecked = toggleClassAndIsUnChecked($target);
-  if ($(this).parent().attr('id')=="divNswe")
-  { var filter = ':not(.loc-'+$target.html().toLowerCase()+')'; }
-      else
-      { var filter = $target.attr('data-filter'); }
-      if (isUnChecked)
-      {addFilter(filter);}
-      else
-      {removeFilter(filter);}
-      $grid.isotope({filter:filters.join('')});
-      });
-  });
+  var f = 'loc-'+$target.html().toLowerCase();
+  if (isUnChecked)
+  {removeFilter(f);}
+  else
+  {addFilter(f);}
+  $grid.isotope();
+});
+
+$('#divMilanoHinterland').on('click','button',function(event){
+  $target = $(event.currentTarget);
+  var isUnChecked = toggleClassAndIsUnChecked($target);
+  if (isUnChecked)
+  {var v = false}
+  else
+  {var v = true}
+  if ($target.html() == "Milano"){
+    milanoHinterland[0] = v;
+  }
+  else{
+    milanoHinterland[1] = v;
+  }
+  $grid.isotope();
+});
 
 function addFilter(filter) {
-  if (filters.indexOf(filter)==-1)
-  { filters.push(filter); }
+  if (locFilters.indexOf(filter)==-1)
+  { locFilters.push(filter); }
 }
 
-function removeFilter(filter) {
-  var id = filters.indexOf(filter);
+function removeFilter(filter,arr) {
+  var id = locFilters.indexOf(filter);
   if (id !=-1)
-  { filters.splice(id,1); }
+  { locFilters.splice(id,1); }
 }
 
 function toggleClassAndIsUnChecked($target){
@@ -124,4 +167,6 @@ function toggleClassAndIsUnChecked($target){
   var isUnChecked = $target.hasClass('btn-secondary');
   return isUnChecked;
 }
-// }}}
+
+
+// // }}}
