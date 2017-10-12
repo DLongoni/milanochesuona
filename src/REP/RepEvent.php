@@ -191,10 +191,23 @@ Class RepEvent{
   }
 
   private static function processDesc($d): string {
+
     $ret = nl2br($d);
-    $ret = preg_replace("(\b((http[s]?://)[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/))))","<a href='$1' target='_blank'>$1</a>",$ret);
+    $ret = preg_replace_callback("(\b[\S]{2,}[.][\w]{2,3}[\w-/]+\b)",
+      function($matches){
+        $m = $matches[0];
+        if(!preg_match("(\bhttp[s]?:)",$m)){
+          $u = "http://" . $m;
+        }
+        else{
+          $u = $m;
+        }
+        $ret = sprintf("<a href='%s' target='_blank'>%s</a>",$u,$m);
+        return $ret; },
+    $ret);
     return $ret;
   }
+
   // }}}
 }
 ?>
