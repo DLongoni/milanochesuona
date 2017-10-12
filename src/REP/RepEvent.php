@@ -174,7 +174,7 @@ Class RepEvent{
     $ret->endTime=$row["end_time"];
     $ret->link=$row["link"];
     $ret->picture=$row["picture"];
-    $ret->description=$row["description"];
+    $ret->description = self::processDesc($row["description"]);
     $ret->htmlDescription=$row["html_description"];
     $ret->statusId=$row["status_id"];
     $ret->cost=$row["cost"];
@@ -187,6 +187,12 @@ Class RepEvent{
       $band_arr[]=RepBand::getById($iEb->bandId);
     }
     $ret->bands=$band_arr;
+    return $ret;
+  }
+
+  private static function processDesc($d): string {
+    $ret = nl2br($d);
+    $ret = preg_replace("(\b((http[s]?://)[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/))))","<a href='$1' target='_blank'>$1</a>",$ret);
     return $ret;
   }
   // }}}

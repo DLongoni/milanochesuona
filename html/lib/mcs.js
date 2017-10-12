@@ -47,6 +47,7 @@ $(document).ready(
             // Expander for event descriptions should stay inside here
             $('.toolong').expander({
               slicePoint: 200,
+              sliceOn: '<br',
               preserveWords: true,
               widow: 10,
               expandEffect: 'fadeIn',
