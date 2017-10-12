@@ -18,7 +18,7 @@ $eO=RepEvent::getList();
 $V=RepVenue::getById(23);
 foreach ($eO as $e)
 {
-  if ($e-> id == 388):
+  if ($e-> id == 359):
     // var_dump($e->getHtml());
     var_dump($e->description);
   endif;
