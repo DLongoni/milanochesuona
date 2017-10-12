@@ -193,7 +193,7 @@ Class RepEvent{
   private static function processDesc($d): string {
 
     $ret = nl2br($d);
-    $ret = preg_replace_callback("(\b[\S]{2,}[.][\w]{2,3}[\w-/]+\b)",
+    $ret = preg_replace_callback("(\b[\S]{2,}[.](?![\d])[\w]{2,3}[^<\b\s]+\b)",
       function($matches){
         $m = $matches[0];
         if(!preg_match("(\bhttp[s]?:)",$m)){
