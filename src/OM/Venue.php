@@ -1,7 +1,7 @@
 <?php
 class Venue
 {
-  private static $linkCode = '<a href="%s" target="_blank" class="card-link">%s</a>';
+  private static $linkCode = '<a href="%s" target="_blank" class="card-link mb-0">%s</a>';
   private static $fbMask='https://facebook.com/%s';
 
   private static $locationCode = '<a href="%s" target="_blank" class="card-text"><small class="text-muted">%s</small></a>';
@@ -39,12 +39,12 @@ class Venue
       $l = $this->website;
     elseif(isset($this->fbId)):
       $l = sprintf(self::$fbMask,$this->fbId);
-endif;
+    endif;
 
-if(isset($l))
-  $venue_link=sprintf(self::$linkCode,$l,$this->name);
+    if(isset($l))
+      $venue_link=sprintf(self::$linkCode,$l,$this->name);
 
-return $venue_link;
+    return $venue_link;
   }
 
   public function hasLocation() {

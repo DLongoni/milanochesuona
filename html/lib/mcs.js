@@ -1,6 +1,7 @@
 $grid = $('#grid');
 $datePicker = $('#txtDatePicker');
-locFilters = ['loc-n','loc-s','loc-e','loc-w'];
+// locFilters = ['loc-n','loc-s','loc-e','loc-w'];
+locFilters = [];
 milanoHinterland = [true,true];
 
 $(document).ready(
@@ -44,36 +45,29 @@ $(document).ready(
             var $data_obj=$(data);
             $grid.append($data_obj).isotope('appended',$data_obj);
 
-            // Expander for event descriptions should stay inside here
-            $('.toolong').expander({
-              slicePoint: 200,
-              sliceOn: '<br',
-              preserveWords: true,
-              widow: 10,
-              expandEffect: 'fadeIn',
-              collapseEffect: 'fadeOut',
-              expandText: ' leggi tutto',
-              expandPrefix: '...',
-              userCollapsePrefix: ' ',
-              userCollapseText: ' leggi meno',
-              afterExpand: function(){$grid.isotope('layout');},
-              afterCollapse: function(){$grid.isotope('layout');},
-            });
-            $('.toolong').expander().removeClass('js-toolong-hidden');
-
             $grid.imagesLoaded().progress( function() {
               $grid.isotope('layout');
             });
-            // $grid.isotope('layout');
           },
           error:function(xhr,ajaxOptions,thrownError){
             // Uncomment only for debugging purposes
-            alert(xhr.status);
-            alert(thrownError);
-            alert('Errore imprevisto nel caricamento dati.');
+            // alert(xhr.status);
+            // alert(thrownError);
+            // alert('Errore imprevisto nel caricamento dati.');
           }
         });
       }
+      // }}}
+
+      // {{{ REGION: Collapse
+      $grid.on('shown.bs.collapse',function(){$grid.isotope()});
+      $grid.on('hidden.bs.collapse',function(){$grid.isotope()});
+
+      $grid.on('click','.card-footer .btn',function(event){
+        $(this).parents().eq(1).find('.collapse').collapse('toggle');
+        if($(this).html()=='\u25BD'){ $(this).html('\u25B3'); }
+        else{ $(this).html('\u25BD'); }
+      });
       // }}}
 
       // {{{ REGION: Initializations
@@ -113,6 +107,7 @@ var filterFunctions = [
     { return false; }
   },
   function(elem) { //check loc
+    if(locFilters.length ==0){return true;}
     for(var i=0;i<locFilters.length;i++){
       if( elem.hasClass(locFilters[i]) ){
         return true;
@@ -170,4 +165,4 @@ function toggleClassAndIsUnChecked($target){
 }
 
 
-// // }}}
+// }}}

@@ -12,13 +12,16 @@ class Event
         <div class="card-header p-2 m-0">
           <h5 class="card-title p-0 m-0 text-center">%s</h5>
         </div>
-        <div class="card-block px-2 py-1 my-0">
+        <div class="card-block px-2 pt-1 my-0">
           <p class="card-text mb-0">%s - %s</p>
           %s
         </div>
-        <div class="card-block px-2 pt-0 pb-2 my-0 border border-bottom-0 border-right-0 border-left-0">
-          <div class="toolong small text-justify my-2">%s</div>
+        <div class="card-block px-2 pt-0 pb-2 border border-bottom-0 border-right-0 border-left-0 collapse">
+          <div class="small text-justify mt-2 mb-1">%s</div>
           %s
+        </div>
+        <div class="card-footer m-0 p-0">
+          <button class="btn btn-light text-small text-muted btn-sm btn-block p-0 m-0" style="font-size:0.6em" type="button" >&#9661</button>
         </div>
       </div>
     </div>
