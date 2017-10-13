@@ -51,9 +51,9 @@ $(document).ready(
           },
           error:function(xhr,ajaxOptions,thrownError){
             // Uncomment only for debugging purposes
-            // alert(xhr.status);
-            // alert(thrownError);
-            // alert('Errore imprevisto nel caricamento dati.');
+            alert(xhr.status);
+            alert(thrownError);
+            alert('Errore imprevisto nel caricamento dati.');
           }
         });
       }
