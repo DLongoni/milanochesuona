@@ -4,9 +4,9 @@ class Event
   private static $htmlMask='
     <div class="grid-item p-2 %s %s">
       <div class="card">
-        <div style="max-height:300px;overflow:hidden">
+        <div class="border border-top-0 border-right-0 border-left-0 bg-secondary">
           <a href="%s" target="_blank">
-            <img class="card-img-top" src="%s" alt="Event picture (supposedly)">
+            <img class="card-img-top mx-auto d-block" style="max-height:200px;width:auto;max-width:100%;" src="%s" alt="Event picture (supposedly)">
           </a>
         </div>
         <div class="card-header p-2 m-0">
