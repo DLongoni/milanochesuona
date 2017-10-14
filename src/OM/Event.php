@@ -2,7 +2,7 @@
 class Event
 {
   private static $htmlMask='
-    <div class="grid-item p-2 %s %s">
+    <div class="grid-item p-1 %s %s">
       <div class="card">
         <div class="border border-top-0 border-right-0 border-left-0 bg-secondary" style="max-height:200px;overflow:hidden">
           <a href="%s" target="_blank">

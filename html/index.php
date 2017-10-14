@@ -15,15 +15,15 @@
   <!-- }}} -->
 
   <!-- BODY {{{ -->
-  <body style="pt-md-4 pt-sm-1">
+  <body style="pt-md-4 pt-sm-2">
     <div class="container">
       <div class="header">
-        <h1 class="text-md-center mb-md-1">MilanoCheSuona</h1> 
-        <p class="text-md-center text-muted">solo musica dal vivo</p> 
+        <h1 class="text-center mb-md-1 mb-0">MilanoCheSuona</h1> 
+        <p class="text-center text-muted mt-0 pt-0">solo musica dal vivo</p> 
       </div>
       <div class="row">
         <div class="col-md-4"></div>
-        <div class="col-md-4 alert alert-secondary">
+        <div class="col-md-4 alert alert-secondary mx-2">
           <div class="input-group text-center"> 
             <span class="input-group-btn">
               <button id="btnPrev" type="button" class="btn btn-secondary"><strong>&lt;</strong></button>
