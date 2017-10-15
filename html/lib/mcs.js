@@ -37,6 +37,7 @@ $(document).ready(
 
       // {{{ REGION: Load Concerts
       function loadConcerts(dt) {
+        dt = dt.substring(4); // delete day name
         $.ajax({
           url:"/../get_concerts.php",
           data:"date="+dt,
