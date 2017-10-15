@@ -9,11 +9,12 @@ $(document).ready(
       // {{{ REGION: Date Picker
       $datePicker.datepicker(
           {minDate: 0,
-            dateFormat: "dd/mm/yy",
+            dateFormat: "D dd/mm/yy",
             showOtherMonths: true,
             selectOtherMonths: true,
             showAnim: 'slideDown',
             defaultDate: '0',
+            dayNamesShort:["Dom","Lun","Mar","Mer","Gio","Ven","Sab"],
             onSelect: function(dtTxt){
               loadConcerts(dtTxt);
             }
