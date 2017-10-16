@@ -62,6 +62,15 @@ class Venue
     }
   }
 
+  public function getDistance(): float {
+    if($this->hasLocation()) {
+      return $this->location->getDistance();
+      }
+    else{
+      return 10000.0;
+    }
+  }
+
   public function getMilanoClass(): string {
     $ret = '';
     if ($this->hasLocation()){

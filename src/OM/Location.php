@@ -23,5 +23,22 @@ class Location
 
     return $loc_description;
   }
+
+  public function getDistance(): float {
+    $cLon=9.191383;
+    $cLat=45.464211;
+    if(!(isset($this->latitude and isset($this->longitude)))):
+      return 10000.0
+    $bLon=$this->longitude;
+    $bLat=$this->latitude;
+
+    $theta = $cLon - $bLon;
+    $dist = sin(deg2rad($cLat)) * sin(deg2rad($bLat)) +  cos(deg2rad($cLat)) * cos(deg2rad($bLat)) * cos(deg2rad($theta));
+    $dist = acos($dist);
+    $dist = rad2deg($dist);
+    $km = $dist * 60 * 1.85316;
+
+    return $km;
+  }
 }
 ?>

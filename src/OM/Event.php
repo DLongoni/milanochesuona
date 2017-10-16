@@ -2,7 +2,7 @@
 class Event
 {
   private static $htmlMask='
-    <div class="grid-item p-2 %s %s">
+    <div class="grid-item p-2 %s %s d=%s">
       <div class="card">
         <div class="border border-top-0 border-right-0 border-left-0 bg-secondary">
           <a href="%s" target="_blank">
@@ -49,6 +49,7 @@ class Event
     $ret=sprintf(self::$htmlMask,
       $this->GetMilanoClass(),
       $this->GetNsweClass(),
+      round($this->venue->getDistance(),2),
       $this->link,
       $this->picture,
       $this->title,

@@ -89,7 +89,16 @@ $(document).ready(
             }
           }
           return true;
-        }
+        },
+        getSortData: { dist: function(elem){
+            var e = $(elem).attr('d');
+            if (e===undefined) {
+              return 10000.0;
+            }
+            return parseFloat(e);
+          }
+        },
+        sortBy: 'dist'
       });
 
       loadConcerts($datePicker.datepicker().val());
