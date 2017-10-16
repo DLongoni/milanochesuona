@@ -48,7 +48,7 @@ $(document).ready(
             $grid.append($data_obj).isotope('appended',$data_obj);
 
             $grid.imagesLoaded().progress( function() {
-              $grid.isotope('layout');
+              $grid.isotope({sort:'dist'});
             });
           },
           error:function(xhr,ajaxOptions,thrownError){

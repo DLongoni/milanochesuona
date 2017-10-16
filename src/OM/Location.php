@@ -27,8 +27,9 @@ class Location
   public function getDistance(): float {
     $cLon=9.191383;
     $cLat=45.464211;
-    if(!(isset($this->latitude and isset($this->longitude)))):
-      return 10000.0
+    if(!(isset($this->latitude) and isset($this->longitude))){
+      return 10000.0;
+    }
     $bLon=$this->longitude;
     $bLat=$this->latitude;
 

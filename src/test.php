@@ -15,12 +15,15 @@ $eI->bands=$bArr;
 
 $eO=RepEvent::getList();
 
-$V=RepVenue::getById(23);
-var_dump($V->getLocationHtml());
+$V=RepVenue::getById(39);
+var_dump($V->name);
+var_dump($V->location->latitude);
+var_dump($V->location->longitude);
+var_dump($V->getDistance());
 foreach ($eO as $e)
 {
   if ($e-> id == 359):
-    var_dump($e->getHtml());
+    // var_dump($e->getHtml());
     // var_dump($e->description);
   endif;
 }
