@@ -1,7 +1,7 @@
 <?php
 class Band
 {
-  private static $linkCode = '<a href="%s" target="_blank" class="btn btn-secondary btn-sm py-0 mt-0" style="white-space:normal;font-size:0.6em">%s</a>';
+  private static $linkCode = '<a href="%s" target="_blank" class="btn btn-secondary btn-sm py-0 mt-0 mx-1" style="white-space:normal;">%s</a>';
   private static $fbMask='https://facebook.com/%s';
 
 	public $id;

@@ -191,19 +191,22 @@ Class RepEvent{
   }
 
   private static function processDesc($d): string {
+    // rimuovo tripli a capo
     $ret = preg_replace("((\r[\W]*|\n[\W]*|\r\n[\W]*|\n\r[\W]*){3,})","\n\n",$d);
+    // converto \n to <br>
     $ret = nl2br($ret);
-      $ret = preg_replace_callback("(\b[\S]{2,}[.](?![\d])[\w]{2,3}[^<\b\s]+\b)",
-      function($matches){
-        $m = $matches[0];
-        if(!preg_match("(\bhttp[s]?:)",$m)){
-          $u = "http://" . $m;
-        }
-        else{
-          $u = $m;
-        }
-        $ret = sprintf("<a href='%s' target='_blank'>%s</a>",$u,$m);
-        return $ret; },
+    // converto url in anchor
+    $ret = preg_replace_callback("(\b[\S]{2,}[.](?![\d])[\w]{2,3}[^<\b\s]+\b)",
+    function($matches){
+      $m = $matches[0];
+      if(!preg_match("(\bhttp[s]?:)",$m)){
+        $u = "http://" . $m;
+      }
+      else{
+        $u = $m;
+      }
+      $ret = sprintf("<a href='%s' target='_blank'>%s</a>",$u,$m);
+      return $ret; },
     $ret);
     return $ret;
   }

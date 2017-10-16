@@ -4,13 +4,13 @@ class Event
   private static $htmlMask='
     <div class="grid-item p-2 %s %s d=%s">
       <div class="card">
-        <div class="border border-top-0 border-right-0 border-left-0 bg-secondary">
+        <div class="border border-top-0 border-right-0 border-left-0 bg-secondary" style="max-height:200px;overflow:hidden">
           <a href="%s" target="_blank">
-            <img class="card-img-top mx-auto d-block" style="max-height:200px;width:auto;max-width:100%;" src="%s" alt="Event picture (supposedly)">
+            <img class="card-img-top mx-auto d-block text-white" style="max-width:100%%;" src="%s" alt="Event picture (supposedly)">
           </a>
         </div>
         <div class="card-header p-2 m-0">
-          <h5 class="card-title p-0 m-0 text-center">%s</h5>
+          <h6 class="card-title p-0 m-0 text-center">%s</h6>
         </div>
         <div class="card-block px-2 pt-1 my-0">
           <p class="card-text mb-0">%s - %s</p>

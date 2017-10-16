@@ -9,11 +9,12 @@ $(document).ready(
       // {{{ REGION: Date Picker
       $datePicker.datepicker(
           {minDate: 0,
-            dateFormat: "dd/mm/yy",
+            dateFormat: "D dd/mm/yy",
             showOtherMonths: true,
             selectOtherMonths: true,
             showAnim: 'slideDown',
             defaultDate: '0',
+            dayNamesShort:["Dom","Lun","Mar","Mer","Gio","Ven","Sab"],
             onSelect: function(dtTxt){
               loadConcerts(dtTxt);
             }
@@ -36,6 +37,7 @@ $(document).ready(
 
       // {{{ REGION: Load Concerts
       function loadConcerts(dt) {
+        dt = dt.substring(4); // delete day name
         $.ajax({
           url:"/../get_concerts.php",
           data:"date="+dt,
@@ -51,9 +53,9 @@ $(document).ready(
           },
           error:function(xhr,ajaxOptions,thrownError){
             // Uncomment only for debugging purposes
-            // alert(xhr.status);
-            // alert(thrownError);
-            // alert('Errore imprevisto nel caricamento dati.');
+            alert(xhr.status);
+            alert(thrownError);
+            alert('Errore imprevisto nel caricamento dati.');
           }
         });
       }
