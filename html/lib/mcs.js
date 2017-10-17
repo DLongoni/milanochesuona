@@ -1,8 +1,9 @@
+// {{{ REGION: Definitions
 $grid = $('#grid');
 $datePicker = $('#txtDatePicker');
-// locFilters = ['loc-n','loc-s','loc-e','loc-w'];
 locFilters = [];
-milanoHinterland = [true,true];
+milanoHinterland = [1,1];
+// }}}
 
 $(document).ready(
     function() {
@@ -48,13 +49,13 @@ $(document).ready(
             $grid.append($data_obj).isotope('appended',$data_obj);
 
             $grid.imagesLoaded().progress( function() {
-              $grid.isotope('layout');
+              $grid.isotope();
             });
           },
           error:function(xhr,ajaxOptions,thrownError){
             // Uncomment only for debugging purposes
-            alert(xhr.status);
-            alert(thrownError);
+            // alert(xhr.status);
+            // alert(thrownError);
             alert('Errore imprevisto nel caricamento dati.');
           }
         });
@@ -73,6 +74,8 @@ $(document).ready(
       // }}}
 
       // {{{ REGION: Initializations
+      setFiltersFromCookies();
+
       $grid.isotope({
         // options
         itemSelector: '.grid-item',
@@ -84,7 +87,7 @@ $(document).ready(
         },
         filter: function(){
           var isMatched = true;
-          var $this = $(this);
+          var $this = $(this); // Check all the functions in filterFunctions
           for(var i=0;i<filterFunctions.length;i++){
             if (!filterFunctions[i]($this)){
               return false;
@@ -92,13 +95,13 @@ $(document).ready(
           }
           return true;
         },
-        getSortData: { dist: function(elem){
-            var e = $(elem).attr('d');
-            if (e===undefined) {
-              return 10000.0;
-            }
-            return parseFloat(e);
+        getSortData: { dist: function(elem){ // sort by distance from the center
+          var e = $(elem).attr('d');
+          if (e===undefined) {
+            return 10000.0;
           }
+          return parseFloat(e);
+        }
         },
         sortBy: 'dist'
       });
@@ -120,7 +123,7 @@ var filterFunctions = [
   function(elem) { //check loc
     if(locFilters.length ==0){return true;}
     for(var i=0;i<locFilters.length;i++){
-      if( elem.hasClass(locFilters[i]) ){
+      if( elem.hasClass('loc-' + locFilters[i]) ){
         return true;
       }
     }
@@ -128,24 +131,22 @@ var filterFunctions = [
   }
 ]
 
+// Clic button Nswe -> set filter array and re-isotope
 $('#divNswe').on('click','button',function(event){
   $target = $(event.currentTarget);
-  var isUnChecked = toggleClassAndIsUnChecked($target);
-  var f = 'loc-'+$target.html().toLowerCase();
-  if (isUnChecked)
-  {removeFilter(f);}
-  else
-  {addFilter(f);}
+  var isUnChecked = toggleClassAndIsChecked($target);
+  var f = $target.html().toLowerCase();
+  if (isChecked) {addLocFilter(f);}
+  else {removeLocFilter(f);}
   $grid.isotope();
 });
 
+// Clic button Mh -> set filter array and re-isotope
 $('#divMilanoHinterland').on('click','button',function(event){
   $target = $(event.currentTarget);
-  var isUnChecked = toggleClassAndIsUnChecked($target);
-  if (isUnChecked)
-  {var v = false}
-  else
-  {var v = true}
+  var isChecked = toggleClassAndIsChecked($target);
+  if (isChecked) {var v = 1}
+  else {var v = 0}
   if ($target.html() == "Milano"){
     milanoHinterland[0] = v;
   }
@@ -155,25 +156,88 @@ $('#divMilanoHinterland').on('click','button',function(event){
   $grid.isotope();
 });
 
-function addFilter(filter) {
+function addLocFilter(filter) { // location filter add
   if (locFilters.indexOf(filter)==-1)
   { locFilters.push(filter); }
 }
 
-function removeFilter(filter,arr) {
+function removeLocFilter(filter) { // location filter del
   var id = locFilters.indexOf(filter);
   if (id !=-1)
   { locFilters.splice(id,1); }
 }
 
-function toggleClassAndIsUnChecked($target){
-  if($target.hasClass('btn-dark'))
-  { $target.removeClass('btn-dark').addClass('btn-secondary'); }
-  else
-  { $target.removeClass('btn-secondary').addClass('btn-dark'); }
-  var isUnChecked = $target.hasClass('btn-secondary');
-  return isUnChecked;
+// toggle class and return whether is checked or not
+function toggleClassAndIsChecked($target){
+  if($target.hasClass('btn-dark')) { deSelectBtn($target); }
+  else { selectBtn($target); }
+  var isChecked = $target.hasClass('btn-dark');
+  return isChecked;
 }
 
+function deSelectBtn($b){
+  $b.removeClass('btn-dark').addClass('btn-secondary');
+}
 
+function selectBtn($b){
+  $b.removeClass('btn-secondary').addClass('btn-dark');
+}
+// }}}
+
+// {{{ REGION: Cookies
+function setFilterCookies() {
+  var d = new Date();
+  d.setTime(d.getTime() + (365 * 24 * 60 * 60 * 1000));
+  var expires = "expires="+d.toUTCString();
+  // cookie will be locFilters|mhFilters
+  var filtersStr = locFilters.join(",") + "|" + milanoHinterland.join(",");
+  document.cookie = "filters=" + filtersStr + ";" + expires + ";path=/";
+}
+
+function setFiltersFromCookies(){
+  var name = "filters=";
+  var filterC = "";
+  var ca = document.cookie.split(';');
+  for(var i = 0; i < ca.length; i++) { // Get filters cookie val
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      filterC = c.substring(name.length, c.length);
+    }
+  } 
+  if (filterC != ""){
+    filtersArr = filterC.split("|");
+    locFilterC = filtersArr[0].split(",");
+    mhFilterC  = filtersArr[1].split(",");
+    if (locFilterC.length >0){ // Set loc filters
+      locFilters = locFilterC;
+      setNsweClasses();
+    }
+    if (mhFilterC.length >0){ // Set mh filters
+      milanoHinterland = mhFilterC;
+      setMhClasses();
+    }
+  }
+}
+
+function setNsweClasses(){
+  for(var i = 0 ;i<locFilters.length;i++){
+    $('#divNswe').children('button').each(function(){
+      if ($(this).html().toLowerCase()==locFilters[i]){
+        selectBtn($(this));
+      }
+    });
+  }
+}
+
+function setMhClasses(){
+  if(milanoHinterland[0]==0){
+    deSelectBtn($('#divMilanoHinterland #btnMilano'));
+  }
+  if(milanoHinterland[1]==0){
+    deSelectBtn($('#divMilanoHinterland #btnHinterland'));
+  }
+}
 // }}}
