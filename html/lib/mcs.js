@@ -49,7 +49,13 @@ $(document).ready(
             $grid.append($data_obj).isotope('appended',$data_obj);
 
             $grid.imagesLoaded().progress( function() {
-            $grid.isotope({sort:'dist'});
+              $grid.isotope({sort:'dist'});
+            });
+
+            $('.btnClose').click(function(){
+              $gridItem = $(this).closest('.grid-item');
+              $grid.isotope('remove',$gridItem);
+              $grid.isotope();
             });
           },
           error:function(xhr,ajaxOptions,thrownError){

@@ -6,3 +6,19 @@
   outline: none !important;
   box-shadow: none;
 }
+
+.btnClose{
+  position:absolute;
+  top:3px;
+  right:3px;
+  width:7%;
+  border-radius:50%;
+  opacity:0.5; 
+  -webkit-transition: opacity 80ms linear;
+  -ms-transition: opacity 80ms linear;
+  transition: opacity 80ms linear;
+}
+
+.btnClose:hover{
+  opacity:1;
+}

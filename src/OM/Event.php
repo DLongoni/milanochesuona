@@ -8,6 +8,7 @@ class Event
           <a href="%s" target="_blank">
             <img class="card-img-top mx-auto d-block text-white" style="max-width:100%%;" src="%s" alt="Event picture (supposedly)">
           </a>
+          <input type="image" src="./img/cl4.png" class="btnClose"></input>
         </div>
         <div class="card-header p-2 m-0">
           <h6 class="card-title p-0 m-0 text-center">%s</h6>
