@@ -216,7 +216,12 @@ function setFiltersFromCookies(){
   } 
   if (filterC != ""){
     filtersArr = filterC.split("|");
-    locFilterC = filtersArr[0].split(",");
+    if(filtersArr[0]!=""){
+      locFilterC = filtersArr[0].split(",");
+    }
+      else{
+        locFilterC=[];
+    }
     mhFilterC  = filtersArr[1].split(",");
     if (locFilterC.length >0){ // Set loc filters
       locFilters = locFilterC;
