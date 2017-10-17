@@ -19,6 +19,6 @@
   transition: opacity 80ms linear;
 }
 
-.btnClose:hover{
+.btnClose:hover,.btnClose:active{
   opacity:1;
 }
