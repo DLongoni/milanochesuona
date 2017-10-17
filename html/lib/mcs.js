@@ -117,7 +117,6 @@ $(document).ready(
     } );
 
 // {{{ REGION: Filters
-
 var filterFunctions = [
   function(elem) { // check milano
     if((milanoHinterland[0] && elem.hasClass('milano')) ||
@@ -140,10 +139,11 @@ var filterFunctions = [
 // Clic button Nswe -> set filter array and re-isotope
 $('#divNswe').on('click','button',function(event){
   $target = $(event.currentTarget);
-  var isUnChecked = toggleClassAndIsChecked($target);
+  var isChecked = toggleClassAndIsChecked($target);
   var f = $target.html().toLowerCase();
   if (isChecked) {addLocFilter(f);}
   else {removeLocFilter(f);}
+  setFilterCookies();
   $grid.isotope();
 });
 
@@ -159,6 +159,7 @@ $('#divMilanoHinterland').on('click','button',function(event){
   else{
     milanoHinterland[1] = v;
   }
+  setFilterCookies();
   $grid.isotope();
 });
 
