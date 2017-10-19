@@ -10,21 +10,21 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" href='./lib/mcs.css'>
+    <link rel="stylesheet" href='./lib/mcs.css?v=3'>
   </head> 
   <!-- }}} -->
 
   <!-- BODY {{{ -->
-  <body style="pt-md-4 pt-sm-2">
-    <div class="container">
+  <body>
+    <div class="container mt-md-2">
       <div class="header">
         <h1 class="text-center mb-md-1 mb-0">MilanoCheSuona</h1> 
-        <p class="text-center text-muted mt-0 pt-0">solo musica dal vivo</p> 
+        <p class="text-center text-muted mt-0 pt-0 mb-0 mb-md-3">solo musica dal vivo</p> 
       </div>
       <div class="row">
         <div class="col-lg-2"></div>
         <div class="col-md-2"></div>
-        <div class="col-lg-4 col-md-8 alert alert-secondary mx-1">
+        <div class="col-lg-4 col-md-8 mb-0 mb-md-3 alert alert-secondary mx-1">
           <div class="input-group text-center"> 
             <span class="input-group-btn">
               <button id="btnPrev" type="button" class="btn btn-secondary"><strong>&lt;</strong></button>

@@ -13,18 +13,21 @@ $bArr[]=RepBand::getByName("Boz Trio");
 $eI->bands=$bArr;
 // RepEvent::add($eI);
 
-$eO=RepEvent::getList();
+// $eO=RepEvent::getList();
 
 $V=RepVenue::getById(39);
-var_dump($V->name);
-var_dump($V->location->latitude);
-var_dump($V->location->longitude);
-var_dump($V->getDistance());
-foreach ($eO as $e)
-{
-  if ($e-> id == 359):
-    // var_dump($e->getHtml());
-    // var_dump($e->description);
-  endif;
-}
+// var_dump($V->name);
+// var_dump($V->location->latitude);
+// var_dump($V->location->longitude);
+// var_dump($V->getDistance());
+$e=RepEvent::getById(724);
+var_dump($e->title);
+var_dump($e->getHtml());
+// foreach ($eO as $e)
+// {
+//   if ($e-> id == 725):
+//     var_dump($e->getHtml());
+//     // var_dump($e->description);
+//   endif;
+// }
 ?>

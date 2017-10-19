@@ -44,6 +44,16 @@ Class RepEvent{
     return NULL;
   }
 
+  public static function getById($id)
+  {
+    $eL = self::getList();
+    foreach($eL as $e){
+      if ($e->id == $id){
+        return $e;
+      }
+    }
+  }
+
   public static function getByFbId($fbId)
   {
     $conn=getConn();
@@ -191,23 +201,28 @@ Class RepEvent{
   }
 
   private static function processDesc($d): string {
-    // rimuovo tripli a capo
-    $ret = preg_replace("((\r[\W]*|\n[\W]*|\r\n[\W]*|\n\r[\W]*){3,})","\n\n",$d);
-    // converto \n to <br>
-    $ret = nl2br($ret);
-    // converto url in anchor
-    $ret = preg_replace_callback("[\b|\s]+([a-zA-Z:\/]{2,}[.](?![\d])[\w]{2,3}[^<\b\s]+)",
-    function($matches){
-      $m = $matches[0];
-      if(!preg_match("(\bhttp[s]?:)",$m)){
-        $u = "http://" . $m;
-      }
-      else{
-        $u = $m;
-      }
-      $ret = sprintf("<a href='%s' target='_blank'>%s</a>",$u,$m);
-      return $ret; },
-    $ret);
+    if(strpos($d,'<br')==false){
+      // rimuovo tripli a capo
+      $ret = preg_replace("((\r[\W]*|\n[\W]*|\r\n[\W]*|\n\r[\W]*){3,})","\n\n",$d);
+      // converto \n to <br>
+      $ret = nl2br($ret);
+      // converto url in anchor
+      $ret = preg_replace_callback("[\b|\s]+([a-zA-Z:\/]{2,}[.](?![\d])[\w\/]{2,3}[^<\b\s]*)",
+        function($matches){
+          $m = $matches[0];
+          if(!preg_match("(\bhttp[s]?:)",$m)){
+            $u = "http://" . $m;
+          }
+          else{
+            $u = $m;
+          }
+          $ret = sprintf("<a href='%s' target='_blank'>%s</a>",$u,$m);
+          return $ret; },
+            $ret);
+    }
+    else{
+      $ret = $d;
+    }
     return $ret;
   }
 
