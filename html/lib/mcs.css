@@ -1,13 +1,13 @@
-@media (max-width:480px){ .grid-item{width:100%;} }
-@media (min-width:481px) and (max-width:768px){ .grid-item{width:50%;} }
-@media (min-width:760px){ .grid-item{width:33.3333%;} }
+@media (max-width:480px) { .grid-item{width:100%;} }
+@media (min-width:481px) and (max-width:768px) { .grid-item{width:50%;} }
+@media (min-width:760px) { .grid-item{width:33.3333%;} }
 
 .btn:focus,.btn:active {
   outline: none !important;
   box-shadow: none;
 }
 
-.btnClose{
+.btnClose {
   position:absolute;
   top:3px;
   right:3px;
@@ -19,6 +19,20 @@
   transition: opacity 80ms linear;
 }
 
-.btnClose:hover{
+.btnClose:hover {
   opacity:1;
+}
+
+.grid-item {
+  -webkit-transition: 80ms linear;
+  -ms-transition: 80ms linear;
+  transition: 80ms linear;
+}
+
+.grid-item.swiper {
+  transform: translate(200%);
+}
+
+.grid-item.swipel {
+  transform: translate(-200%);
 }

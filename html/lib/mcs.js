@@ -57,6 +57,20 @@ $(document).ready(
               $grid.isotope('remove',$gridItem);
               $grid.isotope();
             });
+
+            $(".in-click").swipe({ // To avoid trigger on div callback
+              tap:function(event, direction, distance, duration, fingerCount, fingerData){
+                window.open($(this).attr("t-link"));
+              }
+            });
+
+            $("#grid .grid-item").swipe( {
+              swipe:function(event, direction, distance, duration, fingerCount, fingerData){
+                swipeCallback($(this), direction, fingerCount);
+              },
+              threshold:80
+            });
+
           },
           error:function(xhr,ajaxOptions,thrownError){
             // Uncomment only for debugging purposes
@@ -115,7 +129,6 @@ $(document).ready(
       loadConcerts($datePicker.datepicker().val());
       // }}}
     } );
-
 // {{{ REGION: Filters
 
 var filterFunctions = [
@@ -244,6 +257,30 @@ function setMhClasses(){
   }
   if(milanoHinterland[1]==0){
     deSelectBtn($('#divMilanoHinterland #btnHinterland'));
+  }
+}
+// }}}
+
+// {{{ REGION: Swipe Callback
+function swipeCallback($elem, direction, fingerCount) {
+  // Uncomment only when deployed on actual mobile devices
+  // if ((direction == "left" || direction == "right") && fingerCount == 1){
+  if ($(window).width() < 760){
+    var targetClass ="";
+    if ((direction == "left" || direction == "right") && fingerCount <= 1){
+      if (direction == "left"){
+        targetClass = "swipel";
+      }
+      if (direction == "right"){
+        targetClass = "swiper";
+      }
+      $grid.isotope({transitionDuration:0});
+      $elem.addClass(targetClass).delay(80).queue(function(){
+        $grid.isotope('remove',$elem).dequeue();
+        $grid.isotope({transitionDuration:'0.4s'});
+        $grid.isotope({sort:'dist'});
+      });
+    }
   }
 }
 // }}}
