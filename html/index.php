@@ -55,6 +55,11 @@
           <div id="grid"></div>
         </div>
         <div class="col-md-1"></div>
+        <div id="divLoadingOuter" class="row text-center pt-5">
+          <div id = "divLoadingInner">
+            <img src="./img/load2.gif" style="max-width:25%">
+          </div>
+        </div>
       </div>
     </div>
 

@@ -1,8 +1,20 @@
 // {{{ REGION: Definitions
 $grid = $('#grid');
 $datePicker = $('#txtDatePicker');
+var $loading = $('#divLoadingOuter').hide();
+
 locFilters = [];
 milanoHinterland = [1,1];
+// }}}
+
+// {{{ REGION: Loader
+$(document)
+  .ajaxStart(function () {
+    $loading.show();
+  })
+  .ajaxStop(function () {
+    $loading.hide();
+  });
 // }}}
 
 $(document).ready(

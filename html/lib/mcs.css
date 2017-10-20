@@ -1,10 +1,18 @@
-@media (max-width:480px) { .grid-item{width:100%;} }
-@media (min-width:481px) and (max-width:768px) { .grid-item{width:50%;} }
-@media (min-width:760px) { .grid-item{width:33.3333%;} }
-
+// Remove outline from boostrap buttons
 .btn:focus,.btn:active {
   outline: none !important;
   box-shadow: none;
+}
+
+
+// Spinner
+#divLoadingInner{
+  position: fixed;
+  right: 0px;
+  margin:auto;
+  width: 100%;
+  height: 100%;
+  z-index: 30001;
 }
 
 .btnClose {
@@ -23,16 +31,24 @@
   opacity:1;
 }
 
-.grid-item {
-  -webkit-transition: 80ms linear;
-  -ms-transition: 80ms linear;
-  transition: 80ms linear;
-}
+// {{{ REGION: Grid
+      // Responsive number of columns
+      @media (max-width:480px) { .grid-item{width:100%;} }
+      @media (min-width:481px) and (max-width:768px) { .grid-item{width:50%;} }
+      @media (min-width:760px) { .grid-item{width:33.3333%;} }
 
-.grid-item.swiper {
-  transform: translate(200%);
-}
+      // Animate swipe left right on touch devices
+      .grid-item {
+        -webkit-transition: 80ms linear;
+        -ms-transition: 80ms linear;
+        transition: 80ms linear;
+      }
 
-.grid-item.swipel {
-  transform: translate(-200%);
-}
+      .grid-item.swiper {
+        transform: translate(200%);
+      }
+
+      .grid-item.swipel {
+        transform: translate(-200%);
+      }
+// }}}
