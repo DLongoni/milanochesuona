@@ -295,10 +295,10 @@ function swipeCallback($elem, direction, fingerCount) {
       if (direction == "right"){
         targetClass = "swiper";
       }
-      $grid.isotope({transitionDuration:0});
+      // $grid.isotope({transitionDuration:0});
       $elem.addClass(targetClass).delay(80).queue(function(){
         $grid.isotope('remove',$elem).dequeue();
-        $grid.isotope({transitionDuration:'0.4s'});
+        // $grid.isotope({transitionDuration:'0.4s'});
         $grid.isotope({sort:'dist'});
       });
     }

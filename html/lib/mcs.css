@@ -38,17 +38,21 @@
       @media (min-width:760px) { .grid-item{width:33.3333%;} }
 
       /* Animate swipe left right on touch devices */
-      .grid-item {
-        -webkit-transition: 80ms linear;
-        -ms-transition: 80ms linear;
-        transition: 80ms linear;
+      /* .grid-item { */
+      /*   -webkit-transition: 80ms linear; */
+      /*   -ms-transition: 80ms linear; */
+      /*   transition: 80ms linear; */
+      /* } */
+      
+      .in-click{
+        cursor:pointer;
       }
 
-      .grid-item.swiper {
-        transform: translate(200%);
-      }
-
-      .grid-item.swipel {
-        transform: translate(-200%);
-      }
+      /* .grid-item.swiper { */
+      /*   transform: translate(200%); */
+      /* } */
+      /*  */
+      /* .grid-item.swipel { */
+      /*   transform: translate(-200%); */
+      /* } */
 /* }}} */

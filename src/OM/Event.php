@@ -5,7 +5,7 @@ class Event
     <div class="grid-item p-2 %s %s" d=%s>
       <div class="card">
         <div class="border border-top-0 border-right-0 border-left-0 bg-secondary" style="max-height:200px;overflow:hidden">
-          <input type="image" class="card-img-top mx-auto d-block text-white in-click" style="max-width:100%%;" t-link="%s" src="%s" alt="Event picture (supposedly)"></input>
+          <img class="card-img-top mx-auto d-block text-white in-click" style="max-width:100%%;" t-link="%s" src="%s" alt="Event picture (supposedly)"></img>
           <input type="image" src="./img/cl4.png" class="btnClose d-md-block d-none"></input>
         </div>
         <div class="card-header p-2 m-0">
