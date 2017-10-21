@@ -70,7 +70,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>   <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
     <script type="text/javascript" src="lib/jquery.touchSwipe.min.js"></script>
-    <script src="./lib/mcs.js"></script>
+    <script src="./lib/mcs.js?1"></script>
   </body>
   <!-- }}} -->
 </html>
