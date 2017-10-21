@@ -60,8 +60,11 @@ $(document).ready(
             var $data_obj=$(data);
             $grid.append($data_obj).isotope('appended',$data_obj);
 
-            $grid.imagesLoaded().progress( function() {
-              $grid.isotope({sort:'dist'});
+            // $grid.imagesLoaded().progress( function() {
+            //   $grid.isotope();
+            // });
+            $grid.imagesLoaded().done( function() {
+              $grid.isotope();
             });
 
             $('.btnClose').click(function(){

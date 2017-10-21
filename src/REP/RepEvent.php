@@ -207,7 +207,7 @@ Class RepEvent{
       // converto \n to <br>
       $ret = nl2br($ret);
       // converto url in anchor
-      $ret = preg_replace_callback("[\b|\s]+([a-zA-Z:\/]{2,}[.](?![\d])[\w\/]{2,3}[^<\b\s]*)",
+      $ret = preg_replace_callback("([\b|\s]+([a-zA-Z:\/]{2,}[.](?![\d])[\w\/]{2,3}[^<\b\s]*))",
         function($matches){
           $m = $matches[0];
           if(!preg_match("(\bhttp[s]?:)",$m)){

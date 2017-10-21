@@ -1,11 +1,11 @@
-// Remove outline from boostrap buttons
+/* Remove outline from boostrap buttons */
 .btn:focus,.btn:active {
   outline: none !important;
   box-shadow: none;
 }
 
 
-// Spinner
+/* Spinner */
 #divLoadingInner{
   position: fixed;
   right: 0px;
@@ -31,13 +31,13 @@
   opacity:1;
 }
 
-// {{{ REGION: Grid
-      // Responsive number of columns
+/*  {{{ REGION: Grid */
+      /* Responsive number of columns */
       @media (max-width:480px) { .grid-item{width:100%;} }
       @media (min-width:481px) and (max-width:768px) { .grid-item{width:50%;} }
       @media (min-width:760px) { .grid-item{width:33.3333%;} }
 
-      // Animate swipe left right on touch devices
+      /* Animate swipe left right on touch devices */
       .grid-item {
         -webkit-transition: 80ms linear;
         -ms-transition: 80ms linear;
@@ -51,4 +51,4 @@
       .grid-item.swipel {
         transform: translate(-200%);
       }
-// }}}
+/* }}} */
