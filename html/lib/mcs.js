@@ -70,10 +70,8 @@ $(document).ready(
               $grid.isotope();
             });
 
-            $(".in-click").swipe({ // To avoid trigger on div callback
-              tap:function(event, direction, distance, duration, fingerCount, fingerData){
+            $(".in-click").click( function(event, direction, distance, duration, fingerCount, fingerData){
                 window.open($(this).attr("t-link"));
-              }
             });
 
             $("#grid .grid-item").swipe( {
