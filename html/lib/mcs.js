@@ -77,9 +77,13 @@ $(document).ready(
             });
 
             $("#grid .grid-item").swipe( {
-              swipe:function(event, direction, distance, duration, fingerCount, fingerData){
+              swipeLeft:function(event, direction, distance, duration, fingerCount, fingerData){
                 swipeCallback($(this), direction, fingerCount);
               },
+              swipeRight:function(event, direction, distance, duration, fingerCount, fingerData){
+                swipeCallback($(this), direction, fingerCount);
+              },
+              allowPageScroll:"vertical",
               threshold:80
             });
 
