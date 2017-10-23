@@ -107,6 +107,30 @@ $(document).ready(
       });
       // }}}
 
+// {{{ REGION: Swipe Callback
+function swipeCallback($elem, direction, fingerCount) {
+  // Uncomment only when deployed on actual mobile devices
+  // if ((direction == "left" || direction == "right") && fingerCount == 1){
+  if ($(window).width() < 760){
+    var targetClass ="";
+    if ((direction == "left" || direction == "right") && fingerCount <= 1){
+      if (direction == "left"){
+        targetClass = "swipel";
+      }
+      if (direction == "right"){
+        targetClass = "swiper";
+      }
+      // $grid.isotope({transitionDuration:0});
+      $elem.addClass(targetClass).delay(80).queue(function(){
+        $grid.isotope('remove',$elem).dequeue();
+        // $grid.isotope({transitionDuration:'0.4s'});
+        $grid.isotope({sort:'dist'});
+      });
+    }
+  }
+}
+// }}}
+
       // {{{ REGION: Initializations
       setFiltersFromCookies();
 
@@ -277,30 +301,6 @@ function setMhClasses(){
   }
   if(milanoHinterland[1]==0){
     deSelectBtn($('#divMilanoHinterland #btnHinterland'));
-  }
-}
-// }}}
-
-// {{{ REGION: Swipe Callback
-function swipeCallback($elem, direction, fingerCount) {
-  // Uncomment only when deployed on actual mobile devices
-  // if ((direction == "left" || direction == "right") && fingerCount == 1){
-  if ($(window).width() < 760){
-    var targetClass ="";
-    if ((direction == "left" || direction == "right") && fingerCount <= 1){
-      if (direction == "left"){
-        targetClass = "swipel";
-      }
-      if (direction == "right"){
-        targetClass = "swiper";
-      }
-      // $grid.isotope({transitionDuration:0});
-      $elem.addClass(targetClass).delay(80).queue(function(){
-        $grid.isotope('remove',$elem).dequeue();
-        // $grid.isotope({transitionDuration:'0.4s'});
-        $grid.isotope({sort:'dist'});
-      });
-    }
   }
 }
 // }}}
