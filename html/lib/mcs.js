@@ -133,8 +133,6 @@ function swipeCallback($elem, direction, fingerCount) {
 // }}}
 
       // {{{ REGION: Initializations
-      setFiltersFromCookies();
-      setSortFromCookies();
 
       $grid.isotope({
         // options
@@ -181,6 +179,8 @@ function swipeCallback($elem, direction, fingerCount) {
         sortBy: 'd'
       });
 
+      setFiltersFromCookies();
+      setSortFromCookies();
       loadConcerts($datePicker.datepicker().val());
       // }}}
     } );
@@ -211,7 +211,7 @@ $('#divNswe').on('click','button',function(event){
   var f = $target.html().toLowerCase();
   if (isChecked) {addLocFilter(f);}
   else {removeLocFilter(f);}
-  setCookies();
+  setFilterCookies();
   $grid.isotope();
 });
 
@@ -260,18 +260,26 @@ function selectBtn($b){
 // }}}
 
 // {{{ REGION: Cookies
-function setCookies() {
+function setFilterCookies() {
   var d = new Date();
   d.setTime(d.getTime() + (365 * 24 * 60 * 60 * 1000));
   var expires = "expires="+d.toUTCString();
   // cookie will be locFilters|mhFilters
   var filtersStr = locFilters.join(",") + "|" + milanoHinterland.join(",");
-  document.cookie = "filters=" + filtersStr + ";sort=" + sort + ";" + expires + ";path=/";
+  document.cookie = "filters=" + filtersStr + ";" + expires + ";path=/";
+}
+
+function setSortCookies() {
+  var d = new Date();
+  d.setTime(d.getTime() + (365 * 24 * 60 * 60 * 1000));
+  var expires = "expires="+d.toUTCString();
+  document.cookie = "sort=" + sort + ";" + expires + ";path=/";
 }
 
 function setSortFromCookies(){
   var filterS = cookieValue("sort");
   sort = filterS;
+  isoSort();
 }
 
 function setFiltersFromCookies(){
@@ -336,6 +344,7 @@ function setMhClasses(){
 $("#divSort button").click(function(){
   toggleSort($(this));
   isoSort();
+  setSortCookies();
 });
 
 function isoSort(){
@@ -347,7 +356,7 @@ function isoSort(){
   var arrow_n = ((asc) ? '\u2191' : '\u2193');
   $btnSort.text(tipo_ord + ' ' + arrow_n);
   $btnSort.siblings().removeClass('btn-dark').addClass('btn-secondary');
-  $btnSort.addClass('btn-secondary').removeClass('btn-dark');
+  $btnSort.addClass('btn-dark').removeClass('btn-secondary');
   $grid.isotope({sortBy: field, sortAscending: asc});
 }
 

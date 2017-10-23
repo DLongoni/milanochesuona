@@ -12,7 +12,7 @@ class Event
           <h6 class="card-title p-0 m-0 text-center">%s</h6>
         </div>
         <div class="card-block px-2 pt-1 my-0">
-          <p class="card-text mb-0">%s - %s</p>
+          <p class="card-text mb-0 oraluogo">%s - %s</p>
           %s
         </div>
         <div class="card-block px-2 pt-0 pb-2 border border-bottom-0 border-right-0 border-left-0 collapse">

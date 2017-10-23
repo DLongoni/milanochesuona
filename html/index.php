@@ -49,13 +49,13 @@
               <button id="btnOvest" type="button" class="btn btn-sm btn-secondary">W</button>
               <button id="btnEst" type="button" class="btn btn-sm btn-secondary">E</button>
             </div>
-          </div>
-          <div id="divSort" class="btn-group ml-md-3 mt-1"> 
+          <div id="divSort" class="btn-group ml-md-2 mt-1"> 
             <button id="btnSortd" type="button" class="btn btn-sm btn-dark">Distanza &#8593</button>
             <button id="btnSorto" type="button" class="btn btn-sm btn-secondary">Orario &#8593</button>
           </div>
+          </div>
         </div>
-        <div class="col-md-4"></div>
+        <div class="col-lg-3 col-md-2"></div>
       </div>
       <div class="row">
         <div class="col-md-1"></div>
