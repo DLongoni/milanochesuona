@@ -1,6 +1,7 @@
 // {{{ REGION: Definitions
 $grid = $('#grid');
 $datePicker = $('#txtDatePicker');
+var sort = 'da';
 var $loading = $('#divLoadingOuter').hide();
 
 locFilters = [];
@@ -124,7 +125,7 @@ function swipeCallback($elem, direction, fingerCount) {
       $elem.addClass(targetClass).delay(80).queue(function(){
         $grid.isotope('remove',$elem).dequeue();
         // $grid.isotope({transitionDuration:'0.4s'});
-        $grid.isotope({sort:'dist'});
+        $grid.isotope();
       });
     }
   }
@@ -133,6 +134,7 @@ function swipeCallback($elem, direction, fingerCount) {
 
       // {{{ REGION: Initializations
       setFiltersFromCookies();
+      setSortFromCookies();
 
       $grid.isotope({
         // options
@@ -153,15 +155,30 @@ function swipeCallback($elem, direction, fingerCount) {
           }
           return true;
         },
-        getSortData: { dist: function(elem){ // sort by distance from the center
+        getSortData: { d: function(elem){
           var e = $(elem).attr('d');
           if (e===undefined) {
-            return 10000.0;
+            return 1000.0;
           }
           return parseFloat(e);
-        }
         },
-        sortBy: 'dist'
+          o: function(elem){
+            $span = $(elem).find('.oraluogo');
+            if ($span === undefined){
+              return 0;
+            }
+            var oraArr = $span.text().split(" - ");
+            if (oraArr.length <= 1){
+              return 0;
+            }
+            var oraMin = oraArr[0].split(":");
+            var val = 0;
+            val = val + parseFloat(oraMin[0])*60;
+            val = val + parseFloat(oraMin[1]);
+            return val;
+          }
+        },
+        sortBy: 'd'
       });
 
       loadConcerts($datePicker.datepicker().val());
@@ -194,7 +211,7 @@ $('#divNswe').on('click','button',function(event){
   var f = $target.html().toLowerCase();
   if (isChecked) {addLocFilter(f);}
   else {removeLocFilter(f);}
-  setFilterCookies();
+  setCookies();
   $grid.isotope();
 });
 
@@ -243,28 +260,22 @@ function selectBtn($b){
 // }}}
 
 // {{{ REGION: Cookies
-function setFilterCookies() {
+function setCookies() {
   var d = new Date();
   d.setTime(d.getTime() + (365 * 24 * 60 * 60 * 1000));
   var expires = "expires="+d.toUTCString();
   // cookie will be locFilters|mhFilters
   var filtersStr = locFilters.join(",") + "|" + milanoHinterland.join(",");
-  document.cookie = "filters=" + filtersStr + ";" + expires + ";path=/";
+  document.cookie = "filters=" + filtersStr + ";sort=" + sort + ";" + expires + ";path=/";
+}
+
+function setSortFromCookies(){
+  var filterS = cookieValue("sort");
+  sort = filterS;
 }
 
 function setFiltersFromCookies(){
-  var name = "filters=";
-  var filterC = "";
-  var ca = document.cookie.split(';');
-  for(var i = 0; i < ca.length; i++) { // Get filters cookie val
-    var c = ca[i];
-    while (c.charAt(0) == ' ') {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-      filterC = c.substring(name.length, c.length);
-    }
-  } 
+  var filterC = cookieValue("filters");
   if (filterC != ""){
     filtersArr = filterC.split("|");
     if(filtersArr[0]!=""){
@@ -285,6 +296,22 @@ function setFiltersFromCookies(){
   }
 }
 
+function cookieValue(cName){
+  var name = cName + "=";
+  var ret = "";
+  var ca = document.cookie.split(';');
+  for(var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      ret = c.substring(name.length, c.length);
+    }
+  }
+  return ret;
+}
+
 function setNsweClasses(){
   for(var i = 0 ;i<locFilters.length;i++){
     $('#divNswe').children('button').each(function(){
@@ -302,5 +329,50 @@ function setMhClasses(){
   if(milanoHinterland[1]==0){
     deSelectBtn($('#divMilanoHinterland #btnHinterland'));
   }
+}
+// }}}
+
+// {{{ REGION: Sort
+$("#divSort button").click(function(){
+  toggleSort($(this));
+  isoSort();
+});
+
+function isoSort(){
+  var field = sort.charAt(0);
+  var asc = sort.charAt(1) == 'a';
+  $btnSort = $('#btnSort'+field);
+  var t = $btnSort.text().split(" ");
+  var tipo_ord = t[0];
+  var arrow_n = ((asc) ? '\u2191' : '\u2193');
+  $btnSort.text(tipo_ord + ' ' + arrow_n);
+  $btnSort.siblings().removeClass('btn-dark').addClass('btn-secondary');
+  $btnSort.addClass('btn-secondary').removeClass('btn-dark');
+  $grid.isotope({sortBy: field, sortAscending: asc});
+}
+
+function toggleSort($target){
+  var t = $target.text().split(" ");
+  var tipo_ord = t[0];
+  var sort_t = tipo_ord.charAt(0).toLowerCase();
+  var arrow_n = "";
+  if ($target.hasClass('btn-dark')){
+    if (t[1]=='\u2191'){
+      arrow_n = '\u2193';
+    }
+    else{
+      arrow_n = '\u2191';
+    }
+  }
+  else{
+    arrow_n = t[1];
+  }
+  if (arrow_n =='\u2191'){
+    sort_o = 'a';
+  }
+  else{
+    sort_o = 'd';
+  }
+  sort = sort_t + sort_o;
 }
 // }}}

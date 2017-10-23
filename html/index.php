@@ -22,32 +22,40 @@
         <p class="text-center text-muted mt-0 pt-0 mb-0 mb-md-3">solo musica dal vivo</p> 
       </div>
       <div class="row">
-        <div class="col-lg-2"></div>
-        <div class="col-md-2"></div>
-        <div class="col-lg-4 col-md-8 mb-0 mb-md-3 alert alert-secondary mx-1">
-          <div class="input-group text-center"> 
-            <span class="input-group-btn">
-              <button id="btnPrev" type="button" class="btn btn-secondary"><strong>&lt;</strong></button>
-            </span>
-            <input type="text" id="txtDatePicker" class="form-control text-center input-large"></input>
-            <span class="input-group-btn">
-              <button id="btnNext" type="button" class="btn btn-secondary"><strong>&gt;</strong></button>    
-            </span>
+        <div class="col-lg-3 col-md-2"></div>
+        <div class="col-lg-6 col-md-8 mb-0 mb-md-3 alert alert-secondary mx-1">
+          <div class = "row m-0 p-0">
+            <div class="col-1 col-md-2"></div>
+            <div class="col-10 col-md-8">
+              <div class="input-group text-center"> 
+                <span class="input-group-btn">
+                  <button id="btnPrev" type="button" class="btn btn-secondary"><strong>&lt;</strong></button>
+                </span>
+                <input type="text" id="txtDatePicker" class="form-control text-center input-large"></input>
+                <span class="input-group-btn">
+                  <button id="btnNext" type="button" class="btn btn-secondary"><strong>&gt;</strong></button>    
+                </span>
+              </div>
+            </div>
           </div>
-          <div id="divFilters" class="text-center mt-1">
-            <div id="divMilanoHinterland" class="btn-group"> 
+          <div id="divFilters" class="text-center">
+            <div id="divMilanoHinterland" class="btn-group mt-1"> 
               <button id="btnMilano" type="button" class="btn btn-sm btn-dark">Milano</button>
               <button id="btnHinterland" type="button" class="btn btn-sm btn-dark">Hinterland</button>
             </div>
-            <div id="divNswe" class="btn-group"> 
+            <div id="divNswe" class="btn-group mt-1"> 
               <button id="btnNord" type="button" class="btn btn-sm btn-secondary">N</button>
               <button id="btnSud" type="button" class="btn btn-sm btn-secondary">S</button>
               <button id="btnOvest" type="button" class="btn btn-sm btn-secondary">W</button>
               <button id="btnEst" type="button" class="btn btn-sm btn-secondary">E</button>
             </div>
           </div>
+          <div id="divSort" class="btn-group ml-md-3 mt-1"> 
+            <button id="btnSortd" type="button" class="btn btn-sm btn-dark">Distanza &#8593</button>
+            <button id="btnSorto" type="button" class="btn btn-sm btn-secondary">Orario &#8593</button>
+          </div>
         </div>
-        <div class="col-lg-4"></div>
+        <div class="col-md-4"></div>
       </div>
       <div class="row">
         <div class="col-md-1"></div>
