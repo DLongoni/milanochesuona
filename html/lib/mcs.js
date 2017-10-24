@@ -102,7 +102,7 @@ $(document).ready(
       $grid.on('shown.bs.collapse',function(){$grid.isotope()});
       $grid.on('hidden.bs.collapse',function(){$grid.isotope()});
 
-      $grid.on('click','.card-footer .btn',function(event){
+      $grid.on('click','.card-footer',function(event){
         $(this).parents().eq(1).find('.collapse').collapse('toggle');
         if($(this).html()=='\u25BD'){ $(this).html('\u25B3'); }
         else{ $(this).html('\u25BD'); }

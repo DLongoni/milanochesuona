@@ -32,10 +32,6 @@
 
 /* {{{ REGION: Color Scheme */
 :root{
-  --c-a:#DDDEDE;
-  --c-b:#7BA4A8;
-  --c-c:#232122;
-  --c-d:#A5C05B;
   /* COL 10 */
   /* --c-a:#DDDEDE; */
   /* --c-b:#7BA4A8; */
@@ -82,10 +78,10 @@
   /* --c-c:#AF4425; */
   /* --c-d:#662E1C; */
   /* COLORI ARANCINI 1 */
-  /* --c-a:#F7EFE2; */
-  /* --c-b:#F9A603; */
-  /* --c-c:#F25C00; */
-  /* --c-d:#A53F00; */
+  --c-a:#F7EFE2;
+  --c-b:#F9A603;
+  --c-c:#F25C00;
+  --c-d:#A53F00;
 }
 
 /* Background */
@@ -138,16 +134,6 @@ a:hover{
   color:white;
 }
 
-.btn-foot{
-  background-color:var(--c-a);
-  color:var(--c-b);
-}
-
-.btn-foot:hover{
-  background-color:var(--c-b);
-  color:var(--c-c);
-}
-
 /* Components */
 #txtDatePicker{
   border:1px solid var(--c-b);
@@ -170,9 +156,15 @@ a:hover{
 .card-footer{
   border-top:1px solid var(--c-b);
   background-color:var(--c-a);
+  font-size:0.6em;
+  color:var(--c-b);
+}
+
+.card-footer:hover{
+  background-color:var(--c-b);
+  color:var(--c-c);
 }
 /* }}} */
-
 
 /*  {{{ REGION: Grid */
 /* Responsive number of columns */
@@ -201,7 +193,7 @@ a:hover{
 }
 
 .spinner > div {
-  background-color: var(--c-c);
+  background-color: black;
   height: 100%;
   width: 6px;
   display: inline-block;
@@ -246,7 +238,7 @@ a:hover{
 }
 
 .overlay {
-  background-color:rgba(254,254,254,0.6);
+  background-color:rgba(254,254,254,0.7);
   display: none;       
   position: fixed; 
   top: 0;            

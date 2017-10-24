@@ -4,24 +4,22 @@ class Event
   private static $htmlMask='
     <div class="grid-item p-2 %s %s" d=%s>
       <div class="card">
-        <div class="border border-top-0 border-right-0 border-left-0 bg-secondary" style="max-height:200px;overflow:hidden">
+        <div class="" style="max-height:200px;overflow:hidden">
           <img class="card-img-top mx-auto d-block text-white in-click" style="max-width:100%%;" t-link="%s" src="%s" alt="Event picture (supposedly)"></img>
           <input type="image" src="./img/cl4.png" class="btnClose d-md-block d-none"></input>
         </div>
-        <div class="card-header p-2 m-0">
+        <div class="card-header txt-d p-2 m-0">
           <h6 class="card-title p-0 m-0 text-center">%s</h6>
         </div>
         <div class="card-block px-2 pt-1 my-0">
-          <p class="card-text mb-0 oraluogo">%s - %s</p>
+          <p class="card-text mb-0 oraluogo"><span class="txt-d">%s</span> - %s</p>
           %s
         </div>
-        <div class="card-block px-2 pt-0 pb-2 border border-bottom-0 border-right-0 border-left-0 collapse">
+        <div class="card-block px-2 pt-0 pb-2 collapse">
           <div class="small text-justify mt-2 mb-1">%s</div>
           %s
         </div>
-        <div class="card-footer m-0 p-0">
-          <button class="btn btn-light text-small text-muted btn-sm btn-block p-0 m-0" style="font-size:0.6em" type="button" >&#9661</button>
-        </div>
+        <div class="card-footer text-center m-0 p-0">&#9661</div>
       </div>
     </div>
   ';
