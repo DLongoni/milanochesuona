@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" href='./lib/mcs.css?v=5'>
+    <link rel="stylesheet" href='./lib/mcs.css?v=6'>
   </head> 
   <!-- }}} -->
 
@@ -21,7 +21,9 @@
         <h1 class="text-center txt-d mb-md-1 mb-0">MilanoCheSuona</h1> 
         <p class="text-center txt-c mt-0 pt-0 mb-0 mb-md-3">solo musica dal vivo</p> 
       </div>
-      <div class="row"> <div class="col-lg-3 col-md-2"></div> <div class="col-lg-6 col-md-8 mb-0 mb-md-3 alert bg-a brd-b mx-1">
+      <div class="row"> 
+        <div class="col-lg-3 col-md-2"></div> 
+        <div class="col-lg-6 col-md-8 mb-0 mb-md-3 alert bg-a brd-b mx-1">
           <div class = "row m-0 p-0">
             <div class="col-1 col-md-2"></div>
             <div class="col-10 col-md-8">
@@ -53,9 +55,9 @@
           </div>
           </div>
         </div>
-        <div class="col-lg-3 col-md-2"></div>
+        <div class="col-lg-3 col-md-2"></div> 
       </div>
-      <div class="row" style="height:100%;width:100%;">
+      <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-10 p-0">
           <div id="grid"></div>
