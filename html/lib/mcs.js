@@ -114,7 +114,6 @@ function swipeCallback($elem, direction, fingerCount) {
   // Uncomment only when deployed on actual mobile devices
   // if ((direction == "left" || direction == "right") && fingerCount == 1){
   if ($(window).width() < 760){
-    alert('a');
     var targetClass ="";
     if ((direction == "left" || direction == "right") && fingerCount <= 1){
       if (direction == "left"){
