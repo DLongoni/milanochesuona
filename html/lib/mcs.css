@@ -86,8 +86,10 @@ a{
   color: var(--c-c);
 }
 
-a:hover{
-  color: var(--c-d);
+@media (hover:hover){
+  a:hover{
+    color: var(--c-d);
+  }
 }
 
 /* Buttons */
@@ -101,9 +103,11 @@ a:hover{
   color:black;
 }
 
-.btn-sel:hover, .btn-not-sel:hover{
-  background-color:var(--c-d);
-  color:white;
+@media (hover:hover){
+  .btn-sel:hover, .btn-not-sel:hover{
+    background-color:var(--c-d);
+    color:white;
+  }
 }
 
 .btn-mute{
@@ -111,8 +115,10 @@ a:hover{
   color:var(--c-d);
 }
 
-.btn-mute:hover{
-  border:1px solid var(--c-d);
+@media (hover:hover){
+  .btn-mute:hover{
+    border:1px solid var(--c-d);
+  }
 }
 
 /* Components */
@@ -144,9 +150,11 @@ a:hover{
   transition: all 100ms linear;
 }
 
-.card-footer:hover{
-  background-color:var(--c-b);
-  color:var(--c-d);
+@media (hover:hover){
+  .card-footer:hover{
+    background-color:var(--c-b);
+    color:var(--c-d);
+  }
 }
 /* }}} */
 
