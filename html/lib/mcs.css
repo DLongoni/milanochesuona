@@ -30,33 +30,162 @@
   opacity:1;
 }
 
+/* {{{ REGION: Color Scheme */
+:root{
+  --c-a:#DDDEDE;
+  --c-b:#7BA4A8;
+  --c-c:#232122;
+  --c-d:#A5C05B;
+  /* COL 10 */
+  /* --c-a:#DDDEDE; */
+  /* --c-b:#7BA4A8; */
+  /* --c-c:#232122; */
+  /* --c-d:#A5C05B; */
+  /* COL 9 */
+  /* --c-a:#F1DCC9; */
+  /* --c-b:#9F4636; */
+  /* --c-c:#6C2D2C; */
+  /* --c-d:#42313A; */
+  /* COL 8 */
+  /* --c-a:#DAC3B3; */
+  /* --c-b:#FFA577; */
+  /* --c-c:#D55448; */
+  /* --c-d:#896E69; */
+  /* COLORI MEDIT 7 */
+  /* --c-a:#E2C499; */
+  /* --c-b:#E8A735; */
+  /* --c-c:#C8000A; */
+  /* --c-d:#8C0004; */
+  /* COLORI VERSATILE 6  */
+  /* --c-a:#D4DDE1; */
+  /* --c-b:#335252; */
+  /* --c-c:#2D3033; */
+  /* --c-d:#AA4B41; */
+  /* COLORI AQUA 5 */
+  /* --c-a:#B9C4C9; */
+  /* --c-b:#52958B; */
+  /* --c-c:#128277; */
+  /* --c-d:#004D47; */
+  /* COLORI MISTY GREEN 4 */
+  /* --c-a:#C9D1C8; */
+  /* --c-b:#5B7065; */
+  /* --c-c:#304040; */
+  /* --c-d:#04202C; */
+  /* COLORI CAFFELATTE 3 */
+  /* --c-a:#DDC5A2; */
+  /* --c-b:#B6452C; */
+  /* --c-c:#523634; */
+  /* --c-d:#301B28; */
+  /* COLORI MARRONCINI 2 */
+  /* --c-a:#EBDCB2; */
+  /* --c-b:#C9A66B; */
+  /* --c-c:#AF4425; */
+  /* --c-d:#662E1C; */
+  /* COLORI ARANCINI 1 */
+  /* --c-a:#F7EFE2; */
+  /* --c-b:#F9A603; */
+  /* --c-c:#F25C00; */
+  /* --c-d:#A53F00; */
+}
+
+/* Background */
+.bg-a{
+  background-color:var(--c-a);
+}
+
+.bg-b{
+  background-color:var(--c-b);
+}
+
+.bg-c{
+  background-color:var(--c-c);
+}
+
+.bg-d{
+  background-color:var(--c-d);
+}
+
+/* Text */
+.txt-c{
+  color:var(--c-c);
+}
+
+.txt-d{
+  color:var(--c-d);
+}
+
+a{
+  color: var(--c-c);
+}
+
+a:hover{
+  color: var(--c-d);
+}
+
+/* Buttons */
+.btn-sel{
+  background-color:var(--c-c);
+  color:black;
+}
+
+.btn-not-sel{
+  background-color:var(--c-b);
+  color:black;
+}
+
+.btn-sel:hover, .btn-not-sel:hover{
+  background-color:var(--c-d);
+  color:white;
+}
+
+.btn-foot{
+  background-color:var(--c-a);
+  color:var(--c-b);
+}
+
+.btn-foot:hover{
+  background-color:var(--c-b);
+  color:var(--c-c);
+}
+
+/* Components */
+#txtDatePicker{
+  border:1px solid var(--c-b);
+}
+
+.card{
+  border:1px solid var(--c-b);
+}
+
+.card-header{
+  border:0;
+  border-top:1px solid var(--c-b);
+  background-color:var(--c-a);
+}
+
+.card-block{
+  border-top:1px solid var(--c-b);
+}
+
+.card-footer{
+  border-top:1px solid var(--c-b);
+  background-color:var(--c-a);
+}
+/* }}} */
+
+
 /*  {{{ REGION: Grid */
 /* Responsive number of columns */
 @media (max-width:480px) { .grid-item{width:100%;} }
 @media (min-width:481px) and (max-width:768px) { .grid-item{width:50%;} }
 @media (min-width:760px) { .grid-item{width:33.3333%;} }
 
-/* Animate swipe left right on touch devices */
-/* .grid-item { */
-/*   -webkit-transition: 80ms linear; */
-/*   -ms-transition: 80ms linear; */
-/*   transition: 80ms linear; */
-/* } */
-
 .in-click{
   cursor:pointer;
 }
-
-/* .grid-item.swiper { */
-/*   transform: translate(200%); */
-/* } */
-/*  */
-/* .grid-item.swipel { */
-/*   transform: translate(-200%); */
-/* } */
 /* }}} */
 
-/* {{{ REGION: loading spinner */
+/* {{{ REGION: Loading Spinner */
 .spinner {
   box-sizing: border-box;
   position: absolute;
@@ -72,7 +201,7 @@
 }
 
 .spinner > div {
-  background-color: #333;
+  background-color: var(--c-c);
   height: 100%;
   width: 6px;
   display: inline-block;

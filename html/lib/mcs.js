@@ -245,18 +245,18 @@ function removeLocFilter(filter) { // location filter del
 
 // toggle class and return whether is checked or not
 function toggleClassAndIsChecked($target){
-  if($target.hasClass('btn-dark')) { deSelectBtn($target); }
+  if($target.hasClass('btn-sel')) { deSelectBtn($target); }
   else { selectBtn($target); }
-  var isChecked = $target.hasClass('btn-dark');
+  var isChecked = $target.hasClass('btn-sel');
   return isChecked;
 }
 
 function deSelectBtn($b){
-  $b.removeClass('btn-dark').addClass('btn-secondary');
+  $b.removeClass('btn-sel').addClass('btn-not-sel');
 }
 
 function selectBtn($b){
-  $b.removeClass('btn-secondary').addClass('btn-dark');
+  $b.removeClass('btn-not-sel').addClass('btn-sel');
 }
 // }}}
 
@@ -356,8 +356,8 @@ function isoSort(){
   var tipo_ord = t[0];
   var arrow_n = ((asc) ? '\u2191' : '\u2193');
   $btnSort.text(tipo_ord + ' ' + arrow_n);
-  $btnSort.siblings().removeClass('btn-dark').addClass('btn-secondary');
-  $btnSort.addClass('btn-dark').removeClass('btn-secondary');
+  $btnSort.siblings().removeClass('btn-sel').addClass('btn-not-sel');
+  $btnSort.addClass('btn-sel').removeClass('btn-not-sel');
   $grid.isotope({sortBy: field, sortAscending: asc});
 }
 
@@ -366,7 +366,7 @@ function toggleSort($target){
   var tipo_ord = t[0];
   var sort_t = tipo_ord.charAt(0).toLowerCase();
   var arrow_n = "";
-  if ($target.hasClass('btn-dark')){
+  if ($target.hasClass('btn-sel')){
     if (t[1]=='\u2191'){
       arrow_n = '\u2193';
     }
