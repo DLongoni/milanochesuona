@@ -22,11 +22,6 @@
 
 /* {{{ REGION: Color Scheme */
 :root{
-  /* COL 10 */
-  /* --c-a:#DDDEDE; */
-  /* --c-b:#7BA4A8; */
-  /* --c-c:#232122; */
-  /* --c-d:#A5C05B; */
   /* COL 9 */
   /* --c-a:#F1DCC9; */
   /* --c-b:#9F4636; */
@@ -37,41 +32,28 @@
   /* --c-b:#FFA577; */
   /* --c-c:#D55448; */
   /* --c-d:#896E69; */
-  /* COLORI MEDIT 7 */
-  /* --c-a:#E2C499; */
-  /* --c-b:#E8A735; */
-  /* --c-c:#C8000A; */
-  /* --c-d:#8C0004; */
-  /* COLORI VERSATILE 6  */
-  /* --c-a:#D4DDE1; */
-  /* --c-b:#335252; */
-  /* --c-c:#2D3033; */
-  /* --c-d:#AA4B41; */
-  /* COLORI AQUA 5 */
-  /* --c-a:#B9C4C9; */
-  /* --c-b:#52958B; */
-  /* --c-c:#128277; */
-  /* --c-d:#004D47; */
-  /* COLORI MISTY GREEN 4 */
-  /* --c-a:#C9D1C8; */
-  /* --c-b:#5B7065; */
-  /* --c-c:#304040; */
-  /* --c-d:#04202C; */
-  /* COLORI CAFFELATTE 3 */
-  /* --c-a:#DDC5A2; */
-  /* --c-b:#B6452C; */
-  /* --c-c:#523634; */
-  /* --c-d:#301B28; */
-  /* COLORI MARRONCINI 2 */
-  /* --c-a:#EBDCB2; */
-  /* --c-b:#C9A66B; */
-  /* --c-c:#AF4425; */
-  /* --c-d:#662E1C; */
   /* COLORI ARANCINI 1 */
   --c-a:#F7EFE2;
   --c-b:#F9A603;
   --c-c:#F25C00;
   --c-d:#A53F00;
+}
+
+/* Borders */
+.brd-a{
+  border:1px solid var(--c-a);
+}
+
+.brd-b{
+  border:1px solid var(--c-b);
+}
+
+.brd-c{
+  border:1px solid var(--c-c);
+}
+
+.brd-d{
+  border:1px solid var(--c-d);
 }
 
 /* Background */
@@ -124,6 +106,15 @@ a:hover{
   color:white;
 }
 
+.btn-mute{
+  background-color:var(--c-a);
+  color:var(--c-d);
+}
+
+.btn-mute:hover{
+  border:1px solid var(--c-d);
+}
+
 /* Components */
 #txtDatePicker{
   border:1px solid var(--c-b);
@@ -148,11 +139,14 @@ a:hover{
   background-color:var(--c-a);
   font-size:0.6em;
   color:var(--c-b);
+  -webkit-transition: all 100ms linear;
+  -ms-transition: all 100ms linear;
+  transition: all 100ms linear;
 }
 
 .card-footer:hover{
   background-color:var(--c-b);
-  color:var(--c-c);
+  color:var(--c-d);
 }
 /* }}} */
 
