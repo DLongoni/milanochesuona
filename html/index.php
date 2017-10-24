@@ -21,9 +21,7 @@
         <h1 class="text-center txt-d mb-md-1 mb-0">MilanoCheSuona</h1> 
         <p class="text-center txt-c mt-0 pt-0 mb-0 mb-md-3">solo musica dal vivo</p> 
       </div>
-      <div class="row">
-        <div class="col-lg-3 col-md-2"></div>
-        <div class="col-lg-6 col-md-8 mb-0 mb-md-3 alert bg-a mx-1">
+      <div class="row"> <div class="col-lg-3 col-md-2"></div> <div class="col-lg-6 col-md-8 mb-0 mb-md-3 alert bg-a mx-1">
           <div class = "row m-0 p-0">
             <div class="col-1 col-md-2"></div>
             <div class="col-10 col-md-8">
@@ -57,14 +55,12 @@
         </div>
         <div class="col-lg-3 col-md-2"></div>
       </div>
-      <div class="row">
+      <div class="row" style="height:100%;width:100%;">
         <div class="col-md-1"></div>
         <div class="col-md-10 p-0">
           <div id="grid"></div>
         </div>
         <div class="col-md-1"></div>
-      </div>
-      <div id="loadingDiv" class="row text-center pt-5">
         <div class="overlay">
           <div class="spinner">
             <div class="rect1"></div>
