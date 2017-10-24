@@ -63,9 +63,15 @@
           <div id="grid"></div>
         </div>
         <div class="col-md-1"></div>
-        <div id="divLoadingOuter" class="row text-center pt-5">
-          <div id = "divLoadingInner">
-            <img src="./img/load2.gif" style="max-width:60px">
+      </div>
+      <div id="loadingDiv" class="row text-center pt-5">
+        <div class="overlay">
+          <div class="spinner">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
           </div>
         </div>
       </div>

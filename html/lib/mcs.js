@@ -2,7 +2,7 @@
 $grid = $('#grid');
 $datePicker = $('#txtDatePicker');
 var sort = 'da';
-var $loading = $('#divLoadingOuter').hide();
+var $loadingOverlay = $('.overlay');
 
 locFilters = [];
 milanoHinterland = [1,1];
@@ -11,10 +11,10 @@ milanoHinterland = [1,1];
 // {{{ REGION: Loader
 $(document)
   .ajaxStart(function () {
-    $loading.show();
+    $loadingOverlay.show();
   })
   .ajaxStop(function () {
-    $loading.hide();
+    $loadingOverlay.hide();
   });
 // }}}
 
