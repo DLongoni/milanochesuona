@@ -20,6 +20,18 @@
   opacity:1;
 }
 
+.circle-full {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  color: black;
+  line-height: 25px;
+  text-align: center;
+  background-color: #e8e8e8;
+  font-weight:bold;
+  cursor:pointer;
+}
+
 /* {{{ REGION: Color Scheme */
 :root{
   /* COL 9 */
