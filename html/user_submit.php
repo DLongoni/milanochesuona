@@ -28,10 +28,7 @@ try{
     if ($m==1){
 
       $fb_id = $matches[2];
-      if (RepUserSubmissions::exists($fb_id,$type_id)){
-        $outcome=2;
-      }    
-      else if ($type_id==1){ // Venue -> do I already have it?
+      if ($type_id==1){ // Venue -> do I already have it?
         $V = RepVenue::GetByFbLink($fb_id);
         if ($V!=NULL){
           $outcome=3;
@@ -55,6 +52,9 @@ try{
             break;
           }
         }
+      }    
+      elseif (RepUserSubmissions::exists($fb_id,$type_id)){
+        $outcome=2;
       }    
 
       if($outcome==0){ // If i didn't find the event anywhere I add it
