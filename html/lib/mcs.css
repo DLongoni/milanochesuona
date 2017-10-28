@@ -27,9 +27,10 @@
   color: black;
   line-height: 25px;
   text-align: center;
-  background-color: #e8e8e8;
+  background-color: var(--c-b);
   font-weight:bold;
   cursor:pointer;
+  opacity:0.7;
 }
 
 /* {{{ REGION: Color Scheme */
@@ -49,6 +50,14 @@
   --c-b:#F9A603;
   --c-c:#F25C00;
   --c-d:#A53F00;
+}
+
+hr{
+  border-top:1px solid var(--c-d);
+}
+
+.err{
+  font-style:italic;
 }
 
 /* Borders */
@@ -86,6 +95,14 @@
 }
 
 /* Text */
+.txt-a{
+  color:var(--c-a);
+}
+
+.txt-b{
+  color:var(--c-b);
+}
+
 .txt-c{
   color:var(--c-c);
 }

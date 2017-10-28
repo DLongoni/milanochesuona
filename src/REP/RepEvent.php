@@ -7,23 +7,19 @@ require_once __DIR__ . '/RepEventBand.php';
 
 Class RepEvent{
   // Public Methods {{{
-  public static function getList()
-  {
+  public static function getList() {
     $conn=getConn();      
     if (!($res = $conn->query("CALL EventGetList()"))) {
       throw new Exception("CALL failed: (" . $conn->errno . ") " . $conn->error);
     }
     $ret=array();
-    while($eventRow = $res->fetch_assoc())
-    {
+    while($eventRow = $res->fetch_assoc()) {
       $ret[]=self::eventFromRow($eventRow);
     }
     return $ret;
   }
 
-  public static function getByDate($inDt)
-  {
-    // Check if this works
+  public static function getByDate($inDt) {
     $conn=getConn();
     $sel=$conn->prepare("CALL EventGetByDate(?)");
     $inDtDt = date_format(date_create($inDt),"Y-m-d");
@@ -44,8 +40,7 @@ Class RepEvent{
     return NULL;
   }
 
-  public static function getById($id)
-  {
+  public static function getById($id) {
     $eL = self::getList();
     foreach($eL as $e){
       if ($e->id == $id){
@@ -54,8 +49,7 @@ Class RepEvent{
     }
   }
 
-  public static function getByFbId($fbId)
-  {
+  public static function getByFbId($fbId) {
     $conn=getConn();
     $sel=$conn->prepare("CALL EventGetByFbId(?)");
     $sel->bind_param('i',$fbId);

@@ -1,45 +1,61 @@
 <!-- inserire in div di class modal&#45;dialog, che a sua volta è in div di class modal fade -->
-<div class="clearfix modal-content alert alert-secondary py-1 m-0">
-  <div class="modal-header py-2 my-0">
-    <h5 class="modal-title">Segnala</h5>
-    <button type="button" class="close float-right" data-dismiss="modal" aria-label="Close">
+<link rel="stylesheet" href='./lib/mcs.css?v=7'>
+<div class="clearfix modal-content brd-d bg-a py-1 m-0">
+  <div class="modal-header py-2 my-0" style="border-bottom:1px solid var(--c-d)">
+    <h4 class="modal-title txt-d">Segnala</h4>
+    <button type="button" class="close float-right txt-d" data-dismiss="modal" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
+    <div id="divForms">
+      <h5 class="float-left txt-d">un <strong>evento</strong></h5>
+      <span class="circle-full float-right mb-2 helpPopover txt-a bg-d" data-toggle="popover" title="Come funziona?" data-placement="bottom" data-content="Ad oggi i nostri sistemi permettono solo la segnalazione tramite link di facebook, che puoi copiare dalla barra degli URL del browser. La nostra redazione si occupa di verificare che l'evento segnalato sia un concerto di musica dal vivo, per poi aggiungerlo al database. Di norma ciò avviene entro 2/3 giorni.">?</span>
+      <form id="igEv" class="clearfix" autocomplete="off">
+        <div class="input-group" >
+          <span class="input-group-addon bg-a brd-d txt-d" id="basic-addon1">Link Fb:</span>
+          <input type="text" name="link" id="ev" class="form-control py-0 brd-d" placeholder="https://www.facebook.com/events/123456/" aria-label="Event" aria-describedby="basic-addon1">
+          <span class="input-group-btn">
+            <button type="button" id="btnSev" class="btn brd-d btn-not-sel btn-val">Go!</button>
+          </span>
+        </div>
+      </form>
 
-    <h5 class="float-left">un <strong>evento</strong></h5>
-    <span class="circle-full float-right mb-2 helpPopover" data-toggle="popover" title="Come funziona?" data-placement="bottom" data-content="Ad oggi i nostri sistemi permettono solo la segnalazione tramite link di facebook, che puoi copiare dalla barra degli URL del browser. La nostra redazione si occupa di verificare che l'evento segnalato sia un concerto di musica dal vivo, per poi aggiungerlo al database. Di norma ciò avviene entro 2/3 giorni.">?</span>
-    <form id="igEv" class="clearfix" autocomplete="off">
-      <div class="input-group" >
-        <span class="input-group-addon" id="basic-addon1">Link Fb:</span>
-        <input type="text" name="link" id="ev" class="form-control py-0" placeholder="https://www.facebook.com/events/123456/" aria-label="Event" aria-describedby="basic-addon1">
-        <span class="input-group-btn">
-          <button type="button" id="btnSev" class="btn btn-secondary btn-val">Go!</button>
-        </span>
-      </div>
-    </form>
+      <hr/>
 
-    <hr/>
+      <h5 class="float-left txt-d">un <strong>locale</strong></h5>
+      <span class="circle-full float-right mb-2 helpPopover txt-a bg-d" data-toggle="popover" title="Come funziona?" data-placement="bottom" data-content="Ad oggi i nostri sistemi permettono solo la segnalazione tramite link di facebook, che puoi copiare dalla barra degli URL del browser. Il locale segnalato verrà monitorato ogni 2/3 giorni per verificare la presenza di nuovi concerti da aggiungere al database.">?</span>
+      <form id="igLoc" autocomplete="off">
+        <div class="input-group">
+          <span class="input-group-addon txt-d bg-a brd-d" id="basic-addon1">Link Fb:</span>
+          <input type="text" name="link" id="loc" class="form-control py-0 brd-d" placeholder="https://www.facebook.com/locale-123/" aria-label="Locale" aria-describedby="basic-addon1" style="height:auto">
+          <span class="input-group-btn">
+            <button type="button" id="btnSloc" class="btn btn-not-sel brd-d btn-val">Go!</button>
+          </span>
+        </div>
+      </form>
+    </div>
 
-    <h5 class="float-left" >un <strong>locale</strong></h5>
-    <span class="circle-full float-right mb-2 helpPopover" data-toggle="popover" title="Come funziona?" data-placement="bottom" data-content="Ad oggi i nostri sistemi permettono solo la segnalazione tramite link di facebook, che puoi copiare dalla barra degli URL del browser. Il locale segnalato verrà monitorato ogni 2/3 giorni per verificare la presenza di nuovi concerti da aggiungere al database.">?</span>
-    <form id="igLoc" autocomplete="off">
-      <div class="input-group">
-        <span class="input-group-addon" id="basic-addon1">Link Fb:</span>
-        <input type="text" name="link" id="loc" class="form-control py-0" placeholder="https://www.facebook.com/locale-123/" aria-label="Locale" aria-describedby="basic-addon1" style="height:auto">
-        <span class="input-group-btn">
-          <button type="button" id="btnSloc" class="btn btn-secondary btn-val">Go!</button>
-        </span>
-      </div>
-    </form>
-
-  </div>
-  <div id="divSegnalaSucc" class="alert alert-success py-2 div-segnala" style="display:none">
-    La segnalazione è stata inserita correttamente. La redazione se ne occuperà prima possibile.
-  </div>
-  <div id="divSegnalaErr" class="alert alert-error py-2 div-segnala" style="display:none">
-    Si è verificato un errore nell'inserimento della segnalazione, ci scusiamo per il disagio.
+    <div id="divSegnalaSucc" class="alert alert-success mt-2 mb-0 div-segnala" style="display:none">
+      La segnalazione è stata inserita correttamente. La redazione se ne occuperà prima possibile.
+    </div>
+    <div id="divSegnalaErr" class="alert alert-danger mt-2 mb-0 div-segnala" style="display:none">
+      Si è verificato un errore nell'inserimento della segnalazione, ci scusiamo per il disagio.
+    </div>
+    <div id="divSegnalaExist" class="alert alert-info mt-2 mb-0 div-segnala" style="display:none">
+      Questo link ci è già stato segnalato. La redazione se ne occuperà prima possibile.
+    </div>
+    <div id="divSegnalaLocaleOk" class="alert alert-info mt-2 mb-0 div-segnala" style="display:none">
+      Questo locale è già presente nei nostri sistemi. Se ci siamo persi un evento in particolare segnalacelo tramite questo form.
+    </div>
+    <div id="divSegnalaEventoOk" class="alert alert-info mt-2 mb-0 div-segnala" style="display:none">
+      Questo evento è già stato caricato ed approvato. Se non lo vedi per favore segnalacelo via mail.
+    </div>
+    <div id="divSegnalaEventoKo" class="alert alert-info mt-2 mb-0 div-segnala" style="display:none">
+      Questo evento ci è già stato segnalato ma purtroppo non ci risulta idoneo alla pubblicazione. Se pensi che ci siamo sbagliati o vuoi delucidazioni non esitare a scriverci via mail.
+    </div>
   </div>
 </div>
-<script src="./lib/segnala.js"></script>
+<script>
+  $.getScript("./lib/segnala.js");
+</script>

@@ -3,26 +3,19 @@
 require_once __DIR__ . '/OM/Location.php';
 require_once __DIR__ . '/REP/RepEvent.php';
 require_once __DIR__ . '/REP/RepVenue.php';
+require_once __DIR__ . '/REP/RepUserSubmissions.php';
 require_once __DIR__ . '/DbConn.php';
 
-$rep=new RepEvent();
 
 $eI = new Event();
 $bArr=array();
 $bArr[]=RepBand::getByName("Boz Trio");
 $eI->bands=$bArr;
-// RepEvent::add($eI);
 
-// $eO=RepEvent::getList();
-
-$V=RepVenue::getById(39);
-// var_dump($V->name);
-// var_dump($V->location->latitude);
-// var_dump($V->location->longitude);
-// var_dump($V->getDistance());
-$e=RepEvent::getById(724);
-var_dump($e->title);
-var_dump($e->getHtml());
+// $V=RepVenue::getById(39);
+// $e=RepEvent::getById(724);
+// var_dump($e->title);
+// var_dump($e->getHtml());
 // foreach ($eO as $e)
 // {
 //   if ($e-> id == 725):
@@ -30,4 +23,14 @@ var_dump($e->getHtml());
 //     // var_dump($e->description);
 //   endif;
 // }
+
+// RepUserSubmissions::reject(1);
+$l=RepUserSubmissions::getList();
+$V = RepVenue::getByFbLink('cascinamart');
+var_dump($V);
+// foreach ($l as $e)
+// {
+//   print_r($matches);
+// }
+
 ?>

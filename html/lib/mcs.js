@@ -134,6 +134,21 @@ function swipeCallback($elem, direction, fingerCount) {
 // }}}
 
       // {{{ REGION: Initializations
+      $('#modalSegnala').on('show.bs.modal',function(e){
+        // $.ajax({
+        //   url:'./modalSegnala.html',
+        //   cache:false,
+        //   dataType:'html',
+        //   success:function(data){
+        //     $(this).find(".modal-dialog").html('ajshfakjsfhas');
+        //   },
+        //   error:function(xhr,ajaxOptions,thrownError){
+        //     alert(xhr.status);
+        //     alert(thrownError);
+        //   }
+        // });
+        $(this).find(".modal-dialog").load('./modalSegnala.html');
+      });
 
       $grid.isotope({
         // options

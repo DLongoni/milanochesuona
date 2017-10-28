@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" href='./lib/mcs.css?v=7'>
+    <link rel="stylesheet" href='./lib/mcs.css?v=8'>
   </head> 
   <!-- }}} -->
 
@@ -53,6 +53,9 @@
             <button id="btnSortd" type="button" class="btn btn-sm btn-sel">Distanza &#8593</button>
             <button id="btnSorto" type="button" class="btn btn-sm btn-not-sel">Orario &#8593</button>
           </div>
+          <div id="divSegnala" class="btn-group ml-md-2 mt-1"> 
+            <button id="btnSegnala" data-toggle="modal" data-target="#modalSegnala" type="button" class="btn btn-sm brd-d btn-sel">Segnala</button>
+          </div>
           </div>
         </div>
         <div class="col-lg-3 col-md-2"></div> 
@@ -83,9 +86,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
-   <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>   <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>   
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
     <script type="text/javascript" src="lib/jquery.touchSwipe.min.js"></script>
-    <script src="./lib/mcs.js?6"></script>
+    <script src="./lib/mcs.js?7"></script>
   </body>
   <!-- }}} -->
 </html>

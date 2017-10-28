@@ -12,8 +12,7 @@ Class RepVenue{
       throw new Exception("CALL failed: (" . $conn->errno . ") " . $conn->error);
     }
     $ret=array();
-    while($venueRow = $res->fetch_assoc())
-    {
+    while($venueRow = $res->fetch_assoc()) {
       $ret[]=self::venueFromRow($venueRow);
     }
     return $ret;
@@ -26,8 +25,21 @@ Class RepVenue{
     $sel->bind_param('i',$id);
     $sel->execute();
     $res=$sel->get_result();
-    if ($res->num_rows>0)
-    {
+    if ($res->num_rows>0) {
+      $loc=$res->fetch_assoc();
+      return self::venueFromRow($loc); 
+    }
+    return NULL;
+  }
+
+  public static function getByFbLink($query)
+  {
+    $conn=getConn();
+    $sel=$conn->prepare("CALL VenueGetByFbLink(?)");
+    $sel->bind_param('s',$query);
+    $sel->execute();
+    $res=$sel->get_result();
+    if ($res->num_rows>0) {
       $loc=$res->fetch_assoc();
       return self::venueFromRow($loc); 
     }
