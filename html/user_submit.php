@@ -12,6 +12,7 @@ $outcome = 0;
 // 3 -> venue in db
 // 4 -> event approved in DB
 // 5 -> event rejected in DB
+// 6 -> event submitted but discarded cause of crawling problems
 $type_id = 0;
 
 if ($type=="ev"){
@@ -53,6 +54,9 @@ try{
           }
         }
       }    
+      elseif (RepUserSubmissions::exists($fb_id,$type_id,2)){
+        $outcome=6; // Submitted and discarded for importing problems
+      }
       elseif (RepUserSubmissions::exists($fb_id,$type_id)){
         $outcome=2;
       }    

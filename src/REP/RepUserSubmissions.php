@@ -43,8 +43,8 @@ Class RepUserSubmissions{
     self::setStatus($id,2);
   }
 
-  public static function exists($query,$type=-1) {
-    $res = self::getByLink($query,$type);
+  public static function exists($query,$type=-1,$status=-1) {
+    $res = self::getByLink($query,$type,$status);
     return $res != NULL;
   }
   // }}}
@@ -61,7 +61,7 @@ Class RepUserSubmissions{
     $ins->execute();
   }
 
-  private static function getByLink($link,$type=-1)
+  private static function getByLink($link,$type=-1,$status=-1)
   {
     $conn=getConn();
     $sel=$conn->prepare("CALL UserSubmissionsGetByLink(?)");
@@ -73,7 +73,8 @@ Class RepUserSubmissions{
       $ret=array();
       while($row = $res->fetch_assoc())
       {
-        if ($type==-1 || ($row["type_id"] == $type)){
+        if (($type==-1 || ($row["type_id"] == $type)) &&
+          $status==-1 || ($row["status"] == $status)){
           $ret[]=$row;
         }
       }

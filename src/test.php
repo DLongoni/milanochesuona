@@ -13,9 +13,9 @@ $bArr[]=RepBand::getByName("Boz Trio");
 $eI->bands=$bArr;
 
 // $V=RepVenue::getById(39);
-// $e=RepEvent::getById(724);
+$e=RepEvent::getById(724);
 // var_dump($e->title);
-// var_dump($e->getHtml());
+var_dump($e->getHtml());
 // foreach ($eO as $e)
 // {
 //   if ($e-> id == 725):

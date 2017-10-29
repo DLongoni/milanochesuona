@@ -96,6 +96,9 @@ $().ready(function(){
             case 5:
               $("#divSegnalaEventoKo").slideDown();
               break;
+            case 6:
+              $("#divSegnalaDiscarded").slideDown();
+              break;
             default:
               $('#divForms').slideUp();
               $("#divSegnalaErr").slideDown();
