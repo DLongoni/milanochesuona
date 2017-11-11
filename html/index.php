@@ -90,7 +90,7 @@
     <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
     <script type="text/javascript" src="lib/jquery.touchSwipe.min.js"></script>
-    <script src="./lib/mcs.js?8"></script>
+    <script src="./lib/mcs.js?9"></script>
   </body>
   <!-- }}} -->
 </html>
