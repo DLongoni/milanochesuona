@@ -18,19 +18,10 @@ $(document)
 });
 // }}}
 
-$(document).on("touchstart",function(event) {
-  $("#grid .grid-item").swipe('destroy');
-  $("#grid .grid-item").swipe( {
-    swipeLeft:function(event, direction, distance, duration, fingerCount, fingerData){
-      swipeCallback($(this), direction, fingerCount);
-    },
-    swipeRight:function(event, direction, distance, duration, fingerCount, fingerData){
-      swipeCallback($(this), direction, fingerCount);
-    },
-    allowPageScroll:"vertical",
-    threshold:80
-  });
-});
+function isMobile(){
+  try{ document.createEvent("TouchEvent"); return true; }
+  catch(e){ return false; }
+}
 
 $(document).ready(
     function() {
@@ -89,6 +80,20 @@ $(document).ready(
               window.open($(this).attr("t-link"));
             });
 
+
+            if (isMobile()){
+              $("#grid .grid-item").swipe('destroy');
+              $("#grid .grid-item").swipe( {
+                swipeLeft:function(event, direction, distance, duration, fingerCount, fingerData){
+                  swipeCallback($(this), direction, fingerCount);
+                },
+                swipeRight:function(event, direction, distance, duration, fingerCount, fingerData){
+                  swipeCallback($(this), direction, fingerCount);
+                },
+                allowPageScroll:"vertical",
+                threshold:80
+              });
+            }
 
           },
           error:function(xhr,ajaxOptions,thrownError){
