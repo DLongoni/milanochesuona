@@ -76,6 +76,12 @@
           </div>
         </div>
       </div>
+      <hr class="pb-0 mb-0"/>
+      <div class="row">
+        <div class="col-12 text-center">
+          <a href="mailto:info@milanochesuona.it">Inviaci una mail</a>
+        </div>
+      </div>
     </div>
     <div id ="modalSegnala" role="dialog" class="modal fade" tabindex="-1" aria-labelledby="modalSegnalaLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
