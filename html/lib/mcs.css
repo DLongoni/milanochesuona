@@ -4,23 +4,8 @@
   box-shadow: none;
 }
 
-.btnClose {
-  position:absolute;
-  top:3px;
-  right:3px;
-  width:7%;
-  border-radius:50%;
-  opacity:0.5; 
-  -webkit-transition: opacity 80ms linear;
-  -ms-transition: opacity 80ms linear;
-  transition: opacity 80ms linear;
-}
-
-.btnClose:hover,.btnClose:active {
-  opacity:1;
-}
-
-.circle-full {
+/* used in recommend event modal */
+.circle-full { 
   width: 25px;
   height: 25px;
   border-radius: 50%;
@@ -272,5 +257,37 @@ a{
   -webkit-transition: all 200ms linear;
   -ms-transition: all 200ms linear;
   transition: all 200ms linear;
+}
+
+/* {{{ REGION: Close Button */
+.btnClose {
+  position:absolute;
+  top:3px;
+  right:3px;
+  display:block;
+
+  /* width:1.5vw; */
+  /* height:1.5vw; */
+  /* line-height:1.5vw; */
+  /* font-size:1.5vw; */
+  width:15pt;
+  height:15pt;
+  line-height:15pt;
+  font-size:15pt;
+
+  cursor:default;
+  border: 3px solid black;
+  border-radius: 50%;
+  color:black;
+  text-align:center;
+  text-decoration:none;
+  background: #d1d1d1;
+  font-weight:bold;
+  font-family:Arial !important;
+  box-sizing:content-box !important;
+  opacity:0.7;
+}
+.btnClose:hover {
+  opacity:0.9;
 }
 /* }}} */
