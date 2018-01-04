@@ -211,8 +211,8 @@ $(document).ready(
     // {{{ REGION: Filters
     var filterFunctions = [
       function(elem) { // check milano
-        if((milanoHinterland[0] && elem.hasClass('milano')) ||
-            (milanoHinterland[1] && !elem.hasClass('milano'))) {
+        if((milanoHinterland[0] == 1 && elem.hasClass('milano')) ||
+            (milanoHinterland[1] == 1 && !elem.hasClass('milano'))) {
           return true; }
         else
         { return false; }
