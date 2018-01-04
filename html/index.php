@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" href='./lib/mcs.css?v=9'>
+    <link rel="stylesheet" href='./lib/mcs.css?v=11'>
     <link rel="shortcut icon" href='./img/McsIcon.png'>
   </head> 
   <!-- }}} -->
@@ -19,7 +19,7 @@
   <body>
     <div class="container mt-md-2">
       <div class="header">
-        <h1 class="text-center txt-d mb-md-1 mb-0">MilanoCheSuona</h1> 
+        <a class="no-underline" href="./"><h1 class="text-center txt-d mb-md-1 mb-0">MilanoCheSuona</h1></a> 
         <p class="text-center txt-c mt-0 pt-0 mb-0 mb-md-3">solo musica dal vivo</p> 
       </div>
       <div class="row"> 
@@ -97,7 +97,7 @@
     <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
     <script type="text/javascript" src="lib/jquery.touchSwipe.min.js"></script>
-    <script src="./lib/mcs.js?10"></script>
+    <script src="./lib/mcs.js?11"></script>
   </body>
   <!-- }}} -->
 </html>

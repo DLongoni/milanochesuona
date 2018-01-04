@@ -35,6 +35,7 @@ $(document).ready(
             defaultDate: '0',
             dayNamesShort:["Dom","Lun","Mar","Mer","Gio","Ven","Sab"],
             onSelect: function(dtTxt){
+              setDateHash();
               loadConcerts(dtTxt);
             }
           }).datepicker('setDate', new Date()); // to select today as default
@@ -43,6 +44,7 @@ $(document).ready(
         var selDt = $datePicker.datepicker("getDate");
         selDt.setDate(selDt.getDate()+1);
         $datePicker.datepicker("setDate", selDt);
+        setDateHash();
         loadConcerts($datePicker.datepicker().val());
       });
 
@@ -50,8 +52,15 @@ $(document).ready(
         var selDt = $datePicker.datepicker("getDate");
         selDt.setDate(selDt.getDate()-1);
         $datePicker.datepicker("setDate", selDt);
+        setDateHash();
         loadConcerts($datePicker.datepicker().val());
       });
+
+      function setDateHash(val){
+        val = $datePicker.datepicker().val()
+        dt = val.substring(4).replace(/\//g,"");
+        window.location.hash="/"+dt;
+      }
       // }}}
 
       // {{{ REGION: Load Concerts
@@ -143,20 +152,20 @@ $(document).ready(
 
       // {{{ REGION: Initializations
       $('#modalSegnala').on('show.bs.modal',function(e){
-        // $.ajax({
-        //   url:'./modalSegnala.html',
-        //   cache:false,
-        //   dataType:'html',
-        //   success:function(data){
-        //     $(this).find(".modal-dialog").html('ajshfakjsfhas');
-        //   },
-        //   error:function(xhr,ajaxOptions,thrownError){
-        //     alert(xhr.status);
-        //     alert(thrownError);
-        //   }
-        // });
         $(this).find(".modal-dialog").load('./modalSegnala.html');
       });
+
+      var dHash =window.location.hash;
+      if (dHash == ""){
+        setDateHash();
+      }
+      else{
+        if (dHash.length != 10){ // Something was wrong -> reset
+          setDateHash();
+        }
+        var hashDate = new Date(dHash.substr(6,4),dHash.substr(4,2)-1,dHash.substr(2,2));
+        $datePicker.datepicker("setDate", hashDate);
+      }
 
       $grid.isotope({
         // options

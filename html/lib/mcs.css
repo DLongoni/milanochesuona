@@ -4,6 +4,10 @@
   box-shadow: none;
 }
 
+a.no-underline{
+  text-decoration:none !important;
+}
+
 /* used in recommend event modal */
 .circle-full { 
   width: 25px;
