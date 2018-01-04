@@ -5,7 +5,7 @@ class Event
     <div class="grid-item p-1 %s %s" d=%s>
       <div class="card">
         <div class="" style="max-height:200px;overflow:hidden">
-          <img class="card-img-top mx-auto d-block txt-c in-click" style="max-width:100%%;" t-link="%s" src="%s" alt="Event picture (ideally)"></img>
+          <img class="card-img-top mx-auto d-block txt-c in-click" style="max-width:100%%;" t-link="%s" src="%s" alt="Pagina del concerto"></img>
           <a class="btnClose d-md-block d-none">&times;</a>
         </div>
         <div class="card-header txt-d p-2 m-0">
