@@ -12,6 +12,15 @@
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href='./lib/mcs.css?v=11'>
     <link rel="shortcut icon" href='./img/McsIcon.png'>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116553375-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-116553375-1');
+  </script>
+
   </head> 
   <!-- }}} -->
 
