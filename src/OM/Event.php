@@ -48,7 +48,8 @@ class Event
       $this->GetNsweClass(),
       round($this->venue->getDistance(),2),
       $this->link,
-      $this->picture,
+      // $this->picture,
+      $this->getPicPath(),
       $this->title,
       date_format(date_create($this->startTime),"H:i"),
       $this->venue->getLinkHtml(),
@@ -92,6 +93,10 @@ class Event
 
   private function getNsweClass(): string { 
     return $this->venue->getNsweClass(); 
+  }
+
+  private function getPicPath(): string{
+    return '/EventPictures/' . $this->fbId . '.jpg';
   }
 }
 ?>
