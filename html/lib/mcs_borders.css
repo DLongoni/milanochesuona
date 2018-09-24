@@ -1,5 +1,9 @@
-@font-face{font-family: hamurz; src:url('/lib/hamurz.ttf');}
-@font-face{font-family: savoye; src:url('/lib/savoye.ttf');}
+@font-face{font-family: hamurz; src:url('./hamurz.ttf');}
+
+body{
+  background-color:#B78F3E
+  /* background-color:#DADAD0 */
+}
 
 /* Remove outline from boostrap buttons */
 .btn:focus,.btn:active {
@@ -42,17 +46,7 @@ a.no-underline{
   --c-b:#F9A603;
   --c-c:#F25C00;
   --c-d:#A53F00;
-  /* BACKGROUND */
-  --c-bg:#8996A4;
-  /* --c-bg:#BC9883; */
-  /* --c-bg:#D59C45; */
-  /* --c-bg:#EEA858; */
 }
-
-body{
-  background-color:var(--c-bg);
-}
-
 
 hr{
   border-top:1px solid var(--c-d);
@@ -159,7 +153,6 @@ a{
 
 .card{
   border:1px solid var(--c-b);
-  /* border:none; */
 }
 
 .card-header{
@@ -262,7 +255,7 @@ a{
 }
 
 .overlay {
-  background-color:rgba(254,254,254,0.5);
+  background-color:rgba(254,254,254,0.7);
   display: none;       
   position: absolute; 
   width:100%;
