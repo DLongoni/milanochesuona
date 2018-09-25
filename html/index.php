@@ -12,14 +12,14 @@
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href='./lib/mcs.css?v=11'>
     <link rel="shortcut icon" href='./img/McsIcon.png'>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116553375-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116553375-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-    gtag('config', 'UA-116553375-1');
-  </script>
+      gtag('config', 'UA-116553375-1');
+    </script>
 
   </head> 
   <!-- }}} -->
@@ -28,12 +28,12 @@
   <body>
     <div class="container mt-md-2">
       <div class="header">
-        <a class="no-underline" href="./"><h1 class="text-center txt-d mb-md-1 mb-0">MilanoCheSuona</h1></a> 
-        <p class="text-center txt-c mt-0 pt-0 mb-0 mb-md-3">solo musica dal vivo</p> 
+        <a class="no-underline" href="./"><h1 class="text-center txt-d mb-md-1 mb-0" style="font-family:hamurz; font-size:8rem">Milano che suona</h1></a> 
+        <p class="text-center mt-0 pt-0 mb-0 mb-md-3 " style="font-family:savoye">solo musica dal vivo</p> 
       </div>
       <div class="row"> 
         <div class="col-lg-3 col-md-2"></div> 
-        <div class="col-lg-6 col-md-8 mb-0 mb-md-3 alert bg-a brd-b mx-1">
+        <div class="col-lg-6 col-md-8 mb-0 mb-md-3 alert bg-a mx-1" style="border:none">
           <div class = "row m-0 p-0">
             <div class="col-1 col-md-2"></div>
             <div class="col-10 col-md-8">
@@ -89,7 +89,7 @@
       <hr class="pb-0 mb-0"/>
       <div class="row">
         <div class="col-12 text-center">
-          <a href="mailto:info@milanochesuona.it">Inviaci una mail</a>
+          <a href="mailto:info@milanochesuona.it" class="txt-d">Inviaci una mail</a>
         </div>
       </div>
     </div>

@@ -16,13 +16,14 @@ $eI->bands=$bArr;
 $e=RepEvent::getById(724);
 // var_dump($e->title);
 var_dump($e->getHtml());
-// foreach ($eO as $e)
-// {
-//   if ($e-> id == 725):
-//     var_dump($e->getHtml());
-//     // var_dump($e->description);
-//   endif;
-// }
+$inDt = date_create_from_format('d/m/Y','29/05/2018');
+$inDt = date_format($inDt,"j-M-Y");
+$eList=RepEvent::getByDate($inDt);
+foreach ($eList as $e)
+{
+    var_dump($e->getHtml());
+    // var_dump($e->description);
+}
 
 // RepUserSubmissions::reject(1);
 $l=RepUserSubmissions::getList();

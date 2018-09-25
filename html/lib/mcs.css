@@ -43,10 +43,10 @@ a.no-underline{
   --c-c:#F25C00;
   --c-d:#A53F00;
   /* BACKGROUND */
-  --c-bg:#8996A4;
+  /* --c-bg:#8996A4; */
   /* --c-bg:#BC9883; */
   /* --c-bg:#D59C45; */
-  /* --c-bg:#EEA858; */
+  --c-bg:#EEA858;
 }
 
 body{
