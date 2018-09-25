@@ -5,6 +5,7 @@ h1{
 }
 .subtit{
   font-family:Sacramento;
+  line-height:0.9;
 }
 @media (max-width:780px) { 
   h1{font-size:3rem;}
