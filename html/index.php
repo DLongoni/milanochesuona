@@ -5,13 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Milano che suona. Milanochesuona."/>
 
     <title>MilanoCheSuona</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" href='./lib/mcs.css?v=11'>
+    <link rel="stylesheet" href='./lib/mcs.css?v=12'>
     <link rel="shortcut icon" href='./img/McsIcon.png'>
+    <!-- Alternative: Cookie -->
+    <link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116553375-1"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -28,8 +32,8 @@
   <body>
     <div class="container mt-md-2">
       <div class="header">
-        <a class="no-underline" href="./"><h1 class="text-center txt-d mb-md-1 mb-0" style="font-family:hamurz; font-size:8rem">Milano che suona</h1></a> 
-        <p class="text-center mt-0 pt-0 mb-0 mb-md-3 " style="font-family:savoye">solo musica dal vivo</p> 
+        <a class="no-underline" href="./"><h1 class="text-center txt-d mb-md-1 mb-0">Milano che suona</h1></a> 
+        <p class="text-center mt-0 pt-0 mb-0 mb-md-3 txt-a subtit">solo musica dal vivo</p> 
       </div>
       <div class="row"> 
         <div class="col-lg-3 col-md-2"></div> 
