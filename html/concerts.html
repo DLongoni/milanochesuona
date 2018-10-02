@@ -1,0 +1,57 @@
+<div class="row"> 
+  <div class="col-lg-3 col-md-2"></div> 
+  <div class="col-lg-6 col-md-8 mb-0 mb-md-3 alert bg-a mx-1" style="border:none">
+    <div class = "row m-0 p-0">
+      <div class="col-1 col-md-2"></div>
+      <div class="col-10 col-md-8">
+        <div class="input-group text-center"> 
+          <span class="input-group-btn">
+            <button id="btnPrev" type="button" class="btn btn-not-sel"><strong>&lt;</strong></button>
+          </span>
+          <input type="text" id="txtDatePicker" class="datepicker form-control txt-d text-center input-large"></input>
+          <span class="input-group-btn">
+            <button id="btnNext" type="button" class="btn btn-not-sel"><strong>&gt;</strong></button>    
+          </span>
+        </div>
+      </div>
+    </div>
+    <div id="divFilters" class="text-center">
+      <div id="divMilanoHinterland" class="btn-group mt-1"> 
+        <button id="btnMilano" type="button" class="btn btn-sm btn-sel">Milano</button>
+        <button id="btnHinterland" type="button" class="btn btn-sm btn-sel">Hinterland</button>
+      </div>
+      <div id="divNswe" class="btn-group mt-1"> 
+        <button id="btnNord" type="button" class="btn btn-sm btn-not-sel">N</button>
+        <button id="btnSud" type="button" class="btn btn-sm btn-not-sel">S</button>
+        <button id="btnOvest" type="button" class="btn btn-sm btn-not-sel">W</button>
+        <button id="btnEst" type="button" class="btn btn-sm btn-not-sel">E</button>
+      </div>
+      <div id="divSort" class="btn-group ml-md-2 mt-1"> 
+        <button id="btnSortd" type="button" class="btn btn-sm btn-sel">Distanza &#8593</button>
+        <button id="btnSorto" type="button" class="btn btn-sm btn-not-sel">Orario &#8593</button>
+      </div>
+      <div id="divSegnala" class="btn-group ml-md-2 mt-1"> 
+        <button id="btnSegnala" data-toggle="modal" data-target="#modalSegnala" type="button" class="btn btn-sm brd-d btn-sel">Segnala</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-2"></div> 
+</div>
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10 p-0">
+    <div id="grid"></div>
+  </div>
+  <div class="col-md-1"></div>
+  <div class="overlay">
+    <div class="spinner">
+      <div class="rect1"></div>
+      <div class="rect2"></div>
+      <div class="rect3"></div>
+      <div class="rect4"></div>
+      <div class="rect5"></div>
+    </div>
+  </div>
+</div>
+
+<script src="./lib/mcs-concerts.js?1"></script>

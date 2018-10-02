@@ -54,12 +54,7 @@ class Venue
     if(!isset($this->location->latitude) or !isset($this->location->longitude)) {
       return False;
     }
-    if($this->venue_type_id==1) {
-      return True;
-    }
-    else {
-      return False;
-    }
+    return True;
   }
 
   public function getDistance(): float {

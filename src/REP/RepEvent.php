@@ -41,6 +41,21 @@ Class RepEvent{
   }
 
   public static function getById($id) {
+    $conn=getConn();
+    $sel=$conn->prepare("CALL EventGetById(?)");
+    $sel->bind_param('s',$id);
+    $sel->execute();
+    $res=$sel->get_result();
+    if ($res->num_rows>0)
+    {
+      while($eventRow = $res->fetch_assoc())
+      {
+        $e = self::eventFromRow($eventRow);
+      }
+      return $e;
+    }
+    return NULL;
+
     $eL = self::getList();
     foreach($eL as $e){
       if ($e->id == $id){
