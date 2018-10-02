@@ -2,12 +2,28 @@ $(document).ready(
   function() {
     // {{{ REGION: Initializations
     $('#modalSegnala').on('show.bs.modal',function(e){
-      $(this).find(".modal-dialog").load('./modalSegnala.html');
+      $(this).find(".modal-dialog").load('./content/modalSegnala.html');
     });
 
-    $("#main_content").load("concerts.html");
+    $(window).on('hashchange', function(){
+      var hash = location.hash;
+      var page;
+      if (hash!="#!")
+      {
+        hash=hash.replace(/^#/, '' );
+        hash=hash.replace('/', '' );
+        if (hash=="" || (hash.length==8 && $.isNumeric(hash)))
+        {
+          $("#main_content").load("concerts.html");
+        }
+        else
+        {
+          $("#main_content").load("./../content/" + hash + ".html");
+        }
+      }
+    }).trigger('hashchange');
+    // $(window).hashchange();
 
-    // var dHash =window.location.hash;
     // }}}
 
     // {{{ Cookie policy
@@ -26,13 +42,13 @@ $(document).ready(
 
       // close on click outside
       $(document).click(function(e) {
-          var container = $(".acceptCookies");
-          if (!container.is(e.target) && container.has(e.target).length === 0)
-          {
-            closeBanner();
-            $(document).off('click');
-          }
-        });
+        var container = $(".acceptCookies");
+        if (!container.is(e.target) && container.has(e.target).length === 0)
+        {
+          closeBanner();
+          $(document).off('click');
+        }
+      });
 
 
       // close on scroll

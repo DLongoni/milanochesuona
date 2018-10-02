@@ -37,8 +37,12 @@ gtag('config', 'UA-116553375-1');
 
       <hr class="pb-0 mb-0"/>
       <div class="row">
-        <div class="col-12 text-center">
+        <div class="col-12 text-center txt-d">
+          <a href="#/" class="txt-d">Home</a>
+          -
           <a href="mailto:info@milanochesuona.it" class="txt-d">Inviaci una mail</a>
+          -
+          <a href="#/cookies" class="txt-d">Cookies</a>
         </div>
       </div>
     </div>
@@ -49,7 +53,7 @@ gtag('config', 'UA-116553375-1');
     <div class="alert text-center cookiealert" role="alert">
         <div class="cookiealert-container txt-a">
 <small>
-            <b>milanochesuona.it</b> usa i cookie per migliorare la navigazione e per monitorare il traffico. Cliccando sulla pagina o scorrendo acconsenti all'uso. Per approfondire <a href="" target="_blank" class="txt-b">clicca qui</a>.
+            <b>milanochesuona.it</b> usa i cookie per migliorare la navigazione e per monitorare il traffico. Cliccando sulla pagina o scorrendo acconsenti all'uso. Per approfondire <a href="#/cookies" class="txt-b">clicca qui</a>.
 
             <button type="button" class="btn btn-b-a btn-sm acceptcookies" aria-label="Close">
               Accetto
