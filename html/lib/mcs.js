@@ -1,3 +1,5 @@
+var curr_page="";
+
 $(document).ready(
   function() {
     // {{{ REGION: Initializations
@@ -12,18 +14,22 @@ $(document).ready(
       {
         hash=hash.replace(/^#/, '' );
         hash=hash.replace('/', '' );
-        if (hash=="" || (hash.length==8 && $.isNumeric(hash)))
-        {
-          $("#main_content").load("concerts.html");
+        if (hash=="" || (hash.length==8 && $.isNumeric(hash))) {
+          page="concerts";
         }
-        else
-        {
-          $("#main_content").load("./../content/" + hash + ".html");
+        else {
+          page=hash;
+        }
+        if (page!=curr_page) {
+          curr_page=page;
+          $("#main_content").load("./../content/" + page + ".html");
         }
       }
     }).trigger('hashchange');
-    // $(window).hashchange();
 
+    $("#cookies_link").click(function(){
+      $("html, body").animate({ scrollTop: 0 });
+    });
     // }}}
 
     // {{{ Cookie policy

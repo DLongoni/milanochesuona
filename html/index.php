@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" href='./lib/mcs.css?v=13'>
+    <link rel="stylesheet" href='./lib/mcs.css?v=14'>
     <link rel="shortcut icon" href='./img/McsIcon.png'>
     <link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
 
@@ -42,7 +42,7 @@ gtag('config', 'UA-116553375-1');
           -
           <a href="mailto:info@milanochesuona.it" class="txt-d">Inviaci una mail</a>
           -
-          <a href="#/cookies" class="txt-d">Cookies</a>
+          <a id="cookies_link" href="#/cookies" class="txt-d">Cookies</a>
         </div>
       </div>
     </div>
@@ -53,7 +53,7 @@ gtag('config', 'UA-116553375-1');
     <div class="alert text-center cookiealert" role="alert">
         <div class="cookiealert-container txt-a">
 <small>
-            <b>milanochesuona.it</b> usa i cookie per migliorare la navigazione e per monitorare il traffico. Cliccando sulla pagina o scorrendo acconsenti all'uso. Per approfondire <a href="#/cookies" class="txt-b">clicca qui</a>.
+            <b>milanochesuona.it</b> usa i cookie per migliorare la navigazione e per monitorare il traffico. Cliccando sulla pagina o scorrendo acconsenti all'uso. Per approfondire <a id="cookies_link" href="#/cookies" class="txt-b">clicca qui</a>.
 
             <button type="button" class="btn btn-b-a btn-sm acceptcookies" aria-label="Close">
               Accetto
@@ -70,7 +70,7 @@ gtag('config', 'UA-116553375-1');
     <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
     <script type="text/javascript" src="lib/jquery.touchSwipe.min.js"></script>
     <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>   
-    <script src="./lib/mcs.js?12"></script>
+    <script src="./lib/mcs.js?13"></script>
   </body>
   <!-- }}} -->
 </html>

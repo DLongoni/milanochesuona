@@ -73,7 +73,6 @@ $(document).ready(
         success:function(data){
           $grid.isotope('remove',$grid.isotope('getItemElements'));
           var $data_obj=$(data);
-          console.log(data);
           $grid.append($data_obj).isotope('appended',$data_obj);
 
           $grid.imagesLoaded().progress( function() {
