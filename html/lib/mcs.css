@@ -212,8 +212,8 @@ a{
 
 @media (hover:hover){
   .card-footer:hover{
-    background-color:var(--c-b);
-    color:var(--c-d);
+    background-color:var(--c-d);
+    color:var(--c-a);
   }
 }
 /* }}} */

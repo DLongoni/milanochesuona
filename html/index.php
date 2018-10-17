@@ -5,13 +5,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Milano che suona. Milanochesuona."/>
+    <meta name="description" content="Il portale nato per saziare la tua sete di musica dal vivo a Milano e hinterland."/>
+    <meta property="og:site_name" content="milanochesuona.it"/>
+    <meta property="og:title" content="Milano che Suona"/>
+    <meta property="og:description" content="Il portale nato per saziare la tua sete di musica dal vivo a Milano e hinterland."/>
+    <meta property="og:url" content="https://milanochesuona.it">
+    <meta property="og:image" content="./img/mcs.jpg">
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="2048">
+    <meta property="og:image:height" content="779">
 
-    <title>Milano che suona</title>
+    <title>Milano che Suona</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" href='./lib/mcs.css?v=14'>
+    <link rel="stylesheet" href='./lib/mcs.css?v=15'>
     <link rel="shortcut icon" href='./img/McsIcon.png'>
     <link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
 
