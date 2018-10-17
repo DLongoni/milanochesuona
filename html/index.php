@@ -8,12 +8,14 @@
     <meta name="description" content="Il portale nato per saziare la tua sete di musica dal vivo a Milano e hinterland."/>
     <meta property="og:site_name" content="milanochesuona.it"/>
     <meta property="og:title" content="Milano che Suona"/>
+    <meta property="og:type" content="website"/>
     <meta property="og:description" content="Il portale nato per saziare la tua sete di musica dal vivo a Milano e hinterland."/>
     <meta property="og:url" content="https://milanochesuona.it">
-    <meta property="og:image" content="./img/mcs.jpg">
+    <meta property="og:image" content="https://milanochesuona.it/img/mcs.jpg">
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="2048">
     <meta property="og:image:height" content="779">
+    <meta property="fb:app_id" content="995093870678202">
 
     <title>Milano che Suona</title>
 
