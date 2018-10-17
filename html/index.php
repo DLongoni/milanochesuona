@@ -13,8 +13,8 @@
     <meta property="og:url" content="https://milanochesuona.it">
     <meta property="og:image" content="https://milanochesuona.it/img/mcs.jpg">
     <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:image:width" content="2000">
-    <meta property="og:image:height" content="1050">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <!-- <meta property="fb:app_id" content="995093870678202"> -->
 
     <title>Milano che Suona</title>
