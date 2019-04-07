@@ -27,7 +27,8 @@ $(document).ready(
   function() {
     // {{{ REGION: Date Picker
     $datePicker.datepicker(
-      {minDate: 0,
+      {
+        minDate: '-1d',
         dateFormat: "D dd/mm/yy",
         showOtherMonths: true,
         selectOtherMonths: true,
