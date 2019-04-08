@@ -33,7 +33,7 @@ $(document).ready(
         showOtherMonths: true,
         selectOtherMonths: true,
         showAnim: 'slideDown',
-        defaultDate: '0',
+        defaultDate: 0,
         dayNamesShort:["Dom","Lun","Mar","Mer","Gio","Ven","Sab"],
         onSelect: function(dtTxt){
           setDateHash();
