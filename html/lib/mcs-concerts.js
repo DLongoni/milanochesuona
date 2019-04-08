@@ -39,7 +39,7 @@ $(document).ready(
           setDateHash();
           loadConcerts(dtTxt);
         }
-      }).datepicker('setDate', new Date()); // to select today as default
+      }).datepicker('setDate', '+0d'); // to select today as default
 
     $("#btnNext").click(function () {
       var selDt = $datePicker.datepicker("getDate");
@@ -156,11 +156,14 @@ $(document).ready(
     if (dHash == "#/"){
       setDateHash();
     }
-    else{
-      if (dHash.length != 10){ // Something was wrong -> reset
+    else {
+      if (dHash.length == 10){ 
+        var hashDate = new Date(dHash.substr(6,4),dHash.substr(4,2)-1,dHash.substr(2,2));
+      }
+      else{  // Something was wrong or it's first opening -> set to today
+        var hashDate = new Date();  // default = today
         setDateHash();
       }
-      var hashDate = new Date(dHash.substr(6,4),dHash.substr(4,2)-1,dHash.substr(2,2));
       $datePicker.datepicker("setDate", hashDate);
     }
 
