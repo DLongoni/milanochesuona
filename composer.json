@@ -1,10 +1,10 @@
 {
-  "name": "milanochesuona",
+  "name": "milanochesuona/web",
   "require-dev": {
     "phpunit/phpunit":"5.5.*",
     "squizlabs/php_codesniffer": "2.*",
     "sebastian/phpcpd": "*",
-    "theseer/phpDox": "*",
+    "theseer/phpdox": "*",
     "phploc/phploc": "*",
     "phpmd/phpmd": "@stable",
     "pdepend/pdepend": "2.2.*"
