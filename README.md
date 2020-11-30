@@ -4,4 +4,3 @@
 ## TODO
 * Segnala errore
 * Parsa concerti multidata
-* Location Area M
