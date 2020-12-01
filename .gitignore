@@ -1,3 +1,4 @@
 vendor/**
 *.swp
 html/EventPictures/
+.phpunit*
