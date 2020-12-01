@@ -63,18 +63,7 @@ Class RepVenue{
 
   public static function getByName($name)
   {
-    $conn=getConn();
-    $sel=$conn->prepare("CALL VenueGetByName(?)");
-    $esc_name=mysqli_real_escape_string($conn,$name);
-    $sel->bind_param('s',$esc_name);
-    $sel->execute();
-    $res=$sel->get_result();
-    if ($res->num_rows>0)
-    {
-      $loc=$res->fetch_assoc();
-      return self::venueFromRow($loc); 
-    }
-    return NULL;
+    throw new Exception("Not implemented.");
   }
 
   public static function add($venue)

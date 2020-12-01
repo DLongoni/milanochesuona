@@ -80,17 +80,7 @@ Class RepEvent{
 
   public static function getByName($name)
   {
-    $conn=getConn();
-    $sel=$conn->prepare("CALL EventGetByName(?)");
-    $sel->bind_param('s',$name);
-    $sel->execute();
-    $res=$sel->get_result();
-    if ($res->num_rows>0)
-    {
-      $loc=$res->fetch_assoc();
-      return self::eventFromRow($loc); 
-    }
-    return NULL;
+    throw new Exception("Not implemented.");
   }
 
   public static function add($event)

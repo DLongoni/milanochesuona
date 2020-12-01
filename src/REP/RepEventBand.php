@@ -45,6 +45,7 @@ Class RepEventBand{
     {
       $ret[]=self::EventBandFromRow($EventBandRow);
     }
+    return $ret;
   }
 
   public static function add($EventBand)

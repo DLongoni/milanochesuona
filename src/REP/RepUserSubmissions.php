@@ -61,6 +61,7 @@ Class RepUserSubmissions{
     $ins->execute();
   }
 
+  // Questo usa like, non =!!!
   private static function getByLink($link,$type=-1,$status=-1)
   {
     $conn=getConn();
@@ -74,7 +75,7 @@ Class RepUserSubmissions{
       while($row = $res->fetch_assoc())
       {
         if (($type==-1 || ($row["type_id"] == $type)) &&
-          $status==-1 || ($row["status"] == $status)){
+          $status==-1 || ($row["status_id"] == $status)){
           $ret[]=$row;
         }
       }
