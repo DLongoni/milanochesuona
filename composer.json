@@ -2,10 +2,7 @@
     "name": "milanochesuona/web",
     "require-dev": {
         "squizlabs/php_codesniffer": "3.*",
-        "sebastian/phpcpd": "*",
-        "phploc/phploc": "*",
         "phpmd/phpmd": "@stable",
-        "pdepend/pdepend": "2.2.*",
         "phpunit/phpunit": "^9"
     },
     "require": {
