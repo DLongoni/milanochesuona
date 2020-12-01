@@ -9,11 +9,12 @@ require_once __DIR__ . '/REP/RepUserSubmissions.php';
 require_once __DIR__ . '/DbConn.php';
 
 $a=(2==3);
-if ($a){ print("pre"); } 
-if (!$a){ $a=1==1;
+if ($a) { print("pre"); 
+} 
+if (!$a) { $a=1==1;
 }
-if ($a){
-  print("post");
+if ($a) {
+    print("post");
 }
 
 $eI = new Event();

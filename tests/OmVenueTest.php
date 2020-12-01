@@ -5,23 +5,26 @@ require __DIR__ . '/../src/OM/Venue.php';
 
 class OmVenueTest extends TestCase
 {
-	public function testInstance(): void
-	{
-		$v = new Venue();
-    $v->name = "Sherazad";
-		$this->assertEquals($v->name,"Sherazad");
-	}
+    public function testInstance(): void
+    {
+        $v = new Venue();
+        $v->name = "Sherazad";
+        $this->assertEquals($v->name, "Sherazad");
+    }
 
-	public function testHasLoc(): void
-	{
-		$v = new Venue();
-		$this->assertFalse($v->hasLocation());
-	}
+    public function testHasLoc(): void
+    {
+        $v = new Venue();
+        $this->assertFalse($v->hasLocation());
+    }
 
-	public function testLink(): void
-	{
-		$v = new Venue();
-    $v->website = "https://www.minchia.com";
-		$this->assertStringContainsString("https://www.minchia.com", $v->getLinkHtml());
-	}
+    public function testLink(): void
+    {
+        $v = new Venue();
+        $v->website = "https://www.minchia.com";
+        $this->assertStringContainsString(
+            "https://www.minchia.com", 
+            $v->getLinkHtml()
+        );
+    }
 }

@@ -5,11 +5,11 @@ require __DIR__ . '/../src/OM/EventBand.php';
 
 class OmEventBandTest extends TestCase
 {
-	public function testInstance(): void
-	{
-		$eb = new EventBand();
-    $eb->eventId = 1234;
-		$this->assertEquals($eb->eventId,1234);
-	}
+    public function testInstance(): void
+    {
+        $eb = new EventBand();
+        $eb->eventId = 1234;
+        $this->assertEquals($eb->eventId, 1234);
+    }
 
 }

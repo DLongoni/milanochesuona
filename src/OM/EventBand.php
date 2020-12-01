@@ -1,7 +1,7 @@
 <?php
 class EventBand
 {
-	public $eventId;
-	public $bandId;
+    public $eventId;
+    public $bandId;
 }
 ?>
