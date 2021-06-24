@@ -72,8 +72,6 @@ Class RepBand
             $band->name,
             $band->fbPage,
             $band->website,
-            $band->logo,
-            $band->picture,
             $band->description,
             $band->email
         );
@@ -99,10 +97,9 @@ Class RepBand
         $ret->name=$row["name"];
         $ret->fbPage=$row["fb_page"];
         $ret->website=$row["website"];
-        $ret->logo=$row["logo"];
-        $ret->picture=$row["picture"];
         $ret->description=$row["description"];
         $ret->email=$row["email"];
+        $ret->type_id=$row["type_id"];
         return $ret;
     }
     // }}}
