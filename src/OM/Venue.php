@@ -79,46 +79,16 @@ class Venue
     {
         $ret = '';
         if ($this->hasLocation()) {
-            if (isset($this->location->city)) {
-                if (strtolower($this->location->city) == "milano" 
-                    or strtolower($this->location->city) == "milan"
-                ) {
-
-                    $ret='milano';
-                }
-            }
+          $ret = $this->location->getMilanoClass();
         }
         return $ret;
     }
 
     public function getNsweClass(): string
     {
-        $cLon=9.191383;
-        $cLat=45.464211;
-        if (!$this->hasLocation()) {
-            return "";
+        if ($this->hasLocation()) {
+            return $this->location->getNsweClass();
         }
-        $classArr = [];
-        $x = $this->location->longitude - $cLon;
-        $y = $this->location->latitude - $cLat;
-        // Est
-        if ($x > 0 and abs($y) < 4*$x) {
-            $classArr[] = "loc-e";
-        }
-        // Ovest
-        if ($x < 0 and abs($y) < -4*$x) {
-            $classArr[] = "loc-w";
-        }
-        // Nord
-        if ($y > 0 and $y > abs($x)/4) {
-            $classArr[] = "loc-n";
-        }
-        // Sud
-        if ($y < 0 and $y < -abs($x)/4) {
-            $classArr[] = "loc-s";
-        }
-        $ret=join(' ', $classArr);
-        return $ret;
     }
 }
 ?>

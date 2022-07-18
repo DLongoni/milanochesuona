@@ -42,25 +42,33 @@ class Event
 
     public function getHtml(): string
     {
-        if (!isset($this->venue) or !$this->venue->hasLocation()) {
+        if (!(isset($this->venue) or isset($this->location))) {
             return "";
         }
         $ret=sprintf(
             self::$_htmlMask,
             $this->_getMilanoClass(),
             $this->_getNsweClass(),
-            round($this->venue->getDistance(), 2),
+            round($this->_getDistance(), 2),
             $this->link,
-            // $this->picture,
             $this->_getPicPath(),
             $this->title,
             date_format(date_create($this->startTime), "H:i"),
-            $this->venue->getLinkHtml(),
+            $this->_getPlaceHtml(),
             $this->_getLocationHtml(),
             $this->description,
             $this->_getBandHtml()
         );
         return $ret;
+    }
+
+    private function _getDistance(): string
+    { 
+        if (isset($this->venue)) {
+            return $this->venue->getDistance(); 
+        } elseif (isset($this->location)) {
+            return $this->location->getDistance(); 
+        }
     }
 
     private function _getBandHtml(): string
@@ -75,13 +83,19 @@ class Event
         return $band_link; 
     }
 
+    private function _getPlaceHtml(): string
+    {
+        $pl_html = '';
+        if (isset($this->venue)) {
+            $pl_html = $this->venue->getLinkHtml();
+        } elseif (isset($this->location)) {
+            $pl_html = $this->location->getLinkHtml();
+        }
+        return $pl_html;
+    }
+
     private function _getVenueHtml(): string
     {
-        $venue_link = '';
-        if (isset($this->venue)) {
-            $venue_link = $this->venue->getLinkHtml();
-        }
-
         return $venue_link;
     }
 
@@ -90,19 +104,28 @@ class Event
         $loc_info = '';
         if (isset($this->venue)) {
             $loc_info = $this->venue->getLocationHtml();
+        } elseif (isset($this->location)) {
+            $loc_info = $this->location->getHtml();
         }
-
         return $loc_info;
     }
 
     private function _getMilanoClass(): string
     { 
-        return $this->venue->getMilanoClass(); 
+        if (isset($this->venue)) {
+            return $this->venue->getMilanoClass(); 
+        } elseif (isset($this->location)) {
+            return $this->location->getMilanoClass(); 
+        }
     }
 
     private function _getNsweClass(): string
     { 
-        return $this->venue->getNsweClass(); 
+        if (isset($this->venue)) {
+            return $this->venue->getNsweClass(); 
+        } elseif (isset($this->location)) {
+            return $this->location->getNsweClass(); 
+        }
     }
 
     private function _getPicPath(): string

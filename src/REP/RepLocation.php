@@ -30,7 +30,6 @@ Class RepLocation
             $location->latitude,
             $location->longitude,
             $location->street,
-            $location->zip
         );
         $ins->execute();
 
@@ -57,12 +56,12 @@ Class RepLocation
     {
         $loc = new Location();
         $loc->id=$row["id"];
+        $loc->fbId=$row["fb_id"];
         $loc->city=$row["city"];
         $loc->country=$row["country"];
         $loc->latitude=$row["latitude"];
         $loc->longitude=$row["longitude"];
         $loc->street=$row["street"];
-        $loc->zip=$row["zip"];
         return $loc;
     }
 }

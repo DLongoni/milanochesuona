@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../DbConn.php';
 require_once __DIR__ . '/../OM/Event.php';
 require_once __DIR__ . '/RepVenue.php';
+require_once __DIR__ . '/RepLocation.php';
 require_once __DIR__ . '/RepBand.php';
 require_once __DIR__ . '/RepEventBand.php';
 
@@ -81,11 +82,6 @@ Class RepEvent
         return null;
     }
 
-    public static function getByName($name)
-    {
-        throw new Exception("Not implemented.");
-    }
-
     public static function add($event)
     {
         // Check if I already have the venue. If not, insert.
@@ -156,11 +152,6 @@ Class RepEvent
         }
         return $newId;
     }
-
-    public static function mod()
-    {
-        throw new Exception("Not implemented.");
-    }
     // }}}
 
     // Private Methods {{{
@@ -178,7 +169,11 @@ Class RepEvent
         $ret->htmlDescription=$row["html_description"];
         $ret->statusId=$row["status_id"];
         $ret->cost=$row["cost"];
-        $ret->venue=RepVenue::getById($row["venue_id"]);
+        if (!is_null($row["venue_id"])) {
+          $ret->venue=RepVenue::getById($row["venue_id"]);
+        } elseif (!is_null($row["location_id"])){
+          $ret->location=RepLocation::getById($row["location_id"]);
+        }
         // Add bands
         $band_arr=array();
         $eventBands = RepEventBand::getByEventId($ret->id);

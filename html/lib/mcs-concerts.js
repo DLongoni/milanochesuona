@@ -73,6 +73,7 @@ $(document).ready(
         type:"POST",
         success:function(data){
           $grid.isotope('remove',$grid.isotope('getItemElements'));
+          console.log(data);
           var $data_obj=$(data);
           $grid.append($data_obj).isotope('appended',$data_obj);
 
@@ -108,8 +109,8 @@ $(document).ready(
         },
         error:function(xhr,ajaxOptions,thrownError){
           // Uncomment only for debugging purposes
-          // alert(xhr.status);
-          // alert(thrownError);
+          alert(xhr.status);
+          alert(thrownError);
           alert('Errore imprevisto nel caricamento dati.');
         }
       });
