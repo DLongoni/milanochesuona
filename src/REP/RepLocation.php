@@ -29,7 +29,7 @@ Class RepLocation
             $location->country,
             $location->latitude,
             $location->longitude,
-            $location->street,
+            $location->street
         );
         $ins->execute();
 
