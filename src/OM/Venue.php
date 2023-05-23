@@ -4,6 +4,7 @@ class Venue
     private static $_linkCode = '<a href="%s" target="_blank" 
         class="card-link mb-0">%s</a>';
     private static $_fbMask='https://facebook.com/%s';
+    private static $_diceMask='https://dice.fm/venue/%s';
 
     private static $_locationCode = '<a href="%s" target="_blank" 
         class="card-text"><small class="text-muted">%s</small></a>';
@@ -11,6 +12,7 @@ class Venue
 
     public $id;
     public $fbId;
+    public $diceId;
     public $name;
     public $location; // type: Location
     public $website;
@@ -21,6 +23,7 @@ class Venue
     public $phone;
     public $email;
     public $venue_type_id;
+    public $providerId;
 
     public function getLocationHtml(): string
     {
@@ -37,14 +40,16 @@ class Venue
 
     public function getLinkHtml(): string
     {
-        $venue_link = '';
-        if (isset($this->website)  
-            and filter_var($this->website, FILTER_VALIDATE_URL)
-        ) : 
-            $l = $this->website;
-      elseif(isset($this->fbId)) :
+      $venue_link = '';
+      if (isset($this->website)  
+          and filter_var($this->website, FILTER_VALIDATE_URL)
+      ) { 
+          $l = $this->website; 
+      } elseif($this->providerId == 1) {
           $l = sprintf(self::$_fbMask, $this->fbId);
-      endif;
+      } elseif($this->providerId == 2) {
+          $l = sprintf(self::$_diceMask, $this->diceId);
+      }
 
       if (isset($l)) {
           $venue_link=sprintf(self::$_linkCode, $l, $this->name);

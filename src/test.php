@@ -8,8 +8,11 @@ require_once __DIR__ . '/REP/RepBand.php';
 require_once __DIR__ . '/REP/RepUserSubmissions.php';
 require_once __DIR__ . '/DbConn.php';
 
-$eb=RepLocation::getById(2);
-var_dump($eb->getDescription());
+// $eb=RepVenue::getById(3130);
+// var_dump($eb->getLinkHtml());
+
+$eb=RepEvent::getById(50606);
+var_dump($eb->getHtml());
 
 // $V=RepVenue::getById(39);
 // $e=RepEvent::getById(47557);

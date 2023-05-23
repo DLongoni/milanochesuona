@@ -28,26 +28,23 @@ Class RepVenue
         $sel->bind_param('i', $id);
         $sel->execute();
         $res=$sel->get_result();
-        if ($res->num_rows>0) {
-            $loc=$res->fetch_assoc();
-            return self::_venueFromRow($loc); 
-        }
+        if ($res->num_rows>0) { $loc=$res->fetch_assoc(); return self::_venueFromRow($loc); }
         return null;
     }
 
-    public static function getByFbLink($query)
-    {
-        $conn=getConn();
-        $sel=$conn->prepare("CALL VenueGetByFbLink(?)");
-        $sel->bind_param('s', $query);
-        $sel->execute();
-        $res=$sel->get_result();
-        if ($res->num_rows>0) {
-            $loc=$res->fetch_assoc();
-            return self::_venueFromRow($loc); 
-        }
-        return null;
-    }
+    // public static function getByFbLink($query)
+    // {
+    //     $conn=getConn();
+    //     $sel=$conn->prepare("CALL VenueGetByFbLink(?)");
+    //     $sel->bind_param('s', $query);
+    //     $sel->execute();
+    //     $res=$sel->get_result();
+    //     if ($res->num_rows>0) {
+    //         $loc=$res->fetch_assoc();
+    //         return self::_venueFromRow($loc); 
+    //     }
+    //     return null;
+    // }
 
     public static function getByFbId($fbId)
     {
@@ -68,29 +65,29 @@ Class RepVenue
         throw new Exception("Not implemented.");
     }
 
-    public static function add($venue)
-    {
-        $conn=getConn();      
-        $ins=$conn->prepare("CALL VenueAdd(?,?,?,?,?,?,?,?,?,?,@newId)");
-        $ins->bind_param(
-            'dsisssssss', 
-            $venue->fbId,
-            $venue->name,
-            $venue->location,
-            $venue->website,
-            $venue->fbPage,
-            $venue->logo,
-            $venue->picture,
-            $venue->description,
-            $venue->phone,
-            $venue->email
-        );
-        $ins->execute();
-
-        $sel=$conn->query('SELECT @newId');
-        $newId=$sel->fetch_assoc();
-        return $newId["@newId"];
-    }
+    // public static function add($venue)
+    // {
+    //     $conn=getConn();      
+    //     $ins=$conn->prepare("CALL VenueAdd(?,?,?,?,?,?,?,?,?,?,@newId)");
+    //     $ins->bind_param(
+    //         'dsisssssss', 
+    //         $venue->fbId,
+    //         $venue->name,
+    //         $venue->location,
+    //         $venue->website,
+    //         $venue->fbPage,
+    //         $venue->logo,
+    //         $venue->picture,
+    //         $venue->description,
+    //         $venue->phone,
+    //         $venue->email
+    //     );
+    //     $ins->execute();
+    //
+    //     $sel=$conn->query('SELECT @newId');
+    //     $newId=$sel->fetch_assoc();
+    //     return $newId["@newId"];
+    // }
 
     public static function mod()
     {
@@ -104,9 +101,9 @@ Class RepVenue
         $ret = new Venue();
         $ret->id=$row["id"];
         $ret->fbId=$row["fb_id"];
+        $ret->diceId=$row["dice_id"];
         $ret->name=$row["name"];
         $ret->website=$row["website"];
-        $ret->fbPage=$row["fb_page"];
         $ret->logo=$row["logo"];
         $ret->picture=$row["picture"];
         $ret->description=$row["description"];
@@ -116,6 +113,7 @@ Class RepVenue
         if($ret->venue_type_id!=2) :
             $ret->location=RepLocation::getById($row["location_id"]);
         endif;
+        $ret->providerId=$row["provider_id"];
         return $ret;
     }
     // }}}

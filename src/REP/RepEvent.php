@@ -82,76 +82,76 @@ Class RepEvent
         return null;
     }
 
-    public static function add($event)
-    {
-        // Check if I already have the venue. If not, insert.
-        if ($event->venue->fbId != null) {
-            $v = RepVenue::getByFbId($event->venue->fbId);
-        }
-        if ($v == null && $event->venue->name != null) {
-            $v = RepVenue::getByName($event->venue->name);
-        }
-        if ($v == null) {
-            $vId=RepVenue::add($event->venue);
-        } else {
-            $vId=$v->id;
-        }
-        // Check if I already have each band. If not, insert. Save band ids in array;
-        $band_ids_arr=array();
-        if ($event->bands != null && count($event->bands)>0) {
-            foreach ($event->bands as $iBand) {
-                $band_id=-1;
-                if ($iBand->fbId != null) {
-                    $tB = RepBand::getByFbId($iBand->fbId);
-                    if ($tB!=null) {
-                        $band_id=$tB->id;
-                    }
-                }
-                if ($band_id == -1 && $iBand->name != null) {
-                    $tB=RepBand::getByName($iBand->name);
-                    if ($tB!=null) {
-                        $band_id=$tB->id;
-                    }
-                }
-                if ($band_id==-1) {
-                    $band_id=RepBand::add($iBand);  
-                }
-                $band_ids_arr[]=$band_id;
-            }
-        }
-        $conn=getConn();      
-        $ins=$conn->prepare("CALL EventAdd(?,?,?,?,?,?,?,?,?,?,?,@newId)");
-        $dateStartString=date_format($event->startTime, "Y-m-d H:i:s");
-        $dateEndString= date_format($event->endTime, "Y-m-d H:i:s");
-        $ins->bind_param(
-            'isssissssid',
-            $event->fbId,
-            $event->title,
-            $dateStartString,
-            $dateEndString,
-            $vId,
-            $event->link,
-            $event->picture,
-            $event->description,
-            $event->html_description,
-            $event->statusId,
-            $event->cost
-        );
-        $ins->execute();
-
-        $sel=$conn->query('SELECT @newId');
-        $newId=$sel->fetch_assoc();
-        $newId=(int)$newId["@newId"];
-        // Insert EventBand now that I know the Event Id
-        var_dump($newId);
-        foreach ($band_ids_arr as $band_id) {
-            $iEb = new EventBand();
-            $iEb->eventId=$newId; 
-            $iEb->bandId=$band_id; 
-            RepEventBand::add($iEb);
-        }
-        return $newId;
-    }
+    // public static function add($event)
+    // {
+    //     // Check if I already have the venue. If not, insert.
+    //     if ($event->venue->fbId != null) {
+    //         $v = RepVenue::getByFbId($event->venue->fbId);
+    //     }
+    //     if ($v == null && $event->venue->name != null) {
+    //         $v = RepVenue::getByName($event->venue->name);
+    //     }
+    //     if ($v == null) {
+    //         $vId=RepVenue::add($event->venue);
+    //     } else {
+    //         $vId=$v->id;
+    //     }
+    //     // Check if I already have each band. If not, insert. Save band ids in array;
+    //     $band_ids_arr=array();
+    //     if ($event->bands != null && count($event->bands)>0) {
+    //         foreach ($event->bands as $iBand) {
+    //             $band_id=-1;
+    //             if ($iBand->fbId != null) {
+    //                 $tB = RepBand::getByFbId($iBand->fbId);
+    //                 if ($tB!=null) {
+    //                     $band_id=$tB->id;
+    //                 }
+    //             }
+    //             if ($band_id == -1 && $iBand->name != null) {
+    //                 $tB=RepBand::getByName($iBand->name);
+    //                 if ($tB!=null) {
+    //                     $band_id=$tB->id;
+    //                 }
+    //             }
+    //             if ($band_id==-1) {
+    //                 $band_id=RepBand::add($iBand);  
+    //             }
+    //             $band_ids_arr[]=$band_id;
+    //         }
+    //     }
+    //     $conn=getConn();      
+    //     $ins=$conn->prepare("CALL EventAdd(?,?,?,?,?,?,?,?,?,?,?,@newId)");
+    //     $dateStartString=date_format($event->startTime, "Y-m-d H:i:s");
+    //     $dateEndString= date_format($event->endTime, "Y-m-d H:i:s");
+    //     $ins->bind_param(
+    //         'isssissssid',
+    //         $event->fbId,
+    //         $event->title,
+    //         $dateStartString,
+    //         $dateEndString,
+    //         $vId,
+    //         $event->link,
+    //         $event->picture,
+    //         $event->description,
+    //         $event->html_description,
+    //         $event->statusId,
+    //         $event->cost
+    //     );
+    //     $ins->execute();
+    //
+    //     $sel=$conn->query('SELECT @newId');
+    //     $newId=$sel->fetch_assoc();
+    //     $newId=(int)$newId["@newId"];
+    //     // Insert EventBand now that I know the Event Id
+    //     var_dump($newId);
+    //     foreach ($band_ids_arr as $band_id) {
+    //         $iEb = new EventBand();
+    //         $iEb->eventId=$newId; 
+    //         $iEb->bandId=$band_id; 
+    //         RepEventBand::add($iEb);
+    //     }
+    //     return $newId;
+    // }
     // }}}
 
     // Private Methods {{{
@@ -160,6 +160,7 @@ Class RepEvent
         $ret = new Event();
         $ret->id=$row["id"];
         $ret->fbId=$row["fb_id"];
+        $ret->diceId=$row["dice_id"];
         $ret->title=$row["title"];
         $ret->startTime=$row["start_time"];
         $ret->endTime=$row["end_time"];
@@ -169,6 +170,7 @@ Class RepEvent
         $ret->htmlDescription=$row["html_description"];
         $ret->statusId=$row["status_id"];
         $ret->cost=$row["cost"];
+        $ret->providerId=$row["provider_id"];
         if (!is_null($row["venue_id"])) {
           $ret->venue=RepVenue::getById($row["venue_id"]);
         } elseif (!is_null($row["location_id"])){
